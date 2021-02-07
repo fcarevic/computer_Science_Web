@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+.center {
+    display: flex;
+    justify-content: right;
+}
+
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 2pt solid rgba(230, 132, 21, 0.1);
+  }

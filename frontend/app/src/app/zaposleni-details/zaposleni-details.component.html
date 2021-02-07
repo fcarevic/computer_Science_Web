@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8" *ngIf='radnik' >
+        <div class="card text-center">
+            <img class="card-img-top " src="assets/slike/{{radnik.slika}}" alt="Slika">
+            <div class="card-body">
+                
+              <h5 class="card-title bg-light p-4">{{radnik.prezime}} &nbsp; {{radnik.ime}}</h5>
+              <table class="table">
+                  <tr>
+                      <td>Ime</td>
+                      <td>{{radnik.ime}}</td>
+                  </tr>
+                  <tr>
+                      <td>Prezime</td>
+                      <td>{{radnik.prezime}}</td>
+                  </tr>
+                  <tr>
+                      <td>Zvanje</td>
+                      <td>{{radnik.zvanje}}</td>
+                  </tr>
+                  <tr>
+                      <td>Adresa</td>
+                      <td>{{radnik.adresa}}</td>
+                  </tr>
+                  <tr>
+                      <td>Mobilni telefon</td>
+                      <td>{{radnik.mobilni}}</td>
+                  </tr>
+                  <tr>
+                      <td>Info</td>
+                      <td>{{radnik.podaci}}</td>
+                  </tr>
+                  <tr>
+                      <td>Website</td>
+                      <td>{{radnik.website}}</td>
+                  </tr>
+                  <tr>
+                      <td>Kabinet</td>
+                      <td>{{radnik.kabinet}}</td>
+                  </tr>
+
+                </table>
+            
+            </div>
+          </div>
+    </div>
+</div>

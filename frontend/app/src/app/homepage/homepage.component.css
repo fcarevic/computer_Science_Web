@@ -1,0 +1,5 @@
+.carousel-item img {
+    height: 400pt !important;
+    width: 800pt !important;
+    border-radius: 10%;
+}

@@ -1,0 +1,48 @@
+{
+ "username" : "pera",
+ "password" : "pera123",
+ "ime"	    : "Pera",
+ "prezime"  : "Peric",
+ "adresa"   : "Ul.3 Beograd",
+ "mobilni"  : "0651234123",
+ "website"  : "www.pera.com",
+ "podaci"   : "Asistent na Oksfordu 3 godine, na ETF-u profesor 5 godina",
+ "zvanje"   : "redivni profesor",
+ "kabinet"  : "32",
+ "status"   : "aktivan",
+ "slika"    : "pera.jpg",
+ "predmeti" : []
+}
+
+{
+ "username" : "mika",
+ "password" : "mika123",
+ "ime"	    : "Mika",
+ "prezime"  : "Mikic",
+ "adresa"   : "Ul.4 Beograd",
+ "mobilni"  : "0651254123",
+ "website"  : "www.mika.com",
+ "podaci"   : "Asistent na ETF-u profesor 5 godina",
+ "zvanje"   : "vanredni profesor",
+ "kabinet"  : "34",
+ "status"   : "neaktivan",
+ "slika"    : "mika.jpg",
+ "predmeti" : []
+}
+
+{
+ "username" : "Mara",
+ "password" : "mara123",
+ "ime"	    : "Mara",
+ "prezime"  : "Maric",
+ "adresa"   : "Ul.7 Beograd",
+ "mobilni"  : "0653434123",
+ "website"  : "www.mara.com",
+ "podaci"   : "Asistent na Oksfordu",
+ "zvanje"   : "asistent",
+ "kabinet"  : "37",
+ "status"   : "aktivan",
+ "slika"    : "mara.png",
+ "predmeti" : []
+}
+

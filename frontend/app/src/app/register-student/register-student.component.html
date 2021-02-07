@@ -1,0 +1,64 @@
+<div class="row">
+  
+        <div class="offset-sm-2 col-sm-8 text-center ">
+            <table class="table table">
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Username" [(ngModel)]='username'>
+
+                    </td>
+                    <td>
+                        <input type="password" placeholder="Password" [(ngModel)]='password'>
+
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Indeks" [(ngModel)]='indeks'>
+
+                    </td>
+                    <td>
+                        <select [(ngModel)]='tipStudija'>
+                            Tip studija
+                            <option value="d">Osnovne</option>
+                            <option value="m">Master</option>
+                            <option value="p">Doktorske</option>
+                        </select>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <input type="text" placeholder="Ime" [(ngModel)]='ime'>
+                    </td>
+                    <td>
+                        <input type="text" placeholder="Prezime" [(ngModel)]='prezime'>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <select [(ngModel)]='status'>
+                            Status
+                            <option value="aktivan">Aktivan</option>
+                            <option value="neaktivan">Neaktivan</option>
+                        </select>
+
+                    </td>
+                   
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        
+                        <button  class="btn btn-outline-primary" (click) = 'register()'> Registruj se</button>
+                          
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+  
+</div>

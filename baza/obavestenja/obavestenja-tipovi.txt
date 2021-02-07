@@ -1,0 +1,15 @@
+{
+"name" : "praksa"
+}
+
+{
+"name" : "konferencija"
+}
+
+{
+"name" : "posao"
+}
+
+{
+"name" : "takmicenje"
+}

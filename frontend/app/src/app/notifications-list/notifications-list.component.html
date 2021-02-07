@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-sm-11 text-right">
+        
+        <button type="button" class="btn btn-light" (click)='filter("All")'> Sve </button>
+        
+        <span *ngFor='let type of notificationTypes' class="ml-2">
+            <button type="button" class="btn btn-light" (click)='filter(type.name)'> {{type.name}} </button>
+            
+        </span>
+    </div>
+
+    <div class="col-sm-12">
+
+        <div class="card m-4" *ngFor='let notification of notifications'>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <i>Tip</i> : {{notification.type}}
+                    </div>
+                    <div class="col-sm-6 text-right">
+                        <i>Datum</i> : {{notification.date}}
+                    </div>
+                </div>
+              
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">  {{ notification.title}}</h5>
+              <p class="card-text">   {{notification.description}}</p>
+            </div>
+          </div>
+
+    </div>
+</div>

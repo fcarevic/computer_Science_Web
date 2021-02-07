@@ -1,0 +1,1 @@
+{"version":3,"file":"NotificationType.js","sourceRoot":"","sources":["../../src/model/NotificationType.ts"],"names":[],"mappings":";;;;;AAAA,wDAA+B;AAE/B,MAAM,MAAM,GAAG,kBAAQ,CAAC,MAAM,CAAC;AAE/B,IAAI,gBAAgB,GAAG,IAAI,MAAM,CAAC;IAC9B,IAAI,EAAE;QACF,IAAI,EAAC,MAAM;KACd;CACJ,CAAC,CAAC;AAEH,kBAAe,kBAAQ,CAAC,KAAK,CAAC,kBAAkB,EAAE,gBAAgB,EAAE,kBAAkB,CAAC,CAAC"}
