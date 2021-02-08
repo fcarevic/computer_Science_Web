@@ -1,3 +1,3 @@
 export class NotificationType{
-    name: String;
+    name: string;
 }

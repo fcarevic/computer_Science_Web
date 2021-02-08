@@ -5,6 +5,8 @@ import mongoose, { connect } from 'mongoose';
 import Professors from './model/Professors';
 import Notifications from './model/Notifications';
 import NotificationType from './model/NotificationType';
+import multer from 'multer'
+import Subject from './model/Subject';
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -20,8 +22,54 @@ const router = express.Router();
 const OK_STATUS = { 'status': 'ok' };
 const NOT_OK_STATUS = { 'status': 'not_ok' };
 
+/************************** STORAGES */
+var photoStorage = multer.diskStorage({
+    destination: function (request, response, cb) {
+        let dir = __dirname + '/photos';
+        console.log(dir);
+        cb(null, dir);
+    },
+
+    filename: function (request, file, cb) {
+        console.log(file);
+        cb(null, file.originalname);
+    }
+});
+
+/********************UPLOADERS */
+
+var uploadPhoto = multer({
+    storage: photoStorage
+}).single('file');
+
+/***************** UPLOAD ROUTES */
+
+router.route('/uploadphotos').post((request, response) => {
+    try {
+        uploadPhoto(request, response, err => {
+            if (err) {
+                console.log(err);
+                response.status(410).json(NOT_OK_STATUS);
+            } else {
+                console.log('uspesno upload');
+                response.status(200).json(OK_STATUS);
+            }
+        })
+
+    } catch (error) {
+        console.log(error);
+        response.status(500).json(NOT_OK_STATUS);
+    }
+});
 
 
+/*****************  DOWNLOAD ROUTES */
+
+router.route('/downloadphotos/:filename').get((request, response)=>{
+    var filename= request.params.filename;
+    var fullpath= __dirname+'/photos/'+filename;
+    response.download(fullpath);
+})
 /**************  PROFESSORS ROUTES ****/
 
 //dohvata sve zaposlene
@@ -74,7 +122,8 @@ router.route('/zaposleni/update').post((request, response) => {
             zvanje: professor.zvanje,
             kabinet: professor.kabinet,
             status: professor.status,
-            predmeti: professor.predmeni
+            predmeti: professor.predmeti,
+            slika: professor.slika
         }
         , (err, res) => {
             if (err) console.log(err);
@@ -170,6 +219,31 @@ router.route('/obavestenja/delete').post((request, response) => {
         if (err) console.log(err);
     }).then(res => {
         response.json(res);
+    });
+})
+
+/**************************SUBJECT ROUTES */
+
+/***************SUBJECT NOTIFICATION ROUTES */
+
+router.route('/subject/notifications/:code' ).get((request, response)=>{
+   let code = request.params.code;
+   Subject.findOne({'info.code':code},{notifications: 1}, (err,res)=>{
+       if(err){
+           console.log(err);
+        }
+       else if(res){
+           response.json(res);
+       } else response.json([]);
+   }) 
+});
+
+router.route('/subject/notifications/insert').post((request, response)=>{
+    let date= new Date();
+    let code = request.body.code;
+    let notification = request.body.notification;
+    Subject.findOneAndUpdate({'info.code': code}, {$push:{ 'notifications':notification}}).then(e=>{
+        response.json(e);
     });
 })
 

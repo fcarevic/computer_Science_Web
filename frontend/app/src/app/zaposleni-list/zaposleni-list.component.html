@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-4"  *ngFor = 'let radnik of zaposleni'>
         <div class="card text-center m-4">
-            <img class="card-img-top imgheight" src="assets/slike/{{radnik.slika}}" alt="Slika">
+            <img class="card-img-top imgheight" src="{{images[radnik.username]}}" alt="Slika">
             <div class="card-body">
                 
               <h5 class="card-title bg-light p-4">{{radnik.prezime}} &nbsp; {{radnik.ime}}</h5>

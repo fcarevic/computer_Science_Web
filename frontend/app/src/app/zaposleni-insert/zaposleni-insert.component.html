@@ -72,7 +72,7 @@
                 <td>
 
                     <select [(ngModel)]='zaposleni.zvanje'>
-                        <option  value="{{zvanje}}" *ngFor='let zvanje of zvanja'>
+                        <option value="{{zvanje}}" *ngFor='let zvanje of zvanja'>
                             {{zvanje}}</option>
                     </select>
 
@@ -98,8 +98,18 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                    Slika
+                </td>
+                <td>
+                    <input type="file" id='file' name="file" ng2FileSelect [uploader]="uploader" />
+
+                </td>
+            </tr>
+            <tr>
                 <td colspan="2">
-                    <button class="btn btn-dark" (click)='insertZaposleni()'> Dodaj</button>
+                    <button class="btn btn-dark" (click)='insertZaposleni()'
+                        [disabled]="!uploader.getNotUploadedItems().length"> Dodaj</button>
                 </td>
             </tr>
         </table>

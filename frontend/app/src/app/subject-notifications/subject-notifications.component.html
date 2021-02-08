@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card m-4" *ngFor='let notification of notifications'>
+            <div class="card-header">
+                <div class="row">
+                    <div class="col-sm-6 ">
+                        <i>Datum</i> : {{notification.date}}
+                    </div>
+                    <div class="col-sm-6 text-right">
+                    
+                        <button class="btn btn-dark" (click)='updateNotification(notification)'> Update</button>
+                        <button class=" ml-2 btn btn-dark" (click)= 'deleteNotification(notification)'> Delete</button>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">  {{ notification.title}}</h5>
+              <p class="card-text">   {{notification.description}}</p>
+            </div>
+          </div>
+
+    </div>
+</div>

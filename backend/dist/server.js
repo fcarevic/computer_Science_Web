@@ -10,6 +10,8 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const Professors_1 = __importDefault(require("./model/Professors"));
 const Notifications_1 = __importDefault(require("./model/Notifications"));
 const NotificationType_1 = __importDefault(require("./model/NotificationType"));
+const multer_1 = __importDefault(require("multer"));
+const Subject_1 = __importDefault(require("./model/Subject"));
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());
@@ -21,6 +23,47 @@ conn.once('open', () => {
 const router = express_1.default.Router();
 const OK_STATUS = { 'status': 'ok' };
 const NOT_OK_STATUS = { 'status': 'not_ok' };
+/************************** STORAGES */
+var photoStorage = multer_1.default.diskStorage({
+    destination: function (request, response, cb) {
+        let dir = __dirname + '/photos';
+        console.log(dir);
+        cb(null, dir);
+    },
+    filename: function (request, file, cb) {
+        console.log(file);
+        cb(null, file.originalname);
+    }
+});
+/********************UPLOADERS */
+var uploadPhoto = multer_1.default({
+    storage: photoStorage
+}).single('file');
+/***************** UPLOAD ROUTES */
+router.route('/uploadphotos').post((request, response) => {
+    try {
+        uploadPhoto(request, response, err => {
+            if (err) {
+                console.log(err);
+                response.status(410).json(NOT_OK_STATUS);
+            }
+            else {
+                console.log('uspesno upload');
+                response.status(200).json(OK_STATUS);
+            }
+        });
+    }
+    catch (error) {
+        console.log(error);
+        response.status(500).json(NOT_OK_STATUS);
+    }
+});
+/*****************  DOWNLOAD ROUTES */
+router.route('/downloadphotos/:filename').get((request, response) => {
+    var filename = request.params.filename;
+    var fullpath = __dirname + '/photos/' + filename;
+    response.download(fullpath);
+});
 /**************  PROFESSORS ROUTES ****/
 //dohvata sve zaposlene
 router.route('/zaposleni').get((request, response) => {
@@ -72,7 +115,8 @@ router.route('/zaposleni/update').post((request, response) => {
         zvanje: professor.zvanje,
         kabinet: professor.kabinet,
         status: professor.status,
-        predmeti: professor.predmeni
+        predmeti: professor.predmeti,
+        slika: professor.slika
     }, (err, res) => {
         if (err)
             console.log(err);
@@ -160,6 +204,29 @@ router.route('/obavestenja/delete').post((request, response) => {
             console.log(err);
     }).then(res => {
         response.json(res);
+    });
+});
+/**************************SUBJECT ROUTES */
+/***************SUBJECT NOTIFICATION ROUTES */
+router.route('/subject/notifications/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, { notifications: 1 }, (err, res) => {
+        if (err) {
+            console.log(err);
+        }
+        else if (res) {
+            response.json(res);
+        }
+        else
+            response.json([]);
+    });
+});
+router.route('/subject/notifications/insert').post((request, response) => {
+    let date = new Date();
+    let code = request.body.code;
+    let notification = request.body.notification;
+    Subject_1.default.findOneAndUpdate({ 'info.code': code }, { $push: { 'notifications': notification } }).then(e => {
+        response.json(e);
     });
 });
 app.use('/', router);

@@ -50,6 +50,9 @@ let Professors  = new Schema ({
         predmeti: {
             type: [String],
             required: false
+        },
+        slika:{
+            type: String
         }
 
 });

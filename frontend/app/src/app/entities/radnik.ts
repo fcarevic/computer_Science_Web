@@ -1,15 +1,15 @@
 export class Radnik{
-    username:String;
-    password:String;
-    ime:String;
-    prezime:String;
-    adresa:String;
-    mobilni:String;
-    website:String;
-    podaci:String;
-    zvanje:String;
-    kabinet:String;
-    status: String;
-    slika:String;
+    username:string;
+    password:string;
+    ime:string;
+    prezime:string;
+    adresa:string;
+    mobilni:string;
+    website:string;
+    podaci:string;
+    zvanje:string;
+    kabinet:string;
+    status: string;
+    slika:string;
     predmeti: Array<Object>;
 }

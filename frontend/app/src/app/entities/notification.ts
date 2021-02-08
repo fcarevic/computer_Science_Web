@@ -1,6 +1,6 @@
 export class Notification{
-    title: String;
-    description: String;
-    type:String;
+    title: string;
+    description: string;
+    type:string;
     date: Date;
 }

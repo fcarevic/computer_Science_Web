@@ -6,6 +6,8 @@ import { NotificationInsertComponent } from './notification-insert/notification-
 import { NotificationUpdateComponent } from './notification-update/notification-update.component';
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
+import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
+import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
 import { ZaposleniDetailsComponent } from './zaposleni-details/zaposleni-details.component';
 import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
 import { ZaposleniListComponent } from './zaposleni-list/zaposleni-list.component';
@@ -22,7 +24,9 @@ const routes: Routes = [
   {path: 'notifications', component: NotificationsListComponent},
   {path:'notifications/update', component: NotificationUpdateComponent},
   {path:'notifications/insert', component: NotificationInsertComponent},
-  {path: 'contact', component: ContactDetailsComponent}
+  {path: 'contact', component: ContactDetailsComponent},
+  {path:'subject/notification/insert/:code', component: SubjectNotificationInsertComponent},
+  {path: 'subject/notifications/:code', component: SubjectNotificationsComponent}
 ];
 
 @NgModule({

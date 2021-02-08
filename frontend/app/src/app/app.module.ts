@@ -17,6 +17,9 @@ import { NotificationInsertComponent } from './notification-insert/notification-
 import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
 import { ZaposleniUpdateComponent } from './zaposleni-update/zaposleni-update.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
+import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
+import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
+import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
 
 @NgModule({
   declarations: [
@@ -33,17 +36,21 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
     ZaposleniInsertComponent,
     ZaposleniUpdateComponent,
     ContactDetailsComponent,
+    SubjectNotificationsComponent,
+    SubjectNotificationInsertComponent,
+    
+    
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FileUploadModule
   ],
   exports:[
-    NavbarMainComponent,
-    LoginComponentComponent
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
