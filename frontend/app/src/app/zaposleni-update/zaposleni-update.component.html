@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8 center">
+        <table class="table table-striped text-center">
+            <tr>
+                <td>
+                    Korisnicko ime
+                </td>
+                <td>
+                   {{zaposleni.username}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Sifra
+                </td>
+                <td>
+                    <input type="password" value='{{zaposleni.password}}' [(ngModel)]= 'zaposleni.password'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Potvrdi Sifru
+                </td>
+                <td>
+                    <input type="password"  [(ngModel)]= 'passwordConfirm'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ime
+                </td>
+                <td>
+                    <input type="text" value='{{zaposleni.ime}}' [(ngModel)]= 'zaposleni.ime'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Prezime
+                </td>
+                <td>
+                    <input type="text" value='{{zaposleni.prezime}}' [(ngModel)]= 'zaposleni.prezime'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Adresa
+                </td>
+                <td>
+                    <input type="text" value='{{zaposleni.adresa}}' [(ngModel)]= 'zaposleni.adresa'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Mobilni telefon
+                </td>
+                <td>
+                    <input type="text" value='{{zaposleni.mobilni}}' [(ngModel)]= 'zaposleni.mobilni'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Website
+                </td>
+                <td>
+                    <input type="text" value='{{zaposleni.website}}' [(ngModel)]= 'zaposleni.website'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Podaci
+                </td>
+                <td>
+                    <textarea cols="55" rows="5" value='{{zaposleni.podaci}' [(ngModel)]= 'zaposleni.podaci'> </textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Zvanje
+                </td>
+                <td>
+                    <select [(ngModel)]='zaposleni.zvanje'>
+                        <option [selected]="zaposleni.zvanje==zvanje" value="{{zvanje}}" *ngFor='let zvanje of zvanja'> {{zvanje}}</option>      
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Kabinet
+                </td>
+                <td>
+                    <input type="text"  value='{{zaposleni.kabinet}}' [(ngModel)]= 'zaposleni.kabinet'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Status
+                </td>
+                <td>
+                    <select [(ngModel)]='zaposleni.status'>
+                        <option [selected]='zaposleni.status=="Aktivan"' value="Aktivan">Aktivan</option>
+                        <option [selected]='zaposleni.status=="Neaktivan"' value="Neaktivan">Neaktivan</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-dark" (click)='updateZaposleni()'> Update</button>
+                </td>
+            </tr>
+        </table>
+  <br>
+  
+    </div>
+</div>
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+          </div>
+    </div>
+</div>

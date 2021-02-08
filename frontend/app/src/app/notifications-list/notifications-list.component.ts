@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Notification } from '../entities/notification';
 import { NotificationType } from '../entities/notification-type';
 import { NotificationServiceService } from '../notification-service.service';
@@ -10,7 +11,7 @@ import { NotificationServiceService } from '../notification-service.service';
 })
 export class NotificationsListComponent implements OnInit {
 
-  constructor(private notificationService: NotificationServiceService) { }
+  constructor(private notificationService: NotificationServiceService, private router:Router) { }
 
   ngOnInit(): void {
     this.getAllNotificationTypes();
@@ -29,6 +30,11 @@ export class NotificationsListComponent implements OnInit {
 
   getAllNotifications() {
     this.notificationService.getAllNotifications().subscribe((notif: Notification[]) => {
+      notif.sort((el1, el2)=>{
+        if(el1.date>el2.date) return -1;
+        else if(el1.date<el2.date) return 1;
+        else return 0;
+      })
       this.notifications = notif;
       this.allNotifications = notif;
     });
@@ -42,6 +48,18 @@ export class NotificationsListComponent implements OnInit {
     this.notifications = [];
     this.allNotifications.forEach(el => {
       if (el.type.includes(name)) this.notifications.push(el);
+    })
+  }
+
+  updateNotification(notification){
+    localStorage.setItem('notificationPIA',JSON.stringify(notification));
+    this.router.navigate(['notifications/update']);
+  }
+
+  deleteNotification(notification){
+    
+    this.notificationService.deleteNotification(notification).subscribe(res=>{
+     location.reload();
     })
   }
 

@@ -12,6 +12,11 @@ import { ZaposleniListComponent } from './zaposleni-list/zaposleni-list.componen
 import {HttpClientModule} from '@angular/common/http';
 import { ZaposleniDetailsComponent } from './zaposleni-details/zaposleni-details.component';
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
+import { NotificationUpdateComponent } from './notification-update/notification-update.component';
+import { NotificationInsertComponent } from './notification-insert/notification-insert.component';
+import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
+import { ZaposleniUpdateComponent } from './zaposleni-update/zaposleni-update.component';
+import { ContactDetailsComponent } from './contact-details/contact-details.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +28,11 @@ import { NotificationsListComponent } from './notifications-list/notifications-l
     ZaposleniListComponent,
     ZaposleniDetailsComponent,
     NotificationsListComponent,
+    NotificationUpdateComponent,
+    NotificationInsertComponent,
+    ZaposleniInsertComponent,
+    ZaposleniUpdateComponent,
+    ContactDetailsComponent,
     
   ],
   imports: [

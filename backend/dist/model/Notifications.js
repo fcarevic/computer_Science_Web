@@ -15,8 +15,8 @@ let Notifications = new Schema({
         required: true
     },
     date: {
-        type: String,
-        default: Date.now()
+        type: Date,
+        default: new Date()
     },
     type: {
         type: String,
