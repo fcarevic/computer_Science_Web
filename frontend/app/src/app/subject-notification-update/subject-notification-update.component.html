@@ -17,18 +17,26 @@
                     <textarea value="{{notification.description}}" [(ngModel)]='notification.description' cols="35" rows="10"> </textarea>
                 </td>
             </tr>
-        
-            
+           
+            <tr>
+                <td>
+                    Datum
+                </td>
+                <td>
+                    {{notification.date}}
+                </td>
+            </tr>
             <tr>
                 <td colspan="2">
-                    <button class="btn btn-dark" (click)='insertNotification()'>
-                        Dodaj
+                    <button class="btn btn-dark" (click)='updateNotification()'>
+                        Update
                     </button>
                 </td>
             </tr>
         </table>
     </div>
 </div>
+
 <div class="row">
     <div class="offset-sm-3 col-sm-6">
         <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">

@@ -65,9 +65,9 @@ router.route('/uploadphotos').post((request, response) => {
 
 /*****************  DOWNLOAD ROUTES */
 
-router.route('/downloadphotos/:filename').get((request, response)=>{
-    var filename= request.params.filename;
-    var fullpath= __dirname+'/photos/'+filename;
+router.route('/downloadphotos/:filename').get((request, response) => {
+    var filename = request.params.filename;
+    var fullpath = __dirname + '/photos/' + filename;
     response.download(fullpath);
 })
 /**************  PROFESSORS ROUTES ****/
@@ -226,25 +226,70 @@ router.route('/obavestenja/delete').post((request, response) => {
 
 /***************SUBJECT NOTIFICATION ROUTES */
 
-router.route('/subject/notifications/:code' ).get((request, response)=>{
-   let code = request.params.code;
-   Subject.findOne({'info.code':code},{notifications: 1}, (err,res)=>{
-       if(err){
-           console.log(err);
+router.route('/subject/notifications/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject.findOne({ 'info.code': code }, { notifications: 1 }, (err, res) => {
+        if (err) {
+            console.log(err);
         }
-       else if(res){
-           response.json(res);
-       } else response.json([]);
-   }) 
+        else if (res) {
+            response.json(res);
+        } else response.json([]);
+    })
 });
 
-router.route('/subject/notifications/insert').post((request, response)=>{
-    let date= new Date();
+router.route('/subject/notifications/insert').post((request, response) => {
+    let date = new Date();
     let code = request.body.code;
     let notification = request.body.notification;
-    Subject.findOneAndUpdate({'info.code': code}, {$push:{ 'notifications':notification}}).then(e=>{
+    Subject.findOneAndUpdate({ 'info.code': code }, { $push: { 'notifications': notification } }).then(e => {
         response.json(e);
     });
+})
+
+router.route('/subject/notifications/update').post((request, response) => {
+    let code = request.body.code;
+    let oldNotification = request.body.oldNotification;
+    let notification = request.body.notification;
+
+    Subject.findOneAndUpdate(
+        {
+            'info.code': code,
+            'notifications.title': oldNotification.title,
+            'notifications.description': oldNotification.description,
+            'notifications.date': oldNotification.date
+        }, {
+        $set:
+        {
+            'notifications.$.title': notification.title,
+            'notifications.$.description': notification.description,
+            'notifications.$.date': notification.date
+
+        }
+
+    }, (err, res) => {
+        if (err) console.log(err);
+        else response.json(res);
+    })
+})
+
+router.route('/subject/notifications/delete').post((request, response) => {
+    let notification = request.body.notification;
+    let code = request.body.code;
+   
+
+    Subject.updateOne({ "info.code": code }, {
+        $pull: {
+            "notifications": {
+                title: notification.title,
+                description: notification.description,
+                date: notification.date
+            }
+        }
+    }, (err, res) => {
+        if (err) console.log(err);
+        else response.json(res);
+    })
 })
 
 app.use('/', router);

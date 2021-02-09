@@ -14,8 +14,16 @@ export class SubjectServiceService {
     return this.http.get(`${this.uri}/subject/notifications/` + code);
   }
 
-  insertNotification(notification:SubjectNotification, code:String){
+  insertNotification(notification:SubjectNotification, code:string){
     return this.http.post(`${this.uri}/subject/notifications/insert`, {code, notification});
+  }
+
+  deleteNotification(notification: SubjectNotification, code:string){
+    return this.http.post(`${this.uri}/subject/notifications/delete`, {notification, code});
+  }
+
+  updateNotification(oldNotification:SubjectNotification, notification:SubjectNotification, code:string){
+    return this.http.post(`${this.uri}/subject/notifications/update`, {oldNotification, notification, code});
   }
 
 }

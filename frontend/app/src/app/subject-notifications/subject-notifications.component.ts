@@ -20,7 +20,7 @@ export class SubjectNotificationsComponent implements OnInit {
       })
    
   }
-  subject:String;
+  subject:string;
 
   notifications=[]
 
@@ -32,10 +32,15 @@ export class SubjectNotificationsComponent implements OnInit {
   }
   
   updateNotification(notification){
-
+     localStorage.setItem('subjectNotification', JSON.stringify(notification));
+      this.router.navigate(['/subject/notification/update/'+this.subject]);
   }
 
   deleteNotification(notification){
+    this.subjectService.deleteNotification(notification, this.subject).subscribe(res=>{ 
+          location.reload();
+    })
+    
 
   }
 }

@@ -15,15 +15,24 @@ export class SubjectNotificationInsertComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(val=>{
       this.code=val[3].path;
-      alert(this.code);
     })
   }
   notification = new SubjectNotification();
-  code:String;
+  code:string;
+
+
+  MESSAGE_OK = { style: "success", msg: "Uspesno azurirano" };
+  MESSAGE_DANGER = { style: "danger", msg: "Neuspeh" };
+  message= null;
+
   insertNotification(){
     this.subjectService.insertNotification(this.notification, this.code).subscribe(res=>{
-      alert(JSON.stringify(res));
-    })
+     if(res){
+        this.message=this.MESSAGE_OK;
+     } else this.message=this.MESSAGE_DANGER;
+     
+    });
+    
   }
 
 }

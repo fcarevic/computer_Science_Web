@@ -229,6 +229,46 @@ router.route('/subject/notifications/insert').post((request, response) => {
         response.json(e);
     });
 });
+router.route('/subject/notifications/update').post((request, response) => {
+    let code = request.body.code;
+    let oldNotification = request.body.oldNotification;
+    let notification = request.body.notification;
+    Subject_1.default.findOneAndUpdate({
+        'info.code': code,
+        'notifications.title': oldNotification.title,
+        'notifications.description': oldNotification.description,
+        'notifications.date': oldNotification.date
+    }, {
+        $set: {
+            'notifications.$.title': notification.title,
+            'notifications.$.description': notification.description,
+            'notifications.$.date': notification.date
+        }
+    }, (err, res) => {
+        if (err)
+            console.log(err);
+        else
+            response.json(res);
+    });
+});
+router.route('/subject/notifications/delete').post((request, response) => {
+    let notification = request.body.notification;
+    let code = request.body.code;
+    Subject_1.default.updateOne({ "info.code": code }, {
+        $pull: {
+            "notifications": {
+                title: notification.title,
+                description: notification.description,
+                date: notification.date
+            }
+        }
+    }, (err, res) => {
+        if (err)
+            console.log(err);
+        else
+            response.json(res);
+    });
+});
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

@@ -20,6 +20,7 @@ import { ContactDetailsComponent } from './contact-details/contact-details.compo
 import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
 import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
+import { SubjectNotificationUpdateComponent } from './subject-notification-update/subject-notification-update.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { SubjectNotificationInsertComponent } from './subject-notification-inser
     ContactDetailsComponent,
     SubjectNotificationsComponent,
     SubjectNotificationInsertComponent,
+    SubjectNotificationUpdateComponent,
     
     
     

@@ -7,6 +7,7 @@ import { NotificationUpdateComponent } from './notification-update/notification-
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
 import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
+import { SubjectNotificationUpdateComponent } from './subject-notification-update/subject-notification-update.component';
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
 import { ZaposleniDetailsComponent } from './zaposleni-details/zaposleni-details.component';
 import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path:'notifications/insert', component: NotificationInsertComponent},
   {path: 'contact', component: ContactDetailsComponent},
   {path:'subject/notification/insert/:code', component: SubjectNotificationInsertComponent},
+  {path:'subject/notification/update/:code', component: SubjectNotificationUpdateComponent},
   {path: 'subject/notifications/:code', component: SubjectNotificationsComponent}
 ];
 
