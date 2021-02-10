@@ -19,6 +19,11 @@ export class SubjectInfo{
     }
 }
 
+export class SubjectLab{
+    info: string;
+    numberOfExercises: number;
+    materials: string[]
+}
 export class SubjectNotification{
     title: string;
     description: string

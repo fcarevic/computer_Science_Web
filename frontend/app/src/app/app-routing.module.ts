@@ -9,6 +9,9 @@ import { RegisterStudentComponent } from './register-student/register-student.co
 import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
 import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-insert.component';
 import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
+import { SubjectLabUpdateComponent } from './subject-lab-update/subject-lab-update.component';
+import { SubjectMaterialInsertComponent } from './subject-material-insert/subject-material-insert.component';
+import { SubjectMaterialListComponent } from './subject-material-list/subject-material-list.component';
 import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
 import { SubjectNotificationUpdateComponent } from './subject-notification-update/subject-notification-update.component';
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
@@ -34,7 +37,10 @@ const routes: Routes = [
   {path: 'subject/notifications/:code', component: SubjectNotificationsComponent},
   {path: 'subject/info/insert', component: SubjectInfoInsertComponent},
   {path: 'subject/infos/:id', component: SubjectInfoDetailsComponent},
-  {path: 'subject/info/update/:id', component:SubjectInfoUpdateComponent}
+  {path: 'subject/info/update/:id', component:SubjectInfoUpdateComponent},
+  {path: 'subject/material/insert', component: SubjectMaterialInsertComponent},
+  {path: 'subject/materials/:code', component: SubjectMaterialListComponent},
+  {path: 'subject/lab/update/:code', component: SubjectLabUpdateComponent}
 ];
 
 @NgModule({

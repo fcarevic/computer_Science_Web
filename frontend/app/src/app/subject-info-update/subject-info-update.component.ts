@@ -30,8 +30,6 @@ export class SubjectInfoUpdateComponent implements OnInit {
   getSubjectInfo(code: string) {
     this.subjectService.getInfo(code).subscribe((res: SubjectInfo) => {
       this.subject = res;
-      
-      
     })
   }
 

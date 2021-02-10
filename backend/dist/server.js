@@ -35,9 +35,21 @@ var photoStorage = multer_1.default.diskStorage({
         cb(null, file.originalname);
     }
 });
+var subjectMaterialStorage = multer_1.default.diskStorage({
+    destination: function (reqiest, response, cb) {
+        let dir = __dirname + '/materials';
+        cb(null, dir);
+    },
+    filename: function (request, file, cb) {
+        cb(null, file.originalname);
+    }
+});
 /********************UPLOADERS */
 var uploadPhoto = multer_1.default({
     storage: photoStorage
+}).single('file');
+var uploadMaterial = multer_1.default({
+    storage: subjectMaterialStorage
 }).single('file');
 /***************** UPLOAD ROUTES */
 router.route('/uploadphotos').post((request, response) => {
@@ -48,7 +60,25 @@ router.route('/uploadphotos').post((request, response) => {
                 response.status(410).json(NOT_OK_STATUS);
             }
             else {
-                console.log('uspesno upload');
+                console.log('uspesno upload photo');
+                response.status(200).json(OK_STATUS);
+            }
+        });
+    }
+    catch (error) {
+        console.log(error);
+        response.status(500).json(NOT_OK_STATUS);
+    }
+});
+router.route('/materials/upload').post((request, response) => {
+    try {
+        uploadMaterial(request, response, err => {
+            if (err) {
+                console.log(err);
+                response.status(410).json(NOT_OK_STATUS);
+            }
+            else {
+                console.log('uspesno upload materials');
                 response.status(200).json(OK_STATUS);
             }
         });
@@ -62,6 +92,11 @@ router.route('/uploadphotos').post((request, response) => {
 router.route('/downloadphotos/:filename').get((request, response) => {
     var filename = request.params.filename;
     var fullpath = __dirname + '/photos/' + filename;
+    response.download(fullpath);
+});
+router.route('/materials/download/:filename').get((request, response) => {
+    var filename = request.params.filename;
+    var fullpath = __dirname + '/materials/' + filename;
     response.download(fullpath);
 });
 /**************  PROFESSORS ROUTES ****/
@@ -302,7 +337,98 @@ router.route('/subject/info/update').post((request, response) => {
     let info = request.body.info;
     Subject_1.default.update({ 'info.code': code }, { 'info': info }).then(res => response.json(res));
 });
+/********************SUBJECT MATERIALS ROUTES */
+router.route('/subject/materials/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, { lectureMaterials: 1, exerciseMaterials: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res)
+            response.json(res);
+        else
+            response.json([]);
+    });
+});
+router.route('/subject/lectures/materials/insert').post((request, response) => {
+    let filename = request.body.filename;
+    let code = request.body.code;
+    Subject_1.default.update({ 'info.code': code }, {
+        $push: {
+            lectureMaterials: filename
+        }
+    }).then(res => { response.json(res); });
+});
+router.route('/subject/exercises/materials/insert').post((request, response) => {
+    let filename = request.body.filename;
+    let code = request.body.code;
+    Subject_1.default.update({ 'info.code': code }, {
+        $push: {
+            exerciseMaterials: filename
+        }
+    }).then(res => { response.json(res); });
+});
+router.route('/subject/lab/materials/insert').post((request, response) => {
+    let code = request.body.code;
+    let filename = request.body.filename;
+    Subject_1.default.update({ 'info.code': code }, {
+        $push: {
+            'lab.materials': filename
+        }
+    }).then(res => { response.json(res); });
+});
+router.route('/subject/lectures/materials/delete').post((request, response) => {
+    let code = request.body.code;
+    let filename = request.body.filename;
+    console.log(code);
+    console.log(filename);
+    Subject_1.default.update({ 'info.code': code }, {
+        $pull: {
+            lectureMaterials: filename
+        }
+    }).then(res => { response.json(res); });
+});
+router.route('/subject/exercises/materials/delete').post((request, response) => {
+    let code = request.body.code;
+    let filename = request.body.filename;
+    Subject_1.default.update({ 'info.code': code }, {
+        $pull: {
+            exerciseMaterials: filename
+        }
+    }).then(res => { response.json(res); });
+});
+router.route('/subject/lab/materials/delete').post((request, response) => {
+    let code = request.body.code;
+    let filename = request.body.filename;
+    Subject_1.default.update({ 'info.code': code }, {
+        $pull: { 'lab.materials': filename }
+    }).then(res => {
+        response.json(res);
+    });
+});
 //TODO: DELETE
+/******************SUBJECT LAB INFO ROUTES */
+router.route('/subject/lab/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, { lab: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res) {
+            response.json(res);
+        }
+        else
+            response.json({});
+    });
+});
+router.route('/subject/lab/update').post((request, response) => {
+    let code = request.body.code;
+    let lab = request.body.lab;
+    console.log(lab);
+    Subject_1.default.updateOne({ 'info.code': code }, {
+        'lab': lab
+    }).then(res => {
+        response.json(res);
+    });
+});
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

@@ -24,6 +24,10 @@ import { SubjectNotificationUpdateComponent } from './subject-notification-updat
 import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
 import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-insert.component';
 import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
+import { SubjectMaterialInsertComponent } from './subject-material-insert/subject-material-insert.component';
+import { SubjectMaterialListComponent } from './subject-material-list/subject-material-list.component';
+import { SubjectLabUpdateComponent } from './subject-lab-update/subject-lab-update.component';
+import { SubjectLabDetailsComponent } from './subject-lab-details/subject-lab-details.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-u
     SubjectInfoDetailsComponent,
     SubjectInfoInsertComponent,
     SubjectInfoUpdateComponent,
+    SubjectMaterialInsertComponent,
+    SubjectMaterialListComponent,
+    SubjectLabUpdateComponent,
+    SubjectLabDetailsComponent,
     
     
     

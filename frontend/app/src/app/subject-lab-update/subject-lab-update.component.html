@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8 text-center">
+        <table class="table table-striped text-center">
+            <tr>
+                <td>
+                    <h5>Informacije</h5>
+                </td>
+                <td>
+                    <textarea value="{{lab.info}}" [(ngModel)]='lab.info' name="" id="" cols="30" rows="10"></textarea>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td>
+                  <h5>  Broj vezbi</h5>
+                </td>
+                <td>
+                    <input type="number" value="{{lab.numberOfExercises}}" [(ngModel)]='lab.numberOfExercises'>
+                </td>
+            </tr>
+        </table>
+
+        <br> <br>
+        <h2>Materijali</h2>
+
+        <table class="table table-striped">
+            <tr *ngFor='let material of lab.materials'>
+                <td>
+                    <a href="{{URL}}/{{material}}">{{material}}</a>
+                </td>
+                <td>
+                    <button  class="btn btn-dark" (click)='deleteMaterial(material)'>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <hr>
+        <button  class="btn btn-dark" (click)='updateLab()'>
+            Update
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+          </div>
+    </div>
+</div>

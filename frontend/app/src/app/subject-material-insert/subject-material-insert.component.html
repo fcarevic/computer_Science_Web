@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8">
+        <table class="table table-striped text-center">
+            <tr>
+                <td>Predmet</td>
+                <td>
+                    <input type="text" [(ngModel)]='subject'>
+                </td>
+            </tr>
+            <tr>
+                <td>Tip</td>
+                <td>
+                    <select  [(ngModel)]='type'>
+                        <option value="lectures"> Predavanja</option>
+                        <option value="exercises"> Vezbe</option>
+                        <option value="lab">Lab</option>
+                        <option value="project">Projekat</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Fajl</td>
+                <td>
+                    <input type="file" id='file' name="file" ng2FileSelect [uploader]="uploader" />
+
+                </td>
+            </tr>
+            
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-dark" (click)='uploadMaterial()'>
+                        Upload
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+        </div>
+    </div>
+</div>
