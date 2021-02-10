@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8">
+        <table class="table table-striped text-center">
+            <tr>
+                <td>Sifra</td>
+                <td>
+                    {{subject.code}}
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   Tip
+                </td>
+                <td>
+                    <select [(ngModel)]='subject.typee'>
+                        <option [selected]='subject.typee == "Izborni"' value="Izborni">Izborni</option>
+                        <option [selected]='subject.typee == "Obavezni"' value="Obavezni">Obavezni</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Godine studija</td>
+                <td>
+                    <select multiple [(ngModel)]='subject.years'>
+                        <option value="1" [selected]='subject.years.includes(1)'>1</option>
+                        <option value="2" [selected]='subject.years.includes(2)'>2</option>
+                        <option value="3" [selected]='subject.years.includes(3)'>3</option>
+                        <option value="4" [selected]='subject.years.includes(4)'>4</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Fond</td>
+                <td> <input type="number" value="{{subject.fond}" [(ngModel)]='subject.fond'></td>
+            </tr>
+            <tr>
+                <td>EPSB</td>
+                <td>
+                    <input type="number"  value="{{subject.epsb}}" [(ngModel)]='subject.epsb'>
+                </td>
+            </tr>
+            <tr>
+                <td>Cilj</td>
+                <td>
+                    <textarea value="{{subject.goal}}" [(ngModel)]='subject.goal' cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ishod
+                </td>
+                <td>
+                    <textarea  value="{{subject.outcome}}" [(ngModel)]='subject.outcome' cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Ostalo
+                </td>
+                <td>
+                    <textarea value="{{subject.additional}}" [(ngModel)]='subject.additional' cols="30" rows="10"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Termin predavanja
+                </td>
+                <td>
+                    <input value="{{subject.lectureTerm}}" type="time" [(ngModel)]='subject.lectureTerm'>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Termin vezbi
+                </td>
+                <td>
+                    <input value="{{subject.exerciseTerm}}" type="time" [(ngModel)]='subject.exerciseTerm'>
+                </td>
+            </tr>
+                
+            <tr>
+                <td>Profesori</td>
+                <td>
+                    <select multiple [(ngModel)]='subject.professors'>
+                        <option [selected]='subject.professors.indexOf(professor.username)!=-1 ' value="{{professor.username}}" *ngFor='let professor of professors'> {{professor.prezime}} &nbsp; {{professor.ime}}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button class='btn btn-dark' (click)='updateSubject()'> Update</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+          </div>
+    </div>
+</div>

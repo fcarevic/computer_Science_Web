@@ -6,6 +6,9 @@ import { NotificationInsertComponent } from './notification-insert/notification-
 import { NotificationUpdateComponent } from './notification-update/notification-update.component';
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
+import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
+import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-insert.component';
+import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
 import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
 import { SubjectNotificationUpdateComponent } from './subject-notification-update/subject-notification-update.component';
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
@@ -28,7 +31,10 @@ const routes: Routes = [
   {path: 'contact', component: ContactDetailsComponent},
   {path:'subject/notification/insert/:code', component: SubjectNotificationInsertComponent},
   {path:'subject/notification/update/:code', component: SubjectNotificationUpdateComponent},
-  {path: 'subject/notifications/:code', component: SubjectNotificationsComponent}
+  {path: 'subject/notifications/:code', component: SubjectNotificationsComponent},
+  {path: 'subject/info/insert', component: SubjectInfoInsertComponent},
+  {path: 'subject/infos/:id', component: SubjectInfoDetailsComponent},
+  {path: 'subject/info/update/:id', component:SubjectInfoUpdateComponent}
 ];
 
 @NgModule({

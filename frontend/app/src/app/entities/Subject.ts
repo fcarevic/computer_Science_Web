@@ -1,7 +1,7 @@
 
 export class SubjectInfo{
-    type: string;
-    years: [number];
+    typee: string;
+    years: [number] ;
     code: string;
     fond: number;
     epsb: number;
@@ -11,6 +11,12 @@ export class SubjectInfo{
     exerciseTerm: string;
     additional: string;
     professors: [string];
+
+    constructor(){
+        this.years=[-1];
+        this.professors=[''];
+
+    }
 }
 
 export class SubjectNotification{

@@ -269,6 +269,40 @@ router.route('/subject/notifications/delete').post((request, response) => {
             response.json(res);
     });
 });
+/*****************SUBJECT INFO ROUTES */
+router.route('/subject/info/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, { info: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        if (res)
+            response.json(res.info);
+        else
+            response.json({});
+    });
+});
+router.route('/subject/info/insert').post((request, response) => {
+    let info = request.body.info;
+    console.log(info);
+    Subject_1.default.findOne({ 'info.code': info.code }, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res)
+            response.json(NOT_OK_STATUS);
+        else {
+            let sub = new Subject_1.default({ info: info });
+            sub.save().then(res => {
+                response.json(res);
+            });
+        }
+    });
+});
+router.route('/subject/info/update').post((request, response) => {
+    let code = request.body.code;
+    let info = request.body.info;
+    Subject_1.default.update({ 'info.code': code }, { 'info': info }).then(res => response.json(res));
+});
+//TODO: DELETE
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

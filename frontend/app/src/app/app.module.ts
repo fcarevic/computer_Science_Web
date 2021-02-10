@@ -21,6 +21,9 @@ import { FileSelectDirective, FileUploadModule } from 'ng2-file-upload';
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
 import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
 import { SubjectNotificationUpdateComponent } from './subject-notification-update/subject-notification-update.component';
+import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
+import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-insert.component';
+import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,9 @@ import { SubjectNotificationUpdateComponent } from './subject-notification-updat
     SubjectNotificationsComponent,
     SubjectNotificationInsertComponent,
     SubjectNotificationUpdateComponent,
+    SubjectInfoDetailsComponent,
+    SubjectInfoInsertComponent,
+    SubjectInfoUpdateComponent,
     
     
     

@@ -14,19 +14,25 @@ export class SubjectNotificationsComponent implements OnInit {
   constructor(private router:Router, private activatedRoute: ActivatedRoute, private subjectService: SubjectServiceService) { }
 
   ngOnInit(): void {
+    this.dateCompare = new Date( Date.now()- 7*24*60*60*1000);
+    
       this.activatedRoute.url.subscribe(value=>{
         this.subject= value[2].path;
         this.getAllSubjectNotifications(this.subject);       
-      })
+      }) 
    
   }
   subject:string;
 
   notifications=[]
+  dateCompare:Date;
 
   getAllSubjectNotifications(subject){
       this.subjectService.getAllSubjectNotifications(subject).subscribe((notif:any)=>{
               this.notifications= notif.notifications;
+              this.notifications.forEach(el=>{
+                el.date = new Date(el.date)
+              })
       })
 
   }

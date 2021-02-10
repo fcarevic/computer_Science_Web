@@ -35,7 +35,7 @@ export class ZaposleniDetailsComponent implements OnInit {
      this.imgUrl=res;
    }, (err)=>{
       console.log(err);
-      alert(JSON.stringify(err));
+      //alert(JSON.stringify(err));
     });
  }
   radnik: Radnik;

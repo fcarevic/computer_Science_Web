@@ -15,7 +15,7 @@ let Subjects = new Schema({
             }
         }],
     info: {
-        type: String,
+        typee: String,
         years: [Number],
         code: String,
         fond: Number,

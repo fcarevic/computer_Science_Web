@@ -13,7 +13,7 @@ notifications: [{
     }
  }],
 info: {
-    type: String,
+    typee: String,
     years: [Number],
     code: String,
     fond: Number,
