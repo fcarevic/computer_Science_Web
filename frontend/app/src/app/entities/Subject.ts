@@ -24,6 +24,11 @@ export class SubjectLab{
     numberOfExercises: number;
     materials: string[]
 }
+
+export class SubjectProject{
+        info: string;
+        materials: string[];
+}
 export class SubjectNotification{
     title: string;
     description: string

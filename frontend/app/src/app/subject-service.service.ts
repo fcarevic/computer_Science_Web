@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SubjectInfo, SubjectLab, SubjectNotification } from './entities/Subject';
+import { SubjectInfo, SubjectLab, SubjectNotification, SubjectProject } from './entities/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -60,5 +60,14 @@ export class SubjectServiceService {
 
   getLab(code:string){
     return this.http.get(`${this.uri}/subject/lab/`+code);
+  }
+  /*************PROJECT */
+
+  getProjectInfo(code:string){
+    return this.http.get(`${this.uri}/subject/project/`+code);
+  }
+
+  updateProjectInfo(code:string, project:SubjectProject){
+    return this.http.post(`${this.uri}/subject/project/update`, {code, project});
   }
 }

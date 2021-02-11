@@ -22,7 +22,7 @@ export class SubjectLabUpdateComponent implements OnInit {
   subject: string;
   lab = new SubjectLab();
 
-
+  URL = 'http://localhost:4000/materials/download';
   MESSAGE_OK = { style: "success", msg: "Uspesno azurirano" };
   MESSAGE_DANGER = { style: "danger", msg: "Neuspeh" };
   message = null;

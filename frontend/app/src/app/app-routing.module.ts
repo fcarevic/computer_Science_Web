@@ -9,12 +9,15 @@ import { RegisterStudentComponent } from './register-student/register-student.co
 import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
 import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-insert.component';
 import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
+import { SubjectLabDetailsComponent } from './subject-lab-details/subject-lab-details.component';
 import { SubjectLabUpdateComponent } from './subject-lab-update/subject-lab-update.component';
 import { SubjectMaterialInsertComponent } from './subject-material-insert/subject-material-insert.component';
 import { SubjectMaterialListComponent } from './subject-material-list/subject-material-list.component';
 import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
 import { SubjectNotificationUpdateComponent } from './subject-notification-update/subject-notification-update.component';
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
+import { SubjectProjectDetailsComponent } from './subject-project-details/subject-project-details.component';
+import { SubjectProjectUpdateComponent } from './subject-project-update/subject-project-update.component';
 import { ZaposleniDetailsComponent } from './zaposleni-details/zaposleni-details.component';
 import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
 import { ZaposleniListComponent } from './zaposleni-list/zaposleni-list.component';
@@ -40,7 +43,10 @@ const routes: Routes = [
   {path: 'subject/info/update/:id', component:SubjectInfoUpdateComponent},
   {path: 'subject/material/insert', component: SubjectMaterialInsertComponent},
   {path: 'subject/materials/:code', component: SubjectMaterialListComponent},
-  {path: 'subject/lab/update/:code', component: SubjectLabUpdateComponent}
+  {path: 'subject/lab/update/:code', component: SubjectLabUpdateComponent},
+  {path: 'subject/lab/info/:code', component:SubjectLabDetailsComponent},
+  {path: 'subject/project/info/:code', component:SubjectProjectDetailsComponent},
+  {path: 'subject/project/update/:code', component:SubjectProjectUpdateComponent}
 ];
 
 @NgModule({

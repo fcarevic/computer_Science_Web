@@ -429,6 +429,29 @@ router.route('/subject/lab/update').post((request, response) => {
         response.json(res);
     });
 });
+/*****************SUBJECT PROJECT ROUTES */
+router.route('/subject/project/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, { project: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res)
+            response.json(res);
+        else
+            response.json({});
+    });
+});
+router.route('/subject/project/update').post((request, response) => {
+    let code = request.body.code;
+    let project = request.body.project;
+    Subject_1.default.updateOne({ 'info.code': code }, { project: project }).then(res => { response.json(res); });
+});
+router.route('/subject/project/materials/insert').post((request, response) => {
+    let code = request.body.code;
+    let filename = request.body.filename;
+    Subject_1.default.updateOne({ 'info.code': code }, { $push: { 'project.materials': filename } })
+        .then(res => { response.json(res); });
+});
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));
 //# sourceMappingURL=server.js.map

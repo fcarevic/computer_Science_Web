@@ -6,24 +6,17 @@
                     <h5>Informacije</h5>
                 </td>
                 <td>
-                  {{lab.info}}    
+                  {{project.info}}    
                 </td>
             </tr>
-            <tr>
-                <td>
-                  <h5>  Broj vezbi</h5>
-                </td>
-                <td>
-                    {{lab.numberOfExercises}}
-                </td>
-            </tr>
+           
         </table>
 
         <br> <hr> <br>
         <h2>Materijali</h2>
 
         <table class="table table-striped">
-            <tr *ngFor='let material of lab.materials'>
+            <tr *ngFor='let material of project.materials'>
                 <td>
                     <a href="{{URL}}/{{material}}">{{material}}</a>
                 </td>

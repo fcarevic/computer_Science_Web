@@ -407,11 +407,11 @@ router.route('/subject/lab/materials/insert').post((request, response) => {
     let code = request.body.code;
     let filename = request.body.filename;
     Subject.update({ 'info.code': code }, {
-        $push:{
+        $push: {
             'lab.materials': filename
         }
-        
-    }).then(res=>{response.json(res)});
+
+    }).then(res => { response.json(res) });
 })
 
 router.route('/subject/lectures/materials/delete').post((request, response) => {
@@ -441,7 +441,7 @@ router.route('/subject/lab/materials/delete').post((request, response) => {
     let filename = request.body.filename;
     Subject.update({ 'info.code': code }, {
         $pull: { 'lab.materials': filename }
-    }).then(res=>{
+    }).then(res => {
         response.json(res);
     })
 })
@@ -471,5 +471,28 @@ router.route('/subject/lab/update').post((request, response) => {
     })
 })
 
+/*****************SUBJECT PROJECT ROUTES */
+router.route('/subject/project/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject.findOne({ 'info.code': code }, { project: 1 }, (err, res) => {
+        if (err) console.log(err);
+        else if (res) response.json(res);
+        else response.json({});
+    })
+})
+
+router.route('/subject/project/update').post((request, response) => {
+    let code = request.body.code;
+    let project = request.body.project;
+    Subject.updateOne({ 'info.code': code }, { project: project }).then(res => { response.json(res) });
+});
+
+router.route('/subject/project/materials/insert').post((request, response) => {
+    let code = request.body.code;
+    let filename = request.body.filename;
+    Subject.updateOne({ 'info.code': code }, 
+    { $push: { 'project.materials': filename } })
+    .then(res => { response.json(res) })
+})
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

@@ -28,6 +28,8 @@ import { SubjectMaterialInsertComponent } from './subject-material-insert/subjec
 import { SubjectMaterialListComponent } from './subject-material-list/subject-material-list.component';
 import { SubjectLabUpdateComponent } from './subject-lab-update/subject-lab-update.component';
 import { SubjectLabDetailsComponent } from './subject-lab-details/subject-lab-details.component';
+import { SubjectProjectDetailsComponent } from './subject-project-details/subject-project-details.component';
+import { SubjectProjectUpdateComponent } from './subject-project-update/subject-project-update.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { SubjectLabDetailsComponent } from './subject-lab-details/subject-lab-de
     SubjectMaterialListComponent,
     SubjectLabUpdateComponent,
     SubjectLabDetailsComponent,
+    SubjectProjectDetailsComponent,
+    SubjectProjectUpdateComponent,
     
     
     
