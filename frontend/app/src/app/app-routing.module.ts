@@ -20,6 +20,7 @@ import { SubjectNotificationUpdateComponent } from './subject-notification-updat
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
 import { SubjectProjectDetailsComponent } from './subject-project-details/subject-project-details.component';
 import { SubjectProjectUpdateComponent } from './subject-project-update/subject-project-update.component';
+import { SyllabusDetailsComponent } from './syllabus-details/syllabus-details.component';
 import { SyllabusInsertComponent } from './syllabus-insert/syllabus-insert.component';
 import { SyllabusListComponent } from './syllabus-list/syllabus-list.component';
 import { SyllabusUpdateComponent } from './syllabus-update/syllabus-update.component';
@@ -56,7 +57,8 @@ const routes: Routes = [
   {path: 'student/info/update/:username', component: StudentUpdateComponent},
   {path: 'subject/syllabus/insert/:code', component: SyllabusInsertComponent },
   {path: 'subject/syllabus/update', component: SyllabusUpdateComponent },
-  {path: 'subject/syllabus/list/:code', component: SyllabusListComponent}
+  {path: 'subject/syllabus/list/:code', component: SyllabusListComponent},
+  {path: 'subject/syllabus/details', component: SyllabusDetailsComponent}
     
 
 ];

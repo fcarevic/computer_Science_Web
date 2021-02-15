@@ -30,11 +30,16 @@ export class SyllabusListComponent implements OnInit {
   getAllSyllabus(code:string){
     this.subjectService.getAllSyllabus(this.subject).subscribe((res:any)=>{
      this.lists=res.syllabus;
+     
     })
   }
 
   updateSyllabus(syllabus){
      localStorage.setItem('syllabus', JSON.stringify({subject: this.subject, list : syllabus}));
      this.router.navigate(['/subject/syllabus/update']);
+  }
+  details(syllabus){
+    localStorage.setItem('syllabus', JSON.stringify({subject: this.subject, list : syllabus}));
+    this.router.navigate(['/subject/syllabus/details']);
   }
 }

@@ -36,6 +36,15 @@ var photoStorage = multer_1.default.diskStorage({
         cb(null, file.originalname);
     }
 });
+var syllabusStorage = multer_1.default.diskStorage({
+    destination: function (request, response, cb) {
+        let dir = __dirname + '/syllabus';
+        cb(null, dir);
+    },
+    filename: function (request, file, cb) {
+        cb(null, file.originalname);
+    }
+});
 var subjectMaterialStorage = multer_1.default.diskStorage({
     destination: function (reqiest, response, cb) {
         let dir = __dirname + '/materials';
@@ -51,6 +60,9 @@ var uploadPhoto = multer_1.default({
 }).single('file');
 var uploadMaterial = multer_1.default({
     storage: subjectMaterialStorage
+}).single('file');
+var uploadSyllabus = multer_1.default({
+    storage: syllabusStorage
 }).single('file');
 /***************** UPLOAD ROUTES */
 router.route('/uploadphotos').post((request, response) => {
@@ -80,6 +92,24 @@ router.route('/materials/upload').post((request, response) => {
             }
             else {
                 console.log('uspesno upload materials');
+                response.status(200).json(OK_STATUS);
+            }
+        });
+    }
+    catch (error) {
+        console.log(error);
+        response.status(500).json(NOT_OK_STATUS);
+    }
+});
+router.route('/syllabus/upload').post((request, response) => {
+    try {
+        uploadSyllabus(request, response, err => {
+            if (err) {
+                console.log(err);
+                response.status(410).json(NOT_OK_STATUS);
+            }
+            else {
+                console.log('uspesno upload syllabus');
                 response.status(200).json(OK_STATUS);
             }
         });
@@ -527,7 +557,7 @@ router.route('/subject/syllabus/update').post((request, response) => {
     });
 });
 router.route('/subject/syllabus/addstudent').post((request, response) => {
-    let list = request.body.syllabus;
+    let list = request.body.list;
     let code = request.body.code;
     let username = request.body.username;
     Subject_1.default.updateOne({

@@ -35,7 +35,7 @@ export class SubjectMaterialInsertComponent implements OnInit {
     };
 
   }
-  URL = 'http://localhost:4000/materials/upload';
+  URL = 'http://localhost:4000/syllabus/upload';
   uploader: FileUploader = new FileUploader({ url: this.URL, itemAlias: 'file' });
   subject: string;
   type: string;

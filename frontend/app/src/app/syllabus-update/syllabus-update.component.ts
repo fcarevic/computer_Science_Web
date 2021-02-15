@@ -15,9 +15,15 @@ export class SyllabusUpdateComponent implements OnInit {
     let tmp = JSON.parse(localStorage.getItem('syllabus'));
 
     this.subject= tmp.subject;
-    this.oldlist= tmp.list;
+    this.oldlist= Object.assign(new SubjectSyllabus, tmp.list);
     
-    this.list= tmp.list;
+    this.list= Object.assign(new SubjectSyllabus, tmp.list);
+   
+    this.list.date= new Date(tmp.list.date);
+    this.list.expireDate= new Date(tmp.list.expireDate)
+    this.oldlist.date= new Date(tmp.list.date);
+    this.oldlist.expireDate= new Date(tmp.list.expireDate);
+    
   
    
   }
@@ -28,15 +34,23 @@ export class SyllabusUpdateComponent implements OnInit {
   MESSAGE_DANGER = { style: "danger", msg: "Neuspeh" };
 
   message = null;
- getDateString(date){
-   return date.toString().substring(0, date.toString().length-1); 
-
+ getDateString(date:Date){
+   return date;
  }
   updateSyllabus(){
+    this.list.date= new Date(this.list.date);
+    this.list.expireDate= new Date(this.list.expireDate);
+    
     this.subjectService.updateSyllabus(this.subject,this.oldlist ,this.list).subscribe( (res:any)=>{
+      alert(JSON.stringify(res))
        if(res.nModified && res.nModified==1){
          this.message=this.MESSAGE_OK
          localStorage.setItem('syllabus', JSON.stringify({subject: this.subject, list : this.list}));
+         let tmp = JSON.parse(localStorage.getItem('syllabus'));
+         this.oldlist= Object.assign(new SubjectSyllabus, tmp.list);
+         this.oldlist.date= new Date(tmp.list.date);
+         this.oldlist.expireDate= new Date(tmp.list.expireDate);
+
          
        } else this.message= this.MESSAGE_DANGER;
     })
