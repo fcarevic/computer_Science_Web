@@ -44,7 +44,32 @@ export class ZaposleniInsertComponent implements OnInit {
     'Saradnik u nastavi',
     'Vanredni profesor'
   ]
+
+checkFields(){
+  if(!this.zaposleni.username || this.zaposleni.username==''){
+    this.message = { style: "danger", msg: "Nije uneto korisnicko ime" };
+    return false;
+   }
+   if(!this.zaposleni.password || this.zaposleni.password==''){
+    this.message = { style: "danger", msg: "Nije uneta lozinka" };
+    return false;
+   }
+   if(!this.zaposleni.ime || this.zaposleni.ime==''){
+    this.message = { style: "danger", msg: "Nije uneto ime" };
+    return false;
+   }
+   if(!this.zaposleni.prezime || this.zaposleni.prezime==''){
+    this.message = { style: "danger", msg: "Nije uneto prezime" };
+    return false;
+   }
+   if(!this.zaposleni.adresa || this.zaposleni.adresa==''){
+    this.message = { style: "danger", msg: "Nije uneta adresa" };
+    return false;
+   }
+}
+
   insertZaposleni() {
+    if(!this.checkFields()) return;
     this.zaposleniService.insertZaposleni(this.zaposleni).subscribe(res => {
      
 

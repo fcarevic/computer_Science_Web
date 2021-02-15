@@ -39,7 +39,19 @@ lab: {
 project: {
     info:String,
     materials: [String]
-}
+},
+syllabus:[{
+    name: String,
+    date: Date,
+    expireDate: Date,
+    place: String,
+    limit: Number,
+    active: {
+        type: Boolean,
+        default: true
+    },
+    students: [String]
+}]
 
 
 

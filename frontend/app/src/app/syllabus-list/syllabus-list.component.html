@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-sm-4"  *ngFor = 'let list of lists'>
+        <div class="card text-center m-4">
+            <div class="card-body">
+                
+              <h5 class="card-title bg-light p-4">{{list.name}} </h5>
+              
+                  <table>
+                        <tr>
+                            <td>Datum isteka</td>
+                            <td> {{myFormatDate(list.expireDate)}}</td>
+                        </tr>
+                        <tr>
+                            <td>Broj prijavljenih</td>
+                            <td> {{list.students.length}}</td>
+                        </tr>
+                  </table>
+                 
+                  
+            </div>
+            <div class="card-footer text-right">
+                <button class="btn btn-dark" (click)='updateSyllabus(list)'> Update</button>
+            </div>
+          </div>
+    </div>
+</div>

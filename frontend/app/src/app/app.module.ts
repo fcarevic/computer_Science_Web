@@ -30,6 +30,12 @@ import { SubjectLabUpdateComponent } from './subject-lab-update/subject-lab-upda
 import { SubjectLabDetailsComponent } from './subject-lab-details/subject-lab-details.component';
 import { SubjectProjectDetailsComponent } from './subject-project-details/subject-project-details.component';
 import { SubjectProjectUpdateComponent } from './subject-project-update/subject-project-update.component';
+import { StudentInsertComponent } from './student-insert/student-insert.component';
+import { StudentUpdateComponent } from './student-update/student-update.component';
+import { SyllabusInsertComponent } from './syllabus-insert/syllabus-insert.component';
+import { SyllabusDetailsComponent } from './syllabus-details/syllabus-details.component';
+import { SyllabusUpdateComponent } from './syllabus-update/syllabus-update.component';
+import { SyllabusListComponent } from './syllabus-list/syllabus-list.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +64,12 @@ import { SubjectProjectUpdateComponent } from './subject-project-update/subject-
     SubjectLabDetailsComponent,
     SubjectProjectDetailsComponent,
     SubjectProjectUpdateComponent,
+    StudentInsertComponent,
+    StudentUpdateComponent,
+    SyllabusInsertComponent,
+    SyllabusDetailsComponent,
+    SyllabusUpdateComponent,
+    SyllabusListComponent,
     
     
     

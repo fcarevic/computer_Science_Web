@@ -12,6 +12,7 @@ const Notifications_1 = __importDefault(require("./model/Notifications"));
 const NotificationType_1 = __importDefault(require("./model/NotificationType"));
 const multer_1 = __importDefault(require("multer"));
 const Subject_1 = __importDefault(require("./model/Subject"));
+const Student_1 = __importDefault(require("./model/Student"));
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());
@@ -241,6 +242,54 @@ router.route('/obavestenja/delete').post((request, response) => {
         response.json(res);
     });
 });
+/**************************STUDENT ROUTES */
+router.route('/student/insert').post((request, response) => {
+    let student = request.body.student;
+    Student_1.default.findOne({ 'username': student.username }, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res) {
+            response.json({ status: 'not_ok', msg: 'Username zauzet' });
+        }
+        else {
+            let st = new Student_1.default(student);
+            st.save().then(res => {
+                response.json({ 'status': 'ok', msg: 'Uspesno azurirano' });
+            });
+        }
+    });
+});
+router.route('/student/info/:username').get((request, response) => {
+    let username = request.params.username;
+    Student_1.default.findOne({ 'username': username }, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res)
+            response.json(res);
+        else
+            response.json({});
+    });
+});
+router.route('/student/info/update').post((request, response) => {
+    let student = request.body.student;
+    Student_1.default.updateOne({ 'username': student.username }, {
+        username: student.username,
+        password: student.password,
+        ime: student.ime,
+        prezime: student.prezime,
+        indeks: student.indeks,
+        tip: student.tip,
+        status: student.status
+    }).then(res => {
+        response.json(res);
+    });
+});
+router.route('/student/info/delete').post((requset, response) => {
+    let username = requset.body.username;
+    Student_1.default.deleteOne({ 'username': username }).then(res => {
+        response.json(res);
+    });
+});
 /**************************SUBJECT ROUTES */
 /***************SUBJECT NOTIFICATION ROUTES */
 router.route('/subject/notifications/:code').get((request, response) => {
@@ -451,6 +500,72 @@ router.route('/subject/project/materials/insert').post((request, response) => {
     let filename = request.body.filename;
     Subject_1.default.updateOne({ 'info.code': code }, { $push: { 'project.materials': filename } })
         .then(res => { response.json(res); });
+});
+/******************SUBJECT SYLLABUS ROUTES */
+router.route('/subject/syllabus/update').post((request, response) => {
+    let list = request.body.list;
+    let code = request.body.code;
+    let newlist = request.body.newlist;
+    Subject_1.default.updateOne({
+        'info.code': code,
+        'syllabus.name': list.name,
+        'syllabus.date': list.date,
+        'syllabus.expireDate': list.expireDate,
+        'syllabus.limit': list.limit,
+        'syllabus.place': list.place
+    }, {
+        $set: {
+            'syllabus.$.name': newlist.name,
+            'syllabus.$.date': newlist.date,
+            'syllabus.$.expireDate': newlist.expireDate,
+            'syllabus.$.limit': newlist.limit,
+            'syllabus.$.place': newlist.place,
+            'syllabus.$.active': newlist.active
+        }
+    }).then(res => {
+        response.json(res);
+    });
+});
+router.route('/subject/syllabus/addstudent').post((request, response) => {
+    let list = request.body.syllabus;
+    let code = request.body.code;
+    let username = request.body.username;
+    Subject_1.default.updateOne({
+        'info.code': code,
+        'syllabus.name': list.name,
+        'syllabus.date': list.date,
+        'syllabus.expireDate': list.expireDate,
+        'syllabus.limit': list.limit,
+        'syllabus.place': list.place
+    }, {
+        $push: {
+            'syllabus.$.students': username
+        }
+    }).then(res => response.json(res));
+});
+router.route('/subject/syllabus/insert').post((request, response) => {
+    let code = request.body.code;
+    let list = request.body.list;
+    Subject_1.default.updateOne({
+        'info.code': code
+    }, {
+        $push: {
+            'syllabus': list
+        }
+    }).then((res) => {
+        response.json(res);
+    });
+});
+router.route('/subject/syllabus/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, { syllabus: 1 }, (err, res) => {
+        if (res)
+            console.log(err);
+        if (res)
+            response.json(res);
+        else
+            response.json({});
+    });
 });
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SubjectInfo, SubjectLab, SubjectNotification, SubjectProject } from './entities/Subject';
+import { SubjectInfo, SubjectLab, SubjectNotification, SubjectProject, SubjectSyllabus } from './entities/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -69,5 +69,21 @@ export class SubjectServiceService {
 
   updateProjectInfo(code:string, project:SubjectProject){
     return this.http.post(`${this.uri}/subject/project/update`, {code, project});
+  }
+
+  /*****************SYLLABUS */
+
+  insertSyllabus(code:string, list:SubjectSyllabus){
+    return this.http.post(`${this.uri}/subject/syllabus/insert`, {code, list});
+  }
+  updateSyllabus(code:string, list:SubjectSyllabus, newlist:SubjectSyllabus){
+    return this.http.post(`${this.uri}/subject/syllabus/update`, {code, list, newlist});
+  }
+  addStudentSyllabus(code:string, list: SubjectSyllabus, username: string){
+    return this.http.post(`${this.uri}/subject/syllabus/addstudent`, {code, username, list});
+  }
+
+  getAllSyllabus(code: string){
+    return this.http.get( `${this.uri}/subject/syllabus/` +code);
   }
 }

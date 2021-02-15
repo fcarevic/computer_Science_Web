@@ -6,6 +6,8 @@ import { NotificationInsertComponent } from './notification-insert/notification-
 import { NotificationUpdateComponent } from './notification-update/notification-update.component';
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
+import { StudentInsertComponent } from './student-insert/student-insert.component';
+import { StudentUpdateComponent } from './student-update/student-update.component';
 import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
 import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-insert.component';
 import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
@@ -18,6 +20,9 @@ import { SubjectNotificationUpdateComponent } from './subject-notification-updat
 import { SubjectNotificationsComponent } from './subject-notifications/subject-notifications.component';
 import { SubjectProjectDetailsComponent } from './subject-project-details/subject-project-details.component';
 import { SubjectProjectUpdateComponent } from './subject-project-update/subject-project-update.component';
+import { SyllabusInsertComponent } from './syllabus-insert/syllabus-insert.component';
+import { SyllabusListComponent } from './syllabus-list/syllabus-list.component';
+import { SyllabusUpdateComponent } from './syllabus-update/syllabus-update.component';
 import { ZaposleniDetailsComponent } from './zaposleni-details/zaposleni-details.component';
 import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
 import { ZaposleniListComponent } from './zaposleni-list/zaposleni-list.component';
@@ -46,7 +51,14 @@ const routes: Routes = [
   {path: 'subject/lab/update/:code', component: SubjectLabUpdateComponent},
   {path: 'subject/lab/info/:code', component:SubjectLabDetailsComponent},
   {path: 'subject/project/info/:code', component:SubjectProjectDetailsComponent},
-  {path: 'subject/project/update/:code', component:SubjectProjectUpdateComponent}
+  {path: 'subject/project/update/:code', component:SubjectProjectUpdateComponent},
+  {path: 'student/insert', component: StudentInsertComponent},
+  {path: 'student/info/update/:username', component: StudentUpdateComponent},
+  {path: 'subject/syllabus/insert/:code', component: SyllabusInsertComponent },
+  {path: 'subject/syllabus/update', component: SyllabusUpdateComponent },
+  {path: 'subject/syllabus/list/:code', component: SyllabusListComponent}
+    
+
 ];
 
 @NgModule({

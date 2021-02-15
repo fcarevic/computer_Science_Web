@@ -1,0 +1,86 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8 text-center">
+        <table class="table">
+            <tr>
+                <td>
+                    <h5>
+                        Ime
+                    </h5>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]= 'list.name' value="{{list.name}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Datum isteka
+                    </h5>
+                </td>
+                <td>
+                    <input type="datetime-local" 
+                    value='{{getDateString(list.expireDate)}}' [(ngModel)]= 'list.expireDate' >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Termin
+                    </h5>
+                </td>
+                <td>
+                    <input type="datetime-local" [(ngModel)]= 'list.date' 
+                    value="{{getDateString(list.date)}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Mesto
+                    </h5>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]= 'list.place' value="{{list.place}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Limit
+                    </h5>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]= 'list.limit' value="{{list.limit}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Status
+                    </h5>
+                </td>
+                <td>
+                    <select [(ngModel)]='list.active'>
+                        <option value="true" [selected]= 'list.active'>Aktivan</option>
+                        <option value="false" [selected]= '!list.active'>Neaktivan</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-dark" (click)='updateSyllabus()'> Update</button>
+                </td>
+                
+            </tr>
+            
+        </table>
+    </div>
+</div>
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+          </div>
+    </div>
+</div>

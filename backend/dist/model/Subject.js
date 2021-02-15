@@ -41,7 +41,19 @@ let Subjects = new Schema({
     project: {
         info: String,
         materials: [String]
-    }
+    },
+    syllabus: [{
+            name: String,
+            date: Date,
+            expireDate: Date,
+            place: String,
+            limit: Number,
+            active: {
+                type: Boolean,
+                default: true
+            },
+            students: [String]
+        }]
 });
 exports.default = mongoose_1.default.model('Subjects', Subjects, 'Subjects');
 //# sourceMappingURL=Subject.js.map

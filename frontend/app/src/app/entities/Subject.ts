@@ -34,3 +34,13 @@ export class SubjectNotification{
     description: string
     date: Date;
 }
+
+export class SubjectSyllabus{
+    name: string;
+    date: Date;
+    expireDate: Date;
+    limit: Number;
+    place: string;
+    students: string[];
+    active: boolean;
+}

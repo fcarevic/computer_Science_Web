@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8 text-center">
+        <table class="table text-center">
+            <tr>
+                <td>
+                    <h5>Korisnicko ime</h5>
+                </td>
+                <td>
+                   {{student.username}}@student.etf.bg.ac.rs
+                </td>
+            </tr>
+            <tr>
+                <td> <h5>Sifra</h5></td>
+                <td>
+                    <input type="text" value='{{student.password}}' [(ngModel)]= 'student.password'>
+                </td>
+            </tr>
+            <tr>
+                <td><h5>Indeks</h5></td>
+                <td>    <input type="text" value='{{student.indeks}}' [(ngModel)]= 'student.indeks'>
+                </td>
+            </tr>
+            <tr>
+                <td> <h5>Tip studija</h5></td>
+                <td>
+                    <select [(ngModel)]= 'student.tip'>
+                        <option value="{{tip}}"  *ngFor=' let tip of types ' [selected]= 'tip == student.tip'> {{tip}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Ime
+                    </h5>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]='student.ime' value="{{student.ime}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Prezime
+                    </h5>
+                </td>
+                <td>
+                    <input type="text" [(ngModel)]='student.prezime' value="{{student.prezime}}">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <h5>
+                        Status
+                    </h5>
+                </td>
+                <td>
+                    <select [(ngModel)]= 'student.status'>
+                        <option value="{{status}}"  *ngFor=' let status of statuses ' [selected]= 'status == student.status'> {{status}}</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-dark" (click)='updateStudent()'> Update</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+          </div>
+    </div>
+</div>
