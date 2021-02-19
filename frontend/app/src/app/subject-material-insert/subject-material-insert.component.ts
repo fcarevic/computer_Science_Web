@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
+import { SubjectInfo } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
 
 @Component({
@@ -34,6 +35,11 @@ export class SubjectMaterialInsertComponent implements OnInit {
       this.message=this.MESSAGE_OK;
     };
 
+
+    let username = localStorage.getItem('user');
+    
+    this.getAllSubjects(username);
+
   }
   URL = 'http://localhost:4000/syllabus/upload';
   uploader: FileUploader = new FileUploader({ url: this.URL, itemAlias: 'file' });
@@ -43,6 +49,8 @@ export class SubjectMaterialInsertComponent implements OnInit {
   lastType:string;
   filename: string;
   message = null;
+
+  subjects: SubjectInfo[]=[];
   
   uploadMaterial(){
     if(! this.filename.includes(this.subject) || !this.filename.includes(this.type)) {
@@ -62,8 +70,12 @@ export class SubjectMaterialInsertComponent implements OnInit {
       this.uploader.uploadAll();
     } else this.message= this.MESSAGE_DANGER;
   })
+  }
 
-      
+  getAllSubjects(username){
+    this.subjectService.getSubjectInfoForProfessor(username).subscribe((res:SubjectInfo[])=>{
+        this.subjects=res;
+    })
   }
 
 

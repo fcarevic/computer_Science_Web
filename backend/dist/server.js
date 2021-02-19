@@ -385,6 +385,22 @@ router.route('/subject/notifications/delete').post((request, response) => {
     });
 });
 /*****************SUBJECT INFO ROUTES */
+router.route('/subject/professor/info/:username').get((request, response) => {
+    let username = request.params.username;
+    Subject_1.default.find({ 'info.professors': username }, { info: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        if (res) {
+            let tmpres = [];
+            res.forEach((el) => {
+                tmpres.push(el.info);
+            });
+            response.json(tmpres);
+        }
+        else
+            response.json([]);
+    });
+});
 router.route('/subject/info/:code').get((request, response) => {
     let code = request.params.code;
     Subject_1.default.findOne({ 'info.code': code }, { info: 1 }, (err, res) => {

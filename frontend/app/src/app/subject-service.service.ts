@@ -35,6 +35,9 @@ export class SubjectServiceService {
   getInfo(code: string) {
     return this.http.get(`${this.uri}/subject/info/` + code);
   }
+  getSubjectInfoForProfessor(username: string){
+    return this.http.get(`${this.uri}/subject/professor/info/` +username);
+  }
 
   updateInfo(code:string, info:SubjectInfo){
     return this.http.post(`${this.uri}/subject/info/update`, {code, info});

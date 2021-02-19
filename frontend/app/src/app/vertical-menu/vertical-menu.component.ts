@@ -9,7 +9,7 @@ export class VerticalMenuComponent implements OnInit {
 
   constructor() { }
  typee='';
-  ngOnInit(): void {
+  ngOnInit(): void { 
     if(localStorage.getItem('tip')){}
     this.typee=localStorage.getItem('tip')
   

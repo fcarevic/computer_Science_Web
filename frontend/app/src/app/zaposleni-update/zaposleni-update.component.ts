@@ -59,7 +59,7 @@ export class ZaposleniUpdateComponent implements OnInit {
       this.message = this.MESSAGE_DANGER_PASSWORD;
       return;
     }
-
+    if(!this.checkFields()) return;
     this.zaposleniService.updateZaposleni(this.zaposleni).subscribe(res => {
       if (res['nModified'] == 1) {
         this.message = this.MESSAGE_OK;
@@ -99,7 +99,7 @@ export class ZaposleniUpdateComponent implements OnInit {
      }
   }
   getZaposleniByUsername(username) {
-    if(!this.checkFields()) return;
+    
     this.zaposleniService.getZaposleniByUsername(username).subscribe((zaposeni: Radnik) => {
       this.zaposleni = zaposeni;
       this.lastUsername=this.zaposleni.username;

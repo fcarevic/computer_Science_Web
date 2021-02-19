@@ -54,16 +54,16 @@ export class LoginComponentComponent implements OnInit {
  init2(){
   if(this.typee=='Admin'){
     this.adminService.getAdminByUsername(this.username).subscribe((res:any)=>this.user=res)
-  } else if(this.typee=='Proffesor'){
+  } else if(this.typee=='Professor'){
       this.zaposleniService.getZaposleniByUsername(this.username).subscribe((res:any)=>this.user=res)
   } else this.studentService.getStudentByUsername(this.username).subscribe((res:any)=>this.user=res);
   
  }
   login(){
-    
+     
     if(this.typee=='Admin'){
       this.adminService.getAdminByUsername(this.username).subscribe(res=> this.callback(res))
-    } else if(this.typee=='Proffesor'){
+    } else if(this.typee=='Professor'){
         this.zaposleniService.getZaposleniByUsername(this.username).subscribe(res=> this.callback(res))
     } else this.studentService.getStudentByUsername(this.username).subscribe(res=> this.callback(res));
     

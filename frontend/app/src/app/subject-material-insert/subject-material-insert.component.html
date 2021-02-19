@@ -4,13 +4,16 @@
             <tr>
                 <td>Predmet</td>
                 <td>
-                    <input type="text" [(ngModel)]='subject'>
+                    <select [(ngModel)]='subject'>
+                        <option value="{{sub.code}}" *ngFor='let sub of subjects'> {{sub.code}}</option>
+
+                    </select>
                 </td>
             </tr>
             <tr>
                 <td>Tip</td>
                 <td>
-                    <select  [(ngModel)]='type'>
+                    <select [(ngModel)]='type'>
                         <option value="lectures"> Predavanja</option>
                         <option value="exercises"> Vezbe</option>
                         <option value="lab">Lab</option>
@@ -25,7 +28,7 @@
 
                 </td>
             </tr>
-            
+
             <tr>
                 <td colspan="2">
                     <button class="btn btn-dark" (click)='uploadMaterial()'>

@@ -414,6 +414,23 @@ router.route('/subject/notifications/delete').post((request, response) => {
 
 
 /*****************SUBJECT INFO ROUTES */
+router.route('/subject/professor/info/:username').get((request, response) => {
+    let username = request.params.username;
+    
+    Subject.find({ 'info.professors': username },
+        { info: 1 }
+        , (err, res: any) => {
+            
+            if (err) console.log(err);
+            if (res) {
+                let tmpres:any=[];
+                res.forEach((el:any) => {
+                    tmpres.push(el.info)
+                });
+                response.json(tmpres);}
+            else response.json([])
+        })
+});
 router.route('/subject/info/:code').get((request, response) => {
     let code = request.params.code;
     Subject.findOne({ 'info.code': code },

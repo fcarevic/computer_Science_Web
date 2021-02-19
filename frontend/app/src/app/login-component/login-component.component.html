@@ -32,15 +32,11 @@
             </tr>
         </table>
     </div>
-    <div class="offset-sm-8 col-sm-3 text-right" *ngIf='user'>
+    <div class="offset-sm-7 col-sm-3 text-right" *ngIf='user'>
             {{user.ime}} {{user.prezime}} &nbsp; <button class="btn btn-primary" (click)='logout()'> Izloguj se</button>
     </div>
 
-    <div class="offset-sm-3 col-sm-6">
-        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
-            {{message.msg}}
-        </div>
-    </div>
+   
 
 </div>
 <div class="row">
