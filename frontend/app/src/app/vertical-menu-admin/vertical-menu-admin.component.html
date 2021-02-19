@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-10">
+        <div class="accordion" id="accordionExample">
+  <div >
+    <div  id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Profesori
+        </button>
+      </h2>
+    </div>
+
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div >
+         <ul>
+             <li>
+                <a routerLink='/employee/insert'>Dodaj</a>
+             </li>
+         </ul>
+       </div>
+    </div>
+  </div>
+  <div >
+    <div  id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Predmeti
+        </button>
+      </h2>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div >
+          <ul>
+              <li>
+                <a routerLink='/subject/info/insert'>Dodaj</a>
+
+              </li>
+          </ul>
+          </div>
+    </div>
+  </div>
+  <div >
+    <div  id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+         Obavestenja
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <ul>
+          <li>
+              <a routerLink='/notifications/insert'> Dodaj</a>
+          </li>
+          <li>
+            <a routerLink='/notifications'> Izmeni</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+  <div >
+    <div  id="headingFour">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+         Studenti
+        </button>
+      </h2>
+    </div>
+    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+      <ul>
+          <li>
+              <a routerLink='/student/insert'> Dodaj</a>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+    </div>
+</div>

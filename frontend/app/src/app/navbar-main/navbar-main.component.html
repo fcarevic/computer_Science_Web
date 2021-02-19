@@ -1,6 +1,6 @@
 <div class="p-4">
     <nav class="navbar navbar-expand-lg navbar-primary bg-light p-4">
-      <img class="img-fluid ml-4"
+      <img class="img-fluid ml-4 mr-2"
         src="https://www.etf.bg.ac.rs/assets/logo-sr-lat-b78bbef0f2c809d1c5da5db35ca1bf8ac6f28e720a06c1c1f8a8975898cba857.png">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,34 +9,34 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a class="nav-link" routerLink='/home'>Početna </a>
+            <a class="nav-link" routerLink='/home' routerLinkActive = 'activeLink'>Početna </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='/employees'>Zaposleni</a>
+            <a class="nav-link" routerLink='/employees' routerLinkActive = 'activeLink'>Zaposleni</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='/notifications'>Obaveštenja</a>
+            <a class="nav-link" routerLink='/notifications' routerLinkActive = 'activeLink'>Obaveštenja</a>
           </li>
      
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <a class="nav-link dropdown-toggle"   routerLinkActive = 'activeLink' id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Osnovne studije
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#" routerLinkActive = 'activeLink'>Action</a></li>
+              <li><a class="dropdown-item" href="#" routerLinkActive = 'activeLink'>Another action</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/registerstudent">Master studije</a>
+            <a class="nav-link" routerLink="/registerstudent" routerLinkActive = 'activeLink'>Master studije</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" >Projekti</a>
+            <a class="nav-link"  routerLinkActive = 'activeLink'>Projekti</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink='/contact' >Kontakt</a>
+            <a class="nav-link" routerLink='/contact' routerLinkActive = 'activeLink'>Kontakt</a>
           </li>
 
         </ul>

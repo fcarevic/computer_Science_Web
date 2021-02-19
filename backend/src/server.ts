@@ -8,6 +8,7 @@ import NotificationType from './model/NotificationType';
 import multer from 'multer'
 import Subject from './model/Subject';
 import Student from './model/Student';
+import Admins from './model/Admins';
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -608,6 +609,10 @@ router.route('/subject/syllabus/update').post((request, response) => {
     })
 });
 
+
+
+
+
 router.route('/subject/syllabus/addstudent').post((request, response) => {
     let list = request.body.list
     let code = request.body.code;
@@ -651,5 +656,28 @@ router.route('/subject/syllabus/:code').get((request, response)=>{
             else response.json({});
         })
 })
+
+
+
+/*********************ADMIN ROUTES */
+
+router.route('/admins').get((request, response)=>{
+    Admins.find({}, (err,res)=>{
+        if(err) console.log(err)
+        else if(res) response.json(res);
+        else response.json({})
+    })
+})
+
+router.route('/admins/:username').get((request, response)=>{
+    let username= request.params.username;
+    Admins.findOne({'username': username}, (err,res)=>{
+        if(err) console.log(err)
+        else if(res) response.json(res);
+        else response.json({})
+    })
+})
+
+
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

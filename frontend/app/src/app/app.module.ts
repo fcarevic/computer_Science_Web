@@ -36,6 +36,9 @@ import { SyllabusInsertComponent } from './syllabus-insert/syllabus-insert.compo
 import { SyllabusDetailsComponent } from './syllabus-details/syllabus-details.component';
 import { SyllabusUpdateComponent } from './syllabus-update/syllabus-update.component';
 import { SyllabusListComponent } from './syllabus-list/syllabus-list.component';
+import { VerticalMenuComponent } from './vertical-menu/vertical-menu.component';
+import { VerticalMenuProffesorComponent } from './vertical-menu-proffesor/vertical-menu-proffesor.component';
+import { VerticalMenuAdminComponent } from './vertical-menu-admin/vertical-menu-admin.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +73,9 @@ import { SyllabusListComponent } from './syllabus-list/syllabus-list.component';
     SyllabusDetailsComponent,
     SyllabusUpdateComponent,
     SyllabusListComponent,
+    VerticalMenuComponent,
+    VerticalMenuProffesorComponent,
+    VerticalMenuAdminComponent,
     
     
     

@@ -13,6 +13,7 @@ const NotificationType_1 = __importDefault(require("./model/NotificationType"));
 const multer_1 = __importDefault(require("multer"));
 const Subject_1 = __importDefault(require("./model/Subject"));
 const Student_1 = __importDefault(require("./model/Student"));
+const Admins_1 = __importDefault(require("./model/Admins"));
 const app = express_1.default();
 app.use(cors_1.default());
 app.use(body_parser_1.default.json());
@@ -592,6 +593,28 @@ router.route('/subject/syllabus/:code').get((request, response) => {
         if (res)
             console.log(err);
         if (res)
+            response.json(res);
+        else
+            response.json({});
+    });
+});
+/*********************ADMIN ROUTES */
+router.route('/admins').get((request, response) => {
+    Admins_1.default.find({}, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res)
+            response.json(res);
+        else
+            response.json({});
+    });
+});
+router.route('/admins/:username').get((request, response) => {
+    let username = request.params.username;
+    Admins_1.default.findOne({ 'username': username }, (err, res) => {
+        if (err)
+            console.log(err);
+        else if (res)
             response.json(res);
         else
             response.json({});

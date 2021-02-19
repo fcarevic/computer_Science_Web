@@ -7,3 +7,9 @@ div{
 .gray{
     color: darkgray;
 }
+.activeLink{
+    color:white  !important;
+    background-color: rgb(2, 18, 53);
+    border-radius: 10pt;
+ 
+}
