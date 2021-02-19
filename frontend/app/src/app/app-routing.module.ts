@@ -13,6 +13,7 @@ import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-i
 import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
 import { SubjectLabDetailsComponent } from './subject-lab-details/subject-lab-details.component';
 import { SubjectLabUpdateComponent } from './subject-lab-update/subject-lab-update.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
 import { SubjectMaterialInsertComponent } from './subject-material-insert/subject-material-insert.component';
 import { SubjectMaterialListComponent } from './subject-material-list/subject-material-list.component';
 import { SubjectNotificationInsertComponent } from './subject-notification-insert/subject-notification-insert.component';
@@ -58,7 +59,8 @@ const routes: Routes = [
   {path: 'subject/syllabus/insert/:code', component: SyllabusInsertComponent },
   {path: 'subject/syllabus/update', component: SyllabusUpdateComponent },
   {path: 'subject/syllabus/list/:code', component: SyllabusListComponent},
-  {path: 'subject/syllabus/details', component: SyllabusDetailsComponent}
+  {path: 'subject/syllabus/details', component: SyllabusDetailsComponent},
+  {path: 'subject/department/:code', component: SubjectListComponent}
     
 
 ];

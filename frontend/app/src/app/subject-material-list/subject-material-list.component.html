@@ -5,10 +5,16 @@
         <table class="table table-striped">
             <tr *ngFor='let lectureMaterial of lectureMaterials'>
                 <td>
-                    <a href="{{URL}}/{{lectureMaterial}}">{{lectureMaterial}}</a>
+                    <a href="{{URL}}/{{lectureMaterial.filename}}">{{lectureMaterial.filename}}</a>
                 </td>
                 <td>
-                    <button class="btn btn-dark" (click)='deleteMaterial(lectureMaterial, "lectures")'>
+                    {{lectureMaterial.fileSize}}B
+                 </td>
+                 <td>
+                     {{getProfessorName(lectureMaterial.professor)}}
+                 </td>
+                <td>
+                    <button *ngIf='user==lectureMaterial.professor' class="btn btn-dark" (click)='deleteMaterial(lectureMaterial, "lectures")'>
                         Delete
                     </button>
                 </td>
@@ -22,10 +28,18 @@
 
             <tr *ngFor='let exerciseMaterial of exerciseMaterials'>
                 <td>
-                    <a href="{{URL}}/{{exerciseMaterial}}">{{exerciseMaterial}}</a>
+                    <a href="{{URL}}/{{exerciseMaterial.filename}}">{{exerciseMaterial.filename}}</a>
                 </td>
                 <td>
-                    <button class="btn btn-dark" (click)='deleteMaterial(exerciseMaterial, "exercises")'>
+                   {{exerciseMaterial.fileSize}}B
+                </td>
+                <td>
+                    {{getProfessorName(exerciseMaterial.professor)}}
+                </td>
+                <td>
+                    <button class="btn btn-dark"
+                    *ngIf='user==exerciseMaterial.professor'
+                    (click)='deleteMaterial(exerciseMaterial, "exercises")'>
                         Delete
                     </button>
                 </td>

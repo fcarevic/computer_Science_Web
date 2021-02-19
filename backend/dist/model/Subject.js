@@ -16,8 +16,10 @@ let Subjects = new Schema({
         }],
     info: {
         typee: String,
+        departments: [String],
         years: [Number],
         code: String,
+        name: String,
         fond: Number,
         epsb: Number,
         goal: String,
@@ -27,8 +29,24 @@ let Subjects = new Schema({
         additional: String,
         professors: [String]
     },
-    lectureMaterials: [String],
-    exerciseMaterials: [String],
+    lectureMaterials: [{
+            filename: String,
+            professor: String,
+            fileSize: Number,
+            date: {
+                type: Date,
+                default: new Date()
+            }
+        }],
+    exerciseMaterials: [{
+            filename: String,
+            professor: String,
+            fileSize: Number,
+            date: {
+                type: Date,
+                default: new Date()
+            }
+        }],
     exams: [{
             question: String,
             solution: String
@@ -36,11 +54,27 @@ let Subjects = new Schema({
     lab: {
         info: String,
         numberOfExercises: Number,
-        materials: [String]
+        materials: [{
+                filename: String,
+                professor: String,
+                fileSize: Number,
+                date: {
+                    type: Date,
+                    default: new Date()
+                }
+            }]
     },
     project: {
         info: String,
-        materials: [String]
+        materials: [{
+                filename: String,
+                professor: String,
+                fileSize: Number,
+                date: {
+                    type: Date,
+                    default: new Date()
+                }
+            }]
     },
     syllabus: [{
             name: String,

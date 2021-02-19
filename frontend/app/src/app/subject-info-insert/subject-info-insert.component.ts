@@ -23,17 +23,17 @@ export class SubjectInfoInsertComponent implements OnInit {
   MESSAGE_OK = { style: "success", msg: "Uspesno azurirano" };
   MESSAGE_DANGER = { style: "danger", msg: "Neuspeh" };
   message= null;
-  getAllZaposleni(){
+  getAllZaposleni(){ 
     this.zaposleniService.getAllZaposleni().subscribe((res:Radnik[])=>{
       this.professors=res;
     })
   }
-  insertSubject(){
+  insertSubject(){ 
      
     this.subjectServie.insertInfo(this.subject).subscribe((res:any)=>{
       if(res.status && res.status=='not_ok'){
         this.message=this.MESSAGE_DANGER
       } else this.message= this.MESSAGE_OK;
-    })
+    }) 
   }
 }

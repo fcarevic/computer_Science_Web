@@ -8,6 +8,12 @@
                 </td>
             </tr>
             <tr>
+                <td>Naziv</td>
+                <td>
+                    <input type="text" [(ngModel)]='subject.name'>
+                </td>
+            </tr>
+            <tr>
                 <td>
                    Tip
                 </td>
@@ -15,6 +21,17 @@
                     <select [(ngModel)]='subject.typee'>
                         <option value="Izborni">Izborni</option>
                         <option value="Obavezni">Obavezni</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Odsek</td>
+                <td>
+                    <select multiple [(ngModel)]='subject.departments'>
+                        <option value="si">SI</option>
+                        <option value="rti">RTI</option>
+                        <option value="master">MASTER</option>
+                        <option value="ostalo">Ostalo</option>
                     </select>
                 </td>
             </tr>

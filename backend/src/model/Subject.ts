@@ -3,6 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
 
+
 let Subjects = new Schema({
 notifications: [{
     title: String,
@@ -14,8 +15,10 @@ notifications: [{
  }],
 info: {
     typee: String,
+    departments:[String],
     years: [Number],
     code: String,
+    name: String,
     fond: Number,
     epsb: Number,
     goal: String,
@@ -25,8 +28,25 @@ info: {
     additional: String,
     professors: [String]
 },
-lectureMaterials: [String],
-exerciseMaterials: [String],
+lectureMaterials: [{
+    filename:String,
+    professor: String,
+    fileSize: Number,
+    date: {
+        type:Date,
+        default: new Date()
+    }
+
+}],
+exerciseMaterials: [{
+    filename:String,
+    professor: String,
+    fileSize: Number,
+    date: {
+        type:Date,
+        default: new Date()
+    }
+}],
 exams:[{
     question : String,
     solution: String 
@@ -34,11 +54,27 @@ exams:[{
 lab: {
     info: String,
     numberOfExercises: Number,
-    materials: [String]
+    materials: [{
+        filename:String,
+    professor: String,
+    fileSize: Number,
+    date: {
+        type:Date,
+        default: new Date()
+    }
+    }]
 },
 project: {
     info:String,
-    materials: [String]
+    materials: [{
+    filename:String,
+    professor: String,
+    fileSize: Number,
+    date: {
+        type:Date,
+        default: new Date()
+    }
+    }]
 },
 syllabus:[{
     name: String,

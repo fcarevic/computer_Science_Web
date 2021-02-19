@@ -39,6 +39,7 @@ import { SyllabusListComponent } from './syllabus-list/syllabus-list.component';
 import { VerticalMenuComponent } from './vertical-menu/vertical-menu.component';
 import { VerticalMenuProffesorComponent } from './vertical-menu-proffesor/vertical-menu-proffesor.component';
 import { VerticalMenuAdminComponent } from './vertical-menu-admin/vertical-menu-admin.component';
+import { SubjectListComponent } from './subject-list/subject-list.component';
 
 @NgModule({
   declarations: [
@@ -76,6 +77,7 @@ import { VerticalMenuAdminComponent } from './vertical-menu-admin/vertical-menu-
     VerticalMenuComponent,
     VerticalMenuProffesorComponent,
     VerticalMenuAdminComponent,
+    SubjectListComponent,
     
     
     

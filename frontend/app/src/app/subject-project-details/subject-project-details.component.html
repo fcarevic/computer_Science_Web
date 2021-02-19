@@ -16,11 +16,17 @@
         <h2>Materijali</h2>
 
         <table class="table table-striped">
+            
             <tr *ngFor='let material of project.materials'>
                 <td>
-                    <a href="{{URL}}/{{material}}">{{material}}</a>
+                    <a href="{{URL}}/{{material.filename}}">{{material.filename}}</a>
                 </td>
-              
+                <td>
+                   {{material.fileSize}}B
+                </td>
+                <td>
+                    {{getProfessorName(material.professor)}}
+                 </td>
             </tr>
         </table>
         <br><br>

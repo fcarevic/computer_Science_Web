@@ -1,11 +1,14 @@
 
 export class SubjectInfo{
     typee: string;
+    departments: string[];
     years: [number] ;
     code: string;
+    name: string;
     fond: number;
     epsb: number;
     goal: string;
+   
     outcome: string;
     lectureTerm: string;
     exerciseTerm: string;
@@ -18,16 +21,21 @@ export class SubjectInfo{
 
     }
 }
-
+export class File{
+    filename:string;
+    professor: string;
+    fileSize: number;
+    date: Date;
+}
 export class SubjectLab{
     info: string;
     numberOfExercises: number;
-    materials: string[]
+    materials: File[]
 }
 
 export class SubjectProject{
         info: string;
-        materials: string[];
+        materials: File[];
 }
 export class SubjectNotification{
     title: string;

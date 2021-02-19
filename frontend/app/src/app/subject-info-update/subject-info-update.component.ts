@@ -18,7 +18,7 @@ export class SubjectInfoUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.getAllZaposleni();
     this.activatedRoute.url.subscribe(val=>{
-       let code = val[3].path;
+       let code = val[3].path;  
        this.getSubjectInfo(code);
     })
   }

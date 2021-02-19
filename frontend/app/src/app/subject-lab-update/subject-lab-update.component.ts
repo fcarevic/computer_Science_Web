@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SubjectLab } from '../entities/Subject';
+import { Radnik } from '../entities/radnik';
+import { File, SubjectLab } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
+import { ZaposleniService } from '../zaposleni.service';
 
 @Component({
   selector: 'app-subject-lab-update',
@@ -10,7 +12,8 @@ import { SubjectServiceService } from '../subject-service.service';
 })
 export class SubjectLabUpdateComponent implements OnInit {
 
-  constructor(private activatedRoute: ActivatedRoute, private subjectService: SubjectServiceService) { }
+  constructor(private activatedRoute: ActivatedRoute, private subjectService: SubjectServiceService,
+    private zaposleniService: ZaposleniService) { }
 
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(val => {
@@ -18,6 +21,8 @@ export class SubjectLabUpdateComponent implements OnInit {
 
       this.getLabInfo(this.subject);
     })
+    this.getAllProfessors();
+    this.user=localStorage.getItem('user');
   }
   subject: string;
   lab = new SubjectLab();
@@ -26,6 +31,8 @@ export class SubjectLabUpdateComponent implements OnInit {
   MESSAGE_OK = { style: "success", msg: "Uspesno azurirano" };
   MESSAGE_DANGER = { style: "danger", msg: "Neuspeh" };
   message = null;
+  professors:Radnik[];
+  user='';
   getLabInfo(code: string) {
     this.subjectService.getLab(code).subscribe((res: any) => {
       if (res)
@@ -35,8 +42,8 @@ export class SubjectLabUpdateComponent implements OnInit {
     })
 
   }
-  deleteMaterial(filename: string) {
-    this.lab.materials = this.lab.materials.filter(el => !(el == filename))
+  deleteMaterial(file: File) {
+    this.lab.materials = this.lab.materials.filter(el => !(el == file))
   }
   updateLab() {
     
@@ -47,4 +54,15 @@ export class SubjectLabUpdateComponent implements OnInit {
       } else this.message = this.MESSAGE_DANGER;
     })
   }
+
+  getProfessorName(username:string){
+    let pr= this.professors.filter(el=>el.username==username)[0];
+    return pr.ime + ' ' + pr.prezime;
+  }
+  getAllProfessors(){
+    this.zaposleniService.getAllZaposleni().subscribe((res:Radnik[])=>{
+      this.professors=res;
+    })
+  }
+
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Radnik } from '../entities/radnik';
 import { SubjectLab } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
+import { ZaposleniService } from '../zaposleni.service';
 
 @Component({
   selector: 'app-subject-lab-details',
@@ -10,19 +12,32 @@ import { SubjectServiceService } from '../subject-service.service';
 })
 export class SubjectLabDetailsComponent implements OnInit {
 
-  constructor(private  activatedRoute: ActivatedRoute, private subjectService: SubjectServiceService) {
+  constructor(private  activatedRoute: ActivatedRoute, private subjectService: SubjectServiceService,
+    private zaposleniService: ZaposleniService
+    ) {
     this.activatedRoute.url.subscribe(val=>{
         this.getLabInfo(val[3].path)
     })
    }
 
   ngOnInit(): void {
+    this.getAllProfessors();
   }
   lab  = new SubjectLab();
   URL = 'http://localhost:4000/materials/download';
+  professors:Radnik[]=[];
   getLabInfo(code:string){
     this.subjectService.getLab(code).subscribe( (res:any)=>{
       this.lab=res.lab;
+    })
+  }
+  getProfessorName(username:string){
+    let pr= this.professors.filter(el=>el.username==username)[0];
+    return pr.ime + ' ' + pr.prezime;
+  }
+  getAllProfessors(){
+    this.zaposleniService.getAllZaposleni().subscribe((res:Radnik[])=>{
+      this.professors=res;
     })
   }
 

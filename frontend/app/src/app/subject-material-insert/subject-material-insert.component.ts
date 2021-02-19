@@ -1,7 +1,8 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload';
-import { SubjectInfo } from '../entities/Subject';
+import { SubjectInfo , File} from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
+
 
 @Component({
   selector: 'app-subject-material-insert',
@@ -28,6 +29,12 @@ export class SubjectMaterialInsertComponent implements OnInit {
       file.file.name = this.lastCode+'-'+ this.lastType+'-'+ file.file.name;
       this.filename = file.file.name;
       file.withCredentials = false;
+
+      this.file=new File();
+      this.file.filename=this.filename;
+      this.file.fileSize = file.file.size;
+      this.file.professor= localStorage.getItem('user');
+      this.file.date=new Date();
       
     };
     this.uploader.onCompleteItem = (item: any, response: any, status: any, headers: any) => {
@@ -41,13 +48,14 @@ export class SubjectMaterialInsertComponent implements OnInit {
     this.getAllSubjects(username);
 
   }
-  URL = 'http://localhost:4000/syllabus/upload';
+  URL = 'http://localhost:4000/materials/upload';
   uploader: FileUploader = new FileUploader({ url: this.URL, itemAlias: 'file' });
   subject: string;
   type: string;
   lastCode:string;
   lastType:string;
   filename: string;
+  file:File;
   message = null;
 
   subjects: SubjectInfo[]=[];
@@ -64,7 +72,8 @@ export class SubjectMaterialInsertComponent implements OnInit {
          this.message= this.MESSAGE_DANGER_NO_FILE;
          
        }
-  this.subjectService.uploadMaterial(this.subject, this.type, this.filename).subscribe((res:any)=>{
+     
+  this.subjectService.uploadMaterial(this.subject, this.type, this.file).subscribe((res:any)=>{
   
     if(res.nModified && res.nModified==1){
       this.uploader.uploadAll();

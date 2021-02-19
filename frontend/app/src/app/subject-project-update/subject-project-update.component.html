@@ -17,15 +17,22 @@
         <h2>Materijali</h2>
 
         <table class="table table-striped">
+            
             <tr *ngFor='let material of project.materials'>
-                <td> 
-                    <a href="{{URL}}/{{material}}">{{material}}</a>
+                <td>
+                    <a href="{{URL}}/{{material.filename}}">{{material.filename}}</a>
                 </td>
                 <td>
-                    <button  class="btn btn-dark" (click)='deleteMaterial(material)'>
-                        Delete
-                    </button>
+                   {{material.fileSize}}B
                 </td>
+                <td>
+                    {{getProfessorName(material.professor)}}
+                 </td>
+
+                 <button  *ngIf='user==material.professor' class="btn btn-dark" (click)='deleteMaterial(material)'>
+                    Delete
+                </button>
+              
             </tr>
         </table>
         <br><br>

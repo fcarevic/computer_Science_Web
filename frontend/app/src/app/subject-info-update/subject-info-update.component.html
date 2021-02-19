@@ -7,6 +7,12 @@
                     {{subject.code}}
                 </td>
             </tr>
+             <tr>
+                <td>Naziv</td>
+                <td>
+                    <input type="text" value="subject.name" [(ngModel)]='subject.name'>
+                </td>
+            </tr>
             <tr>
                 <td>
                    Tip
@@ -18,6 +24,15 @@
                     </select>
                 </td>
             </tr>
+            <td>Odsek</td>
+            <td>
+                <select multiple [(ngModel)]='subject.departments'>
+                    <option value="si" [selected]='subject.departments.includes("si")'>SI</option>
+                    <option value="rti" [selected]='subject.departments.includes("rti")'>RTI</option>
+                    <option value="master" [selected]='subject.departments.includes("master")'>MASTER</option>
+                    <option value="ostalo" [selected]='subject.departments.includes("ostalo")'>Ostalo</option>
+                </select>
+            </td>
             <tr>
                 <td>Godine studija</td>
                 <td>

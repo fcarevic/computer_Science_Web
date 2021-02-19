@@ -385,6 +385,21 @@ router.route('/subject/notifications/delete').post((request, response) => {
     });
 });
 /*****************SUBJECT INFO ROUTES */
+router.route('/subject/info').get((request, response) => {
+    Subject_1.default.find({}, { info: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        if (res) {
+            let tmpres = [];
+            res.forEach((el) => {
+                tmpres.push(el.info);
+            });
+            response.json(tmpres);
+        }
+        else
+            response.json([]);
+    });
+});
 router.route('/subject/professor/info/:username').get((request, response) => {
     let username = request.params.username;
     Subject_1.default.find({ 'info.professors': username }, { info: 1 }, (err, res) => {
@@ -446,57 +461,57 @@ router.route('/subject/materials/:code').get((request, response) => {
     });
 });
 router.route('/subject/lectures/materials/insert').post((request, response) => {
-    let filename = request.body.filename;
+    let file = request.body.file;
     let code = request.body.code;
     Subject_1.default.update({ 'info.code': code }, {
         $push: {
-            lectureMaterials: filename
+            lectureMaterials: file
         }
     }).then(res => { response.json(res); });
 });
 router.route('/subject/exercises/materials/insert').post((request, response) => {
-    let filename = request.body.filename;
+    let file = request.body.file;
     let code = request.body.code;
     Subject_1.default.update({ 'info.code': code }, {
         $push: {
-            exerciseMaterials: filename
+            exerciseMaterials: file
         }
     }).then(res => { response.json(res); });
 });
 router.route('/subject/lab/materials/insert').post((request, response) => {
     let code = request.body.code;
-    let filename = request.body.filename;
+    let file = request.body.file;
     Subject_1.default.update({ 'info.code': code }, {
         $push: {
-            'lab.materials': filename
+            'lab.materials': file
         }
     }).then(res => { response.json(res); });
 });
 router.route('/subject/lectures/materials/delete').post((request, response) => {
     let code = request.body.code;
-    let filename = request.body.filename;
+    let file = request.body.file;
     console.log(code);
-    console.log(filename);
+    console.log(file);
     Subject_1.default.update({ 'info.code': code }, {
         $pull: {
-            lectureMaterials: filename
+            lectureMaterials: file
         }
     }).then(res => { response.json(res); });
 });
 router.route('/subject/exercises/materials/delete').post((request, response) => {
     let code = request.body.code;
-    let filename = request.body.filename;
+    let file = request.body.file;
     Subject_1.default.update({ 'info.code': code }, {
         $pull: {
-            exerciseMaterials: filename
+            exerciseMaterials: file
         }
     }).then(res => { response.json(res); });
 });
 router.route('/subject/lab/materials/delete').post((request, response) => {
     let code = request.body.code;
-    let filename = request.body.filename;
+    let file = request.body.file;
     Subject_1.default.update({ 'info.code': code }, {
-        $pull: { 'lab.materials': filename }
+        $pull: { 'lab.materials': file }
     }).then(res => {
         response.json(res);
     });
@@ -544,8 +559,8 @@ router.route('/subject/project/update').post((request, response) => {
 });
 router.route('/subject/project/materials/insert').post((request, response) => {
     let code = request.body.code;
-    let filename = request.body.filename;
-    Subject_1.default.updateOne({ 'info.code': code }, { $push: { 'project.materials': filename } })
+    let file = request.body.file;
+    Subject_1.default.updateOne({ 'info.code': code }, { $push: { 'project.materials': file } })
         .then(res => { response.json(res); });
 });
 /******************SUBJECT SYLLABUS ROUTES */

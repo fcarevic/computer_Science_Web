@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { SubjectInfo, SubjectLab, SubjectNotification, SubjectProject, SubjectSyllabus } from './entities/Subject';
+import { File, SubjectInfo, SubjectLab, SubjectNotification, SubjectProject, SubjectSyllabus } from './entities/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +27,9 @@ export class SubjectServiceService {
   }
 
   /******INFO */
+  getAllInfos(){
+    return this.http.get(`${this.uri}/subject/info` );
+  }
 
   insertInfo(info: SubjectInfo) {
     return this.http.post(`${this.uri}/subject/info/insert`, { info });
@@ -44,11 +47,11 @@ export class SubjectServiceService {
   }
 
 /**************** MATERIALS */
-  uploadMaterial(code: string, type:string, filename:any){
-    return this.http.post(`${this.uri}/subject/`  +  type + '/materials/insert', {code, filename});
+  uploadMaterial(code: string, type:string, file:File){
+    return this.http.post(`${this.uri}/subject/`  +  type + '/materials/insert', {code, file});
   }
-  deleteMaterial(code:string, type:string, filename:string){
-    return this.http.post(`${this.uri}/subject/`+ type + '/materials/delete', {code, filename});
+  deleteMaterial(code:string, type:string, file:File){
+    return this.http.post(`${this.uri}/subject/`+ type + '/materials/delete', {code, file});
   }
 
   getAllMaterials(code:string){
