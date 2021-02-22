@@ -416,6 +416,22 @@ router.route('/subject/professor/info/:username').get((request, response) => {
             response.json([]);
     });
 });
+router.route('/subject/applicant/info/:username').get((request, response) => {
+    let username = request.params.username;
+    Subject_1.default.find({ 'applicants': username }, { info: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        if (res) {
+            let tmpres = [];
+            res.forEach((el) => {
+                tmpres.push(el.info);
+            });
+            response.json(tmpres);
+        }
+        else
+            response.json([]);
+    });
+});
 router.route('/subject/info/:code').get((request, response) => {
     let code = request.params.code;
     Subject_1.default.findOne({ 'info.code': code }, { info: 1 }, (err, res) => {
@@ -588,6 +604,23 @@ router.route('/subject/syllabus/update').post((request, response) => {
         response.json(res);
     });
 });
+router.route('/subject/syllabus/removestudent').post((request, response) => {
+    let list = request.body.list;
+    let code = request.body.code;
+    let username = request.body.username;
+    Subject_1.default.updateOne({
+        'info.code': code,
+        'syllabus.name': list.name,
+        'syllabus.date': list.date,
+        'syllabus.expireDate': list.expireDate,
+        'syllabus.limit': list.limit,
+        'syllabus.place': list.place
+    }, {
+        $pull: {
+            'syllabus.$.students': username
+        }
+    }).then(res => response.json(res));
+});
 router.route('/subject/syllabus/addstudent').post((request, response) => {
     let list = request.body.list;
     let code = request.body.code;
@@ -627,6 +660,36 @@ router.route('/subject/syllabus/:code').get((request, response) => {
             response.json(res);
         else
             response.json({});
+    });
+});
+/***************SUBJECT STUDENTS */
+router.route('/subject/applicant/insert').post((request, response) => {
+    let code = request.body.code;
+    let username = request.body.username;
+    Subject_1.default.updateOne({ 'info.code': code }, {
+        $push: {
+            'applicants': username
+        }
+    }).then(res => response.json(res));
+});
+router.route('/subject/applicant/remove').post((request, response) => {
+    let code = request.body.code;
+    let username = request.body.username;
+    Subject_1.default.updateOne({ 'info.code': code }, {
+        $pull: {
+            'applicants': username
+        }
+    }).then(res => response.json(res));
+});
+router.route('/subject/applicant/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, { applicants: 1 }, (err, res) => {
+        if (err)
+            console.log(err);
+        if (res)
+            response.json(res);
+        else
+            response.json([]);
     });
 });
 /*********************ADMIN ROUTES */

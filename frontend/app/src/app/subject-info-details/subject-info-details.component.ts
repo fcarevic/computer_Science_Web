@@ -15,30 +15,70 @@ export class SubjectInfoDetailsComponent implements OnInit {
   constructor(private subjectService: SubjectServiceService, private zaposleniService: ZaposleniService, private ativatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
-   this.ativatedRoute.url.subscribe(val=>{
-     let code = val[2].path;
-    
-     this.getSubjectInfo(code); 
-   })
+
+    this.user = localStorage.getItem('user');
+    this.typee = localStorage.getItem('tip')
+    this.ativatedRoute.url.subscribe(val => {
+      let code = val[2].path;
+
+      this.getSubjectInfo(code);
+      this.getAllApplicants(code);
+    })
   }
 
-  professors=[];
+  professors = [];
   subject = new SubjectInfo();
-  
-  getAllProfessors(){
-      this.subject.professors.forEach(el=>{
-        this.zaposleniService.getZaposleniByUsername(el).subscribe((res:Radnik)=>{
-          
-          this.professors.push(res);
-        
-        })
+  applicants: String[] = [];
+  user = '';
+  typee = '';
+
+  getAllProfessors() {
+    this.subject.professors.forEach(el => {
+      this.zaposleniService.getZaposleniByUsername(el).subscribe((res: Radnik) => {
+
+        this.professors.push(res);
+
       })
+    })
   }
-  getSubjectInfo(code){
-    this.subjectService.getInfo(code).subscribe((res:SubjectInfo)=>{
-     
-      this.subject=res;
+
+  getAllApplicants(code: string) {
+    this.subjectService.getAllApplicants(code).subscribe((res: any) => {
+
+      if (res && res.applicants)
+        this.applicants = res.applicants;
+      else this.applicants = [];
+    })
+
+  }
+
+  displayButton() {
+    if (this.typee != 'Student') return false;
+    return true;
+  }
+  isRegistered() {
+    return this.applicants.includes(this.user);
+  }
+  registerStudent() {
+    return this.subjectService.insertStudentApplicant(this.subject.code, this.user).subscribe((res: any) => {
+      if (res && res.nModified == 1) {
+        location.reload();
+      }
+
+    })
+  }
+  unregisterStudent() {
+    return this.subjectService.removeStudentApplicant(this.subject.code, this.user).subscribe((res: any) => {
+      if (res && res.nModified == 1) {
+        location.reload();
+
+      }
+
+    })
+  }
+  getSubjectInfo(code) {
+    this.subjectService.getInfo(code).subscribe((res: SubjectInfo) => {
+      this.subject = res;
       this.getAllProfessors();
     })
   }

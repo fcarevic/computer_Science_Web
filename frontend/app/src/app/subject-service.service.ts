@@ -41,6 +41,9 @@ export class SubjectServiceService {
   getSubjectInfoForProfessor(username: string){
     return this.http.get(`${this.uri}/subject/professor/info/` +username);
   }
+  getSubjectInfoForApplicant(username: string){
+    return this.http.get(`${this.uri}/subject/applicant/info/` +username);
+  }
 
   updateInfo(code:string, info:SubjectInfo){
     return this.http.post(`${this.uri}/subject/info/update`, {code, info});
@@ -88,8 +91,23 @@ export class SubjectServiceService {
   addStudentSyllabus(code:string, list: SubjectSyllabus, username: string){
     return this.http.post(`${this.uri}/subject/syllabus/addstudent`, {code, username, list});
   }
+  removeStudentSyllabus(code:string, list: SubjectSyllabus, username: string){
+    return this.http.post(`${this.uri}/subject/syllabus/removestudent`, {code, username, list});
+  }
+
 
   getAllSyllabus(code: string){
     return this.http.get( `${this.uri}/subject/syllabus/` +code);
+  }
+
+  /**************APPLICANTS */
+  insertStudentApplicant(code: string, username:string){
+    return this.http.post(`${this.uri}/subject/applicant/insert`, {code, username})
+  }
+  removeStudentApplicant(code: string, username:string){
+    return this.http.post(`${this.uri}/subject/applicant/remove`, {code, username})
+  }
+  getAllApplicants(code:string){
+    return this.http.get(`${this.uri}/subject/applicant/` + code);
   }
 }

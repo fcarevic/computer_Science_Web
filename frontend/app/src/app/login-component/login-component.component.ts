@@ -49,6 +49,7 @@ export class LoginComponentComponent implements OnInit {
    this.user=null;
    localStorage.removeItem('user');
    localStorage.removeItem('tip');
+   location.reload();
  }
 
  init2(){

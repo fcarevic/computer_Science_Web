@@ -64,6 +64,7 @@ let Subjects = new Schema({
                 }
             }]
     },
+    applicants: [String],
     project: {
         info: String,
         materials: [{

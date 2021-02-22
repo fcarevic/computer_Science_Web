@@ -1,0 +1,193 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-10">
+        <div class="accordion" id="accordionExample">
+            <div>
+                <div id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Profil
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div>
+                        <ul>
+                            <li>
+                                <a routerLink='/student/info/update/{{username}}'>Izmeni</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Predmeti
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div>
+                        <ul>
+                            <li>
+
+                                <div class="accordion" id='PredmetiAccordion'>
+                                    <div id="PredmetiUpdate">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#PredmetiUpdatec" aria-expanded="false"
+                                                aria-controls="PredmetiUpdatec">
+                                                Informacije
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="PredmetiUpdatec" class="collapse" aria-labelledby="PredmetiUpdate"
+                                        data-parent="#PredmetiAccordion">
+                                        <ul>
+                                            <li *ngFor='let subject of subjects'>
+                                                <a routerLink='/subject/infos/{{subject.code}}'>
+                                                    {{subject.code}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                            <li>
+
+                                <div class="accordion" id='ProjekatAccordian'>
+                                    <div id="ProjectUpdate">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#ProjectUpdatec" aria-expanded="false"
+                                                aria-controls="ProjectUpdatec">
+                                                Projekat
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="ProjectUpdatec" class="collapse" aria-labelledby="ProjectUpdate"
+                                        data-parent="#ProjekatAccordian">
+                                        <ul>
+                                            <li *ngFor='let subject of subjects'>
+                                                <a routerLink='/subject/project/info/{{subject.code}}'>
+                                                    {{subject.code}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </li>
+
+
+
+                            <li>
+                                <div class="accordion" id='MaterijaliAccordian'>
+                                    <div id="MaterialsInfo">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#MaterialsInfoC" aria-expanded="false"
+                                                aria-controls="MaterialsInfoC">
+                                                Materijali
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="MaterialsInfoC" class="collapse" aria-labelledby="MaterialsInfo"
+                                        data-parent="#MaterijaliAccordian">
+                                        <ul>
+                                            <li *ngFor='let subject of subjects'>
+                                                <a routerLink='/subject/materials/{{subject.code}}'>
+                                                    {{subject.code}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="accordion" id='NotifAccordian'>
+                                    <div id="MaterialsNotif">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#MaterialsNotifC" aria-expanded="false"
+                                                aria-controls="MaterialsNotifC">
+                                                Obavestenja
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="MaterialsNotifC" class="collapse" aria-labelledby="MaterialsNotif"
+                                        data-parent="#NotifAccordian">
+                                        <ul>
+                                            <li *ngFor='let subject of subjects'>
+                                                <a routerLink='/subject/notifications/{{subject.code}}'>
+                                                    {{subject.code}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="accordion" id='SyllAcc'>
+                                    <div id="MaterialSyll">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#MaterialSyllC" aria-expanded="false"
+                                                aria-controls="MaterialSyllC">
+                                                Spiskovi
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="MaterialSyllC" class="collapse" aria-labelledby="MaterialSyll"
+                                        data-parent="#SyllAcc">
+                                        <ul>
+                                            <li *ngFor='let subject of subjects'>
+                                                <a routerLink='/subject/syllabus/list/{{subject.code}}'>
+                                                    {{subject.code}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+
+
+                            </li>
+
+                            <li>
+
+                                <div class="accordion" id='LabAccordian'>
+                                    <div id="LabUpdate">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#LabUpdatec" aria-expanded="false"
+                                                aria-controls="LabUpdatec">
+                                                Lab vezbe
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="LabUpdatec" class="collapse" aria-labelledby="LabUpdate"
+                                        data-parent="#LabAccordian">
+                                        <ul>
+                                            <li *ngFor='let subject of subjects'>
+                                                <a routerLink='/subject/lab/info/{{subject.code}}'>
+                                                    {{subject.code}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

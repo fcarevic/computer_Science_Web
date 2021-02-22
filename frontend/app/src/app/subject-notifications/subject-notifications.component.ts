@@ -14,6 +14,7 @@ export class SubjectNotificationsComponent implements OnInit {
   constructor(private router:Router, private activatedRoute: ActivatedRoute, private subjectService: SubjectServiceService) { }
 
   ngOnInit(): void {
+    this.typee= localStorage.getItem('tip')
     this.dateCompare = new Date( Date.now()- 7*24*60*60*1000);
     
       this.activatedRoute.url.subscribe(value=>{
@@ -23,6 +24,7 @@ export class SubjectNotificationsComponent implements OnInit {
    
   }
   subject:string;
+  typee='';
 
   notifications=[]
   dateCompare:Date;

@@ -64,6 +64,8 @@ lab: {
     }
     }]
 },
+applicants: [String]
+,
 project: {
     info:String,
     materials: [{

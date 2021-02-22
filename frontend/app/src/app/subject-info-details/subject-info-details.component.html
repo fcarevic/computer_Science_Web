@@ -81,6 +81,13 @@
                 </td>
             </tr>
 
+            <tr>
+                <td colspan="2">
+                    <button class="btn btn-dark" *ngIf='displayButton()&& !isRegistered()' (click)='registerStudent()'> Prijavi me</button>
+                    <button class="btn btn-dark" *ngIf='displayButton()&& isRegistered()' (click)='unregisterStudent()'> Odjavi me</button>
+                </td>
+            </tr>
+
         </table>
     </div>
 </div>

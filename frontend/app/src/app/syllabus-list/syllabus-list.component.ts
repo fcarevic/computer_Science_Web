@@ -15,6 +15,7 @@ export class SyllabusListComponent implements OnInit {
   constructor(private activatedRouteL: ActivatedRoute, private router:Router, private subjectService: SubjectServiceService) { }
 
   ngOnInit(): void {
+    this.typee= localStorage.getItem('tip');
     this.activatedRouteL.url.subscribe(val=>{
       this.subject =val[3].path;
       this.getAllSyllabus(this.subject);
@@ -23,6 +24,7 @@ export class SyllabusListComponent implements OnInit {
   }
   lists = [];
   subject:string; 
+  typee= '';
 
    myFormatDate(date:Date){
      return formatDate(date, 'dd/MM/yyy hh:mm', 'en-US');

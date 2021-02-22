@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-4"  *ngFor = 'let list of lists'>
+    <div class=" col-sm-12  col-md-6 col-lg-4 "  *ngFor = 'let list of lists'>
         <div class="card text-center m-4">
             <div class="card-body">
                 
@@ -19,7 +19,7 @@
                   
             </div>
             <div class="card-footer text-right">
-                <button class="btn btn-dark" (click)='updateSyllabus(list)'> Update</button>
+                <button *ngIf= 'typee!="Student"' class="btn btn-dark" (click)='updateSyllabus(list)'> Update</button>
                 &nbsp;
                 <button class="btn btn-dark" (click)='details(list)'> Detalji</button>
             </div>

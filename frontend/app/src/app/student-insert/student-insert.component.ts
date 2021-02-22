@@ -21,27 +21,27 @@ export class StudentInsertComponent implements OnInit {
 
  checkUsername(){
    if(this.student.username.length!=9){
-     this.message = { style: "danger", msg: "Korisnicko ime nesipravan format1 " };
+     this.message = { style: "danger", msg: "Korisnicko ime nesipravan format duzina " };
      return false;
    }
    if( this.student.username.charAt(1) != this.student.ime.charAt(0).toLowerCase()){
-    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format2" };
+    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format prvo slovo" };
     return false;
    }
    if( this.student.username.charAt(0) != this.student.prezime.charAt(0).toLowerCase()){
-    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format3" };
+    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format drugo slovo" };
     return false;
    }
    if( this.student.username.substring(2,6) != this.student.indeks.substring(0,4)){
-    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format4" };
+    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format godina indeksa" };
     return false;
    }
    if( this.student.username.substring(6,8) != this.student.indeks.substring(7)){
-    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format5" };
+    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format broj indeksa" };
     return false;
    }
    if(this.student.username.substring(8) != this.student.tip){
-    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format6" };
+    this.message = { style: "danger", msg: "Korisnicko ime nesipravan format tip studija" };
     return false;
    }
    return true;

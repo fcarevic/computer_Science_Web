@@ -33,7 +33,7 @@ import { ZaposleniUpdateComponent } from './zaposleni-update/zaposleni-update.co
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   {path: 'home', component:HomepageComponent},
-  {path: 'registerstudent', component: RegisterStudentComponent},
+  {path: 'registerstudent', component: StudentInsertComponent},
   {path: 'employees', component: ZaposleniListComponent},
   {path: 'employees/:id', component: ZaposleniDetailsComponent},
   {path: 'employee/insert', component: ZaposleniInsertComponent},

@@ -7,9 +7,9 @@
                         <i>Datum</i> : {{notification.date}}
                     </div>
                     <div class="col-sm-6 text-right">
-                    
-                        <button class="btn btn-dark" (click)='updateNotification(notification)'> Update</button>
-                        <button class=" ml-2 btn btn-dark" (click)= 'deleteNotification(notification)'> Delete</button>
+                     
+                        <button *ngIf= 'typee!="Student"' class="btn btn-dark" (click)='updateNotification(notification)'> Update</button>
+                        <button *ngIf= 'typee!="Student"' class=" ml-2 btn btn-dark" (click)= 'deleteNotification(notification)'> Delete</button>
                     </div>
                 </div>
               

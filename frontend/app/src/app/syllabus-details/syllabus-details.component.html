@@ -68,7 +68,8 @@
 </tr>
             <tr>
                 <td colspan="2">
-                    <button class="btn btn-dark" (click)='registerStudent()'> Prijavi se</button>
+                    <button class="btn btn-dark" *ngIf='!containsStudent()' (click)='registerStudent()'> Prijavi se</button>
+                    <button class="btn btn-dark" *ngIf='containsStudent()' (click)='unregisterStudent()'> Odjavi se</button>
                 </td>
                 
             </tr>

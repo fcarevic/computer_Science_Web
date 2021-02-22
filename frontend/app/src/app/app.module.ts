@@ -40,6 +40,7 @@ import { VerticalMenuComponent } from './vertical-menu/vertical-menu.component';
 import { VerticalMenuProffesorComponent } from './vertical-menu-proffesor/vertical-menu-proffesor.component';
 import { VerticalMenuAdminComponent } from './vertical-menu-admin/vertical-menu-admin.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
+import { VerticalMenuStudentComponent } from './vertical-menu-student/vertical-menu-student.component';
 
 @NgModule({
   declarations: [
@@ -78,6 +79,7 @@ import { SubjectListComponent } from './subject-list/subject-list.component';
     VerticalMenuProffesorComponent,
     VerticalMenuAdminComponent,
     SubjectListComponent,
+    VerticalMenuStudentComponent,
     
     
     
