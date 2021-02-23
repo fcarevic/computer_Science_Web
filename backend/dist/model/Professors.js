@@ -56,6 +56,10 @@ let Professors = new Schema({
     },
     slika: {
         type: String
+    },
+    firstLogin: {
+        type: Boolean,
+        default: true
     }
 });
 exports.default = mongoose_1.default.model('Professors', Professors, 'Professors');

@@ -32,6 +32,10 @@ let Students = new Schema({
     status: {
         type: String,
         default: 'Aktivan'
+    },
+    firstLogin: {
+        type: Boolean,
+        default: true
     }
 });
 exports.default = mongoose_1.default.model('Studeents', Students, 'Students');

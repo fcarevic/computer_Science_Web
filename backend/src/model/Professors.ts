@@ -53,6 +53,10 @@ let Professors  = new Schema ({
         },
         slika:{
             type: String
+        },
+        firstLogin: {
+            type: Boolean,
+            default: true
         }
 
 });

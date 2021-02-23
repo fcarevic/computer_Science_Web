@@ -16,11 +16,13 @@ export class NotificationsListComponent implements OnInit {
   ngOnInit(): void {
     this.getAllNotificationTypes();
     this.getAllNotifications();
+    this.typee=localStorage.getItem('tip');
   }
 
   notificationTypes: NotificationType[]
   notifications: Notification[]
   allNotifications: Notification[]
+  typee= '';
   getAllNotificationTypes() {
     this.notificationService.getAllNotificationTypes().subscribe((notifTypes: NotificationType[]) => {
       this.notificationTypes = notifTypes;

@@ -9,6 +9,7 @@ import multer from 'multer'
 import Subject from './model/Subject';
 import Student from './model/Student';
 import Admins from './model/Admins';
+import Project from './model/Project';
 const app = express();
 app.use(cors());
 app.use(bodyParser.json());
@@ -784,6 +785,47 @@ router.route('/admins/:username').get((request, response)=>{
     })
 })
 
+/********************** UNIVERSITY PROJECT ROUTES */
+
+router.route('/projects').get((request, response)=>{
+    Project.find({}, (err,res)=>{
+        if(err) console.log(err)
+        else if(res) response.json(res);
+        else response.json({})
+    })
+})
+
+router.route('/projects/:id').get((request, response)=>{
+    let id= request.params.id;
+    Project.findOne({id:id}, (err,res)=>{
+        if(err) console.log(err)
+        else if(res) response.json(res);
+        else response.json({})
+    })
+})
+
+
+router.route('/projects/insert').post((request, response)=>{
+    let proj = request.body.project;
+    let nproj = new Project(proj);
+    nproj.save().then(res=>{
+        response.json(res);
+    })
+})
+
+router.route('/projects/update').post((request, response)=>{
+    let proj = request.body.project;
+    Project.updateOne({id: proj.id}, {
+        title: proj.title,
+        description: proj.description,
+        professors: proj.professors
+    }).then(res=> response.json(res))
+})
+
+router.route('/projects/delete').post((request, response)=>{
+    let proj = request.body.project;
+    Project.deleteOne({id: proj.id}).then(res=> response.json(res))
+})
 
 app.use('/', router);
 app.listen(4000, () => console.log(`Express server running on port 4000`));

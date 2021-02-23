@@ -12,4 +12,5 @@ export class Radnik{
     status: string;
     slika:string;
     predmeti: Array<Object>;
+    firstLogin: boolean;
 }

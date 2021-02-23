@@ -6,4 +6,5 @@ export class Student{
     indeks : string;
     tip: string;
     status: string;
+    firstLogin: boolean;
 }

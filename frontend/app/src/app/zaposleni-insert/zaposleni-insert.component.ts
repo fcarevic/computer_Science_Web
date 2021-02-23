@@ -69,6 +69,7 @@ checkFields(){
 }
 
   insertZaposleni() {
+    this.zaposleni.firstLogin=true;
     if(!this.checkFields()) return;
     this.zaposleniService.insertZaposleni(this.zaposleni).subscribe(res => {
      

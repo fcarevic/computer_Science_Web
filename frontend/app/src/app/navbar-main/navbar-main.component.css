@@ -13,3 +13,10 @@ div{
     border-radius: 10pt;
  
 }
+
+.activeLink2{
+    color:white  !important;
+    background-color: rgb(239, 244, 253);
+    border-radius: 10pt;
+ 
+}

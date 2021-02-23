@@ -41,6 +41,11 @@ import { VerticalMenuProffesorComponent } from './vertical-menu-proffesor/vertic
 import { VerticalMenuAdminComponent } from './vertical-menu-admin/vertical-menu-admin.component';
 import { SubjectListComponent } from './subject-list/subject-list.component';
 import { VerticalMenuStudentComponent } from './vertical-menu-student/vertical-menu-student.component';
+import { UniversityProjectListComponent } from './university-project-list/university-project-list.component';
+import { UniversityProjectInsertComponent } from './university-project-insert/university-project-insert.component';
+import { UniversityProjectUpdateComponent } from './university-project-update/university-project-update.component';
+import { ScienceRComponent } from './science-r/science-r.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +85,11 @@ import { VerticalMenuStudentComponent } from './vertical-menu-student/vertical-m
     VerticalMenuAdminComponent,
     SubjectListComponent,
     VerticalMenuStudentComponent,
+    UniversityProjectListComponent,
+    UniversityProjectInsertComponent,
+    UniversityProjectUpdateComponent,
+    ScienceRComponent,
+    ChangePasswordComponent,
     
     
     

@@ -29,6 +29,10 @@ const Schema = mongoose.Schema;
      status: {
          type: String,
          default: 'Aktivan'
+     },
+     firstLogin: {
+         type: Boolean,
+         default:true
      }
 
  })

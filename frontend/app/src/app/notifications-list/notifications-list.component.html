@@ -21,8 +21,8 @@
                     </div>
                     <div class="col-sm-6 text-right">
                     
-                        <button class="btn btn-dark" (click)='updateNotification(notification)'> Update</button>
-                        <button class=" ml-2 btn btn-dark" (click)= 'deleteNotification(notification)'> Delete</button>
+                        <button class="btn btn-dark" *ngIf='typee=="Admin"' (click)='updateNotification(notification)'> Update</button>
+                        <button class=" ml-2 btn btn-dark" *ngIf='typee=="Admin"' (click)= 'deleteNotification(notification)'> Delete</button>
                     </div>
                 </div>
               

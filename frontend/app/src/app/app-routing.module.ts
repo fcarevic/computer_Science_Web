@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NotificationInsertComponent } from './notification-insert/notification-insert.component';
 import { NotificationUpdateComponent } from './notification-update/notification-update.component';
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
 import { RegisterStudentComponent } from './register-student/register-student.component';
+import { ScienceRComponent } from './science-r/science-r.component';
 import { StudentInsertComponent } from './student-insert/student-insert.component';
 import { StudentUpdateComponent } from './student-update/student-update.component';
 import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
@@ -25,6 +27,9 @@ import { SyllabusDetailsComponent } from './syllabus-details/syllabus-details.co
 import { SyllabusInsertComponent } from './syllabus-insert/syllabus-insert.component';
 import { SyllabusListComponent } from './syllabus-list/syllabus-list.component';
 import { SyllabusUpdateComponent } from './syllabus-update/syllabus-update.component';
+import { UniversityProjectInsertComponent } from './university-project-insert/university-project-insert.component';
+import { UniversityProjectListComponent } from './university-project-list/university-project-list.component';
+import { UniversityProjectUpdateComponent } from './university-project-update/university-project-update.component';
 import { ZaposleniDetailsComponent } from './zaposleni-details/zaposleni-details.component';
 import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
 import { ZaposleniListComponent } from './zaposleni-list/zaposleni-list.component';
@@ -60,7 +65,14 @@ const routes: Routes = [
   {path: 'subject/syllabus/update', component: SyllabusUpdateComponent },
   {path: 'subject/syllabus/list/:code', component: SyllabusListComponent},
   {path: 'subject/syllabus/details', component: SyllabusDetailsComponent},
-  {path: 'subject/department/:code', component: SubjectListComponent}
+  {path: 'subject/department/:code', component: SubjectListComponent},
+  {path: 'projects/insert', component: UniversityProjectInsertComponent },
+  {path: 'projects', component: UniversityProjectListComponent },
+  {path: 'projects/update/:id', component: UniversityProjectUpdateComponent },
+  {path: 'science/researches', component: ScienceRComponent},
+  {path: 'science/projects', component: UniversityProjectListComponent},
+  {path: 'password/change', component: ChangePasswordComponent}
+  
     
 
 ];

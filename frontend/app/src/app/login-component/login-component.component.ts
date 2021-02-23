@@ -39,6 +39,13 @@ export class LoginComponentComponent implements OnInit {
           localStorage.setItem('user', this.username);
           localStorage.setItem('tip', this.typee)
           this.user=res; 
+          if(this.typee!='Admin'){
+            if(this.user.firstLogin){
+              this.router.navigate(['/password/change'])
+              
+            }else  location.reload();
+
+          }else 
           location.reload();
 
 

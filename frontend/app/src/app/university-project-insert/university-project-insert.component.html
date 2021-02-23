@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8 text-center">
+        <table class="table">
+            <tr>
+                <td> <h5>Naslov</h5></td>
+                <td>
+                    <input type="text" [(ngModel)]='project.title'  value="{{project.title}}">
+                </td>
+            </tr>
+            <tr>
+                <td> <h5>Opis</h5></td>
+                <td>
+                    <textarea  [(ngModel)]='project.description'  value="{{project.description}}" cols="30" rows="10"></textarea>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td> <h5>Tip</h5></td>
+                <td>
+                   <select [(ngModel)]='project.typee'>
+                       <option value="{{type}}" *ngFor='let type of types'> {{type}}</option>
+                   </select> 
+                </td>
+            </tr>
+            <tr>
+                <td> <h5>Nastavnici</h5></td>
+                <td>
+                 <select multiple [(ngModel)]='project.professors'>
+                     <option value="{{professor.username}}" *ngFor='let professor of professors' >{{professor.ime}} {{professor.prezime}}</option>
+                 </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <button  class="btn btn-dark" (click)='insertProject()'>
+                        Dodaj
+                    </button>
+                </td>
+            </tr>
+            
+        </table>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+          </div>
+    </div>
+</div>

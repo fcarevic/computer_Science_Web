@@ -83,6 +83,7 @@ export class StudentInsertComponent implements OnInit {
 
  
   insertStudent(){
+    this.student.firstLogin=true;
     if(!this.checkUsername() || !this.checkRestFields()) return;
       this.studentService.insetStudent(this.student).subscribe((res:any)=>{
           if(res.status && res.status=='not_ok'){

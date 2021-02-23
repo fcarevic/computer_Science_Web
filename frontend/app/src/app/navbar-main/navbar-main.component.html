@@ -1,16 +1,15 @@
 <div class="p-4">
     <nav class="navbar navbar-expand-lg navbar-primary bg-light p-4">
-      <img class="img-fluid ml-4 mr-2"
+      <a class="nav-link" routerLink='/home' routerLinkActive = 'activeLink2'><img class="img-fluid ml-4 mr-2"
         src="https://www.etf.bg.ac.rs/assets/logo-sr-lat-b78bbef0f2c809d1c5da5db35ca1bf8ac6f28e720a06c1c1f8a8975898cba857.png">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item active">
-            <a class="nav-link" routerLink='/home' routerLinkActive = 'activeLink'>Početna </a>
-          </li>
+          
           <li class="nav-item">
             <a class="nav-link" routerLink='/employees' routerLinkActive = 'activeLink'>Zaposleni</a>
           </li>
@@ -33,10 +32,21 @@
             <a class="nav-link" routerLink="/subject/department/master" routerLinkActive = 'activeLink'>Master studije</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link"  routerLinkActive = 'activeLink'>Projekti</a>
+            <a class="nav-link" routerLink="/projects" routerLinkActive = 'activeLink'>Projekti</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink='/contact' routerLinkActive = 'activeLink'>Kontakt</a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle"   routerLinkActive = 'activeLink' id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Nauka
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+              <li><a class="dropdown-item" routerLink="/science/researches" routerLinkActive = 'activeLink'>Istraživanja</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" routerLink="/science/projects">Projekti</a></li>
+            </ul>
           </li>
 
         </ul>
