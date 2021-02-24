@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <table class="table">
+            <tr>
+                <td>Predmet</td>
+                <td>
+                    <select [(ngModel)]='code' (change)='change($event.target.value)'>
+                            <option value="{{subject.code}}" *ngFor='let subject of subjects'>{{subject.name}}</option>
+                    </select>
+                </td>
+            </tr>
+            <tr *ngFor='let group of groups'>
+                <td>
+                    {{getProfessorName(group.professor)}}
+                </td>
+                <td>
+                    <select [(ngModel)]='group.typee'>
+                        <option value="Predavanja" [selected]='group.typee=="Predavanja"'>Predavanja</option>
+                        <option value="Vezbe" [selected]='group.typee=="Vezbe"'>Vežbe</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="number" [(ngModel)]='group.number' value="{{group.number}}">
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                        <button class="btn btn-dark" (click)='insertSubjectPlan()'>Dodaj</button>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="offset-sm-3 col-sm-6">
+        <div *ngIf='message' class="m-4 alert alert-{{message.style}}" role="alert">
+            {{message.msg}}
+          </div>
+    </div>
+</div>

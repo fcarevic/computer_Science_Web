@@ -15,9 +15,9 @@ export class ChangePasswordComponent implements OnInit {
   MESSAGE_DANGER_CONFIRM_OLD_PASSWORD = { style: "danger", msg: "Neispravna ponovljena stara lozinka" };
  
   ngOnInit(): void {
-    this.typee = localStorage.getItem('tip');
+    this.typee = localStorage.getItem('tipFirst');
     
-    let username= localStorage.getItem('user');
+    let username= localStorage.getItem('userFirst');
     if(this.typee=='Student'){
       this.getStudent(username)
     } else if(this.typee=='Professor'){

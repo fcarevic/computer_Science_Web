@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { File, SubjectInfo, SubjectLab, SubjectNotification, SubjectProject, SubjectSyllabus } from './entities/Subject';
+import { File, SubjectInfo, SubjectLab, SubjectNotification, SubjectPlan, SubjectProject, SubjectSyllabus } from './entities/Subject';
 
 @Injectable({
   providedIn: 'root'
@@ -120,4 +120,17 @@ export class SubjectServiceService {
   getAllSolutions(code:string){
     return this.http.get(`${this.uri}/subject/solutions/`+code);
   }
+
+  /********************GROUPS */
+  getAllGroups(code:string){
+    return this.http.get(`${this.uri}/subject/groups/`+code);
+  }
+  getAllGroupsForAllSubjects(){
+    return this.http.get(`${this.uri}/subject/groups`);
+  }
+  insertGroup(code:string, groups: SubjectPlan[]){
+    return this.http.post(`${this.uri}/subject/groups/insert`,{code, groups});
+  }
+  
+
 }

@@ -724,6 +724,35 @@ router.route('/subject/solutions/:code').get((request, response) => {
             response.json([]);
     });
 });
+/****************SUBJECT GROUPS */
+router.route('/subject/groups/insert').post((request, response) => {
+    let groups = request.body.groups;
+    let code = request.body.code;
+    Subject_1.default.updateOne({ 'info.code': code }, {
+        'plan': groups
+    }).then(res => { response.json(res); });
+});
+router.route('/subject/groups').get((request, response) => {
+    Subject_1.default.find({}, {
+        info: 1,
+        plan: 1
+    }, (err, res) => {
+        if (err)
+            console.log(err);
+        response.json(res);
+    });
+});
+router.route('/subject/groups/:code').get((request, response) => {
+    let code = request.params.code;
+    Subject_1.default.findOne({ 'info.code': code }, {
+        info: 1,
+        plan: 1
+    }, (err, res) => {
+        if (err)
+            console.log(err);
+        response.json(res);
+    });
+});
 /***************SUBJECT STUDENTS */
 router.route('/subject/applicant/insert').post((request, response) => {
     let code = request.body.code;

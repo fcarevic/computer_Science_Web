@@ -104,6 +104,11 @@ let Subjects = new Schema({
                 default: true
             },
             students: [String]
+        }],
+    plan: [{
+            professor: String,
+            typee: String,
+            number: Number
         }]
 });
 exports.default = mongoose_1.default.model('Subjects', Subjects, 'Subjects');

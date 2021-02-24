@@ -52,3 +52,8 @@ export class SubjectSyllabus{
     students: string[];
     active: boolean;
 }
+export class SubjectPlan{
+    professor: string;
+    number: number;
+    typee: string;
+}

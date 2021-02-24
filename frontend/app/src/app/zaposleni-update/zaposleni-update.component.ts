@@ -97,6 +97,7 @@ export class ZaposleniUpdateComponent implements OnInit {
       this.message = { style: "danger", msg: "Nije uneta adresa" };
       return false;
      }
+     return true;
   }
   getZaposleniByUsername(username) {
     

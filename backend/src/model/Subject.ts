@@ -105,10 +105,12 @@ syllabus:[{
         default: true
     },
     students: [String]
+}],
+plan: [{
+    professor: String,
+    typee: String,
+    number: Number
 }]
-
-
-
 
 });
 

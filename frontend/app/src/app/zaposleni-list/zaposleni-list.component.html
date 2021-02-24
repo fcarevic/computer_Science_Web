@@ -1,14 +1,14 @@
 <div class="row">
-    <div class="col-sm-4"  *ngFor = 'let radnik of zaposleni'>
+    <div class="col-sm-6"  *ngFor = 'let radnik of zaposleni'>
         <div class="card text-center m-4">
             <img class="card-img-top imgheight" src="{{images[radnik.username]}}" alt="Slika">
             <div class="card-body">
                 
               <h5 class="card-title bg-light p-4">{{radnik.prezime}} &nbsp; {{radnik.ime}}</h5>
               <p class="card-text">
-                  <span> {{radnik.zvanje}}</span> <br>
-                  <span *ngFor='let predmet of radnik.predmeti'>
-                      {{predmet.sifra}} <br>
+                  <span> {{radnik.zvanje}}</span> <br> <br>
+                  <span *ngFor='let predmet of getPlan(radnik.username)'>
+                      {{predmet}} <br>
                   </span>
               </p>
               <a routerLink='/employees/{{radnik.username}}' class="btn btn-primary">Detalji</a>

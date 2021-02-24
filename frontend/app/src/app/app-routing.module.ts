@@ -11,6 +11,7 @@ import { ScienceRComponent } from './science-r/science-r.component';
 import { StudentInsertComponent } from './student-insert/student-insert.component';
 import { StudentUpdateComponent } from './student-update/student-update.component';
 import { SubjectExamListComponent } from './subject-exam-list/subject-exam-list.component';
+import { SubjectGroupsCreateComponent } from './subject-groups-create/subject-groups-create.component';
 import { SubjectInfoDetailsComponent } from './subject-info-details/subject-info-details.component';
 import { SubjectInfoInsertComponent } from './subject-info-insert/subject-info-insert.component';
 import { SubjectInfoUpdateComponent } from './subject-info-update/subject-info-update.component';
@@ -73,7 +74,8 @@ const routes: Routes = [
   {path: 'science/researches', component: ScienceRComponent},
   {path: 'science/projects', component: UniversityProjectListComponent},
   {path: 'password/change', component: ChangePasswordComponent},
-  {path: 'exams/:code', component: SubjectExamListComponent}
+  {path: 'exams/:code', component: SubjectExamListComponent},
+  {path: 'subject/plan/insert', component: SubjectGroupsCreateComponent},
   
     
 

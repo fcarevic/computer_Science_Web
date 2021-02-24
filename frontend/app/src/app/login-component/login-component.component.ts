@@ -11,69 +11,74 @@ import { ZaposleniService } from '../zaposleni.service';
 })
 export class LoginComponentComponent implements OnInit {
 
-  constructor(private studentService : StudentServiceService, private zaposleniService: ZaposleniService, 
-    private adminService: AdminServiceService, private router:Router
-    ) { }
-    MESSAGE_WRONG_USERNAME = { style: "danger", msg: "Username nije pronadjen" };
-    MESSAGE_WRONG_PASSWORD = { style: "danger", msg: "Sifra nije pronadjena" };
+  constructor(private studentService: StudentServiceService, private zaposleniService: ZaposleniService,
+    private adminService: AdminServiceService, private router: Router
+  ) { }
+  MESSAGE_WRONG_USERNAME = { style: "danger", msg: "Username nije pronadjen" };
+  MESSAGE_WRONG_PASSWORD = { style: "danger", msg: "Sifra nije pronadjena" };
 
-  username : string;
-  password : string;
+  username: string;
+  password: string;
   typee: string;
-  user:any=null;
-  message=null;
+  user: any = null;
+  message = null;
 
   ngOnInit(): void {
-    if(localStorage.getItem('tip')){
-      this.typee=localStorage.getItem('tip');
+    if (localStorage.getItem('tip')) {
+      this.typee = localStorage.getItem('tip');
       this.username = localStorage.getItem('user');
       this.init2();
     }
   }
 
-  callback(res:any){
-    
-    if(res && res.password){
-        if(res.password== this.password ){
-         
-          localStorage.setItem('user', this.username);
-          localStorage.setItem('tip', this.typee)
-          this.user=res; 
-          if(this.typee!='Admin'){
-            if(this.user.firstLogin){
-              this.router.navigate(['/password/change'])
-              
-            }else  location.reload();
+  callback(res: any) {
 
-          }else 
+    if (res && res.password) {
+      if (res.password == this.password) {
+
+        localStorage.setItem('user', this.username);
+        localStorage.setItem('tip', this.typee)
+        this.user = res;
+        if (this.typee != 'Admin') {
+          if (this.user.firstLogin) {
+            localStorage.removeItem('user');
+            localStorage.removeItem('tip')
+
+            localStorage.setItem('userFirst', this.username);
+            localStorage.setItem('tipFirst', this.typee)
+            this.router.navigate(['/password/change'])
+
+          } else location.reload();
+
+        } else
           location.reload();
 
 
-        } else this.message=this.MESSAGE_WRONG_PASSWORD
-    } else this.message=this.MESSAGE_WRONG_USERNAME
+      } else this.message = this.MESSAGE_WRONG_PASSWORD
+    } else this.message = this.MESSAGE_WRONG_USERNAME
   }
- logout(){ 
-   this.user=null;
-   localStorage.removeItem('user');
-   localStorage.removeItem('tip');
-   location.reload();
- }
+  logout() {
+    this.user = null;
+    localStorage.removeItem('user');
+    localStorage.removeItem('tip');
+    location.reload();
+  }
 
- init2(){
-  if(this.typee=='Admin'){
-    this.adminService.getAdminByUsername(this.username).subscribe((res:any)=>this.user=res)
-  } else if(this.typee=='Professor'){
-      this.zaposleniService.getZaposleniByUsername(this.username).subscribe((res:any)=>this.user=res)
-  } else this.studentService.getStudentByUsername(this.username).subscribe((res:any)=>this.user=res);
-  
- }
-  login(){
-     
-    if(this.typee=='Admin'){
-      this.adminService.getAdminByUsername(this.username).subscribe(res=> this.callback(res))
-    } else if(this.typee=='Professor'){
-        this.zaposleniService.getZaposleniByUsername(this.username).subscribe(res=> this.callback(res))
-    } else this.studentService.getStudentByUsername(this.username).subscribe(res=> this.callback(res));
-    
+  init2() {
+    if (this.typee == 'Admin') {
+      this.adminService.getAdminByUsername(this.username).subscribe((res: any) => this.user = res)
+    } else if (this.typee == 'Professor') {
+      this.zaposleniService.getZaposleniByUsername(this.username).subscribe((res: any) => this.user = res)
+    } else this.studentService.getStudentByUsername(this.username).subscribe((res: any) => this.user = res);
+
+  }
+  login() {
+
+    if (this.typee == 'Admin') {
+      this.adminService.getAdminByUsername(this.username).subscribe(res => this.callback(res))
+    } else if (this.typee == 'Professor') {
+      this.zaposleniService.getZaposleniByUsername(this.username).subscribe(res => this.callback(res))
+    } else this.studentService.getStudentByUsername(this.username).subscribe(res => this.callback(res));
+
   }
 }

@@ -66,12 +66,14 @@ checkFields(){
     this.message = { style: "danger", msg: "Nije uneta adresa" };
     return false;
    }
+   return true;
 }
 
   insertZaposleni() {
     this.zaposleni.firstLogin=true;
     if(!this.checkFields()) return;
     this.zaposleniService.insertZaposleni(this.zaposleni).subscribe(res => {
+      
      
 
       if (res['status'] && res['status'] != 'not_ok') {

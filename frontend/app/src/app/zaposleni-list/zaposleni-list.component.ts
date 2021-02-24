@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Radnik } from '../entities/radnik';
 import { FileServiceService } from '../file-service.service';
+import { SubjectServiceService } from '../subject-service.service';
 import { ZaposleniService } from '../zaposleni.service';
 
 @Component({
@@ -10,11 +11,14 @@ import { ZaposleniService } from '../zaposleni.service';
 })
 export class ZaposleniListComponent implements OnInit {
 
-  constructor(private zaposleniService: ZaposleniService, private imgService: FileServiceService) {
+  constructor(private zaposleniService: ZaposleniService, private imgService: FileServiceService,
+    private subjectService:SubjectServiceService
+    ) {
     this.getAllZaposleni();
    }
 
   ngOnInit(): void {
+    this.getAllSubjectsAndGroups();
   }
 
 
@@ -34,6 +38,29 @@ export class ZaposleniListComponent implements OnInit {
     }, (err)=>{
        console.log(err);
      });
+  }
+  allInfo=[];
+
+  getPlan(username:string){
+      let arr=[];
+      
+      this.allInfo.forEach(el=> {
+         el.plan.forEach(element => {
+           if(element.professor == username)
+           arr.push(el.info.name +' : ' + element.typee + ' : ' + element.number) 
+           
+         });
+      })
+       
+      return arr;
+  }
+
+  getAllSubjectsAndGroups(){
+    this.subjectService.getAllGroupsForAllSubjects().subscribe((res:any)=>{
+      this.allInfo=res;
+     
+       
+    })
   }
 
 }
