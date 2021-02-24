@@ -136,6 +136,56 @@
                             </li>
 
 
+                            <li>
+
+                                <div class="accordion" id='ExamsAccordian'>
+                                    <div id="ExamsUpdate">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#ExamsUpdatec" aria-expanded="false"
+                                                aria-controls="ExamsUpdatec">
+                                                Ispitna pitanja
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="ExamsUpdatec" class="collapse" aria-labelledby="ExamsUpdate"
+                                        data-parent="#ExamsAccordian">
+                                        <ul>
+                                           <li>
+                                            <div class="accordion" id='ExamsUpdateAccordian'>
+                                                <div id="ExamsUpdate">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-link collapsed" type="button"
+                                                            data-toggle="collapse" data-target="#ExamsUpdatecc"
+                                                            aria-expanded="false" aria-controls="ExamsUpdatecc">
+                                                        Brisanje
+                                                        </button>
+                                                    </h2>
+                                                </div>
+                                                <div id="ExamsUpdatecc" class="collapse"
+                                                    aria-labelledby="ExamsUpdate"
+                                                    data-parent="#ExamsUpdateAccordian">
+                                                    <ul>
+                                                        <li *ngFor='let subject of subjects'>
+                                                            <a routerLink='/exams/{{subject.code}}'>
+                                                                {{subject.code}}</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                           </li>
+
+                                           <li>
+                                            <a routerLink='/subject/material/insert'>
+                                               &nbsp;&nbsp;&nbsp;Dodaj</a>
+                                           </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </li>
+
+
 
 
                             <li>

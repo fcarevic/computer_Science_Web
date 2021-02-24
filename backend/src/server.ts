@@ -196,7 +196,8 @@ router.route('/zaposleni/update').post((request, response) => {
             kabinet: professor.kabinet,
             status: professor.status,
             predmeti: professor.predmeti,
-            slika: professor.slika
+            slika: professor.slika,
+            firstLogin: professor.firstLogin
         }
         , (err, res) => {
             if (err) console.log(err);
@@ -330,7 +331,8 @@ router.route('/student/info/update').post((request, response) => {
         prezime: student.prezime,
         indeks: student.indeks,
         tip: student.tip,
-        status: student.status
+        status: student.status,
+        firstLogin: student.firstLogin
     }).then(res => {
         response.json(res);
     })
@@ -731,8 +733,68 @@ router.route('/subject/syllabus/:code').get((request, response)=>{
         })
 })
 
+/******************SUBJECT EXAM QUESTIONS AND SOLUTIONS */
 
+router.route('/subject/questions/materials/insert').post((request, response)=>{
+    let question = request.body.file;
+    let code =request.body.code;
+    
+    
+    Subject.updateOne({'info.code': code}, {
+        $push: {
+            'exams.questions':question
+        }
+    }).then(res=>response.json(res))
+})
+router.route('/subject/questions/materials/delete').post((request, response)=>{
+    let question = request.body.file;
+    let code =request.body.code;
+    Subject.updateOne({'info.code': code}, {
+        $pull: {
+            'exams.questions':question
+        }
+    }).then(res=>response.json(res))
+})
 
+router.route('/subject/solutions/materials/insert').post((request, response)=>{
+    let solution = request.body.file;
+    let code =request.body.code;
+    Subject.updateOne({'info.code': code}, {
+        $push: {
+            'exams.solutions':solution
+        }
+    }).then(res=>response.json(res))
+})
+
+router.route('/subject/solutions/materials/delete').post((request, response)=>{
+    let solution = request.body.file;
+    let code =request.body.code;
+    Subject.updateOne({'info.code': code}, {
+        $pull: {
+            'exams.solutions':solution
+        }
+    }).then(res=>response.json(res))
+})
+
+router.route('/subject/questions/:code').get((request, response)=>{
+    let code = request.params.code;
+    Subject.findOne({'info.code':code},{exams:1}, 
+    (err,res:any)=>{
+        if(err)console.log(err);
+        if(res) response.json(res.exams.questions);
+        else response.json([]);
+    })
+})
+
+router.route('/subject/solutions/:code').get((request, response)=>{
+    let code = request.params.code;
+    Subject.findOne({'info.code':code},{exams:1}, 
+    (err,res:any)=>{
+        if(err)console.log(err);
+        if(res) response.json(res.exams.solutions);
+        else response.json([]);
+    })
+})
 /***************SUBJECT STUDENTS */
 router.route('/subject/applicant/insert').post((request, response)=>{
     let code = request.body.code;

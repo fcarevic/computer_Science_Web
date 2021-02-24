@@ -46,6 +46,7 @@ import { UniversityProjectInsertComponent } from './university-project-insert/un
 import { UniversityProjectUpdateComponent } from './university-project-update/university-project-update.component';
 import { ScienceRComponent } from './science-r/science-r.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { SubjectExamListComponent } from './subject-exam-list/subject-exam-list.component';
 
 @NgModule({
   declarations: [
@@ -90,6 +91,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     UniversityProjectUpdateComponent,
     ScienceRComponent,
     ChangePasswordComponent,
+    SubjectExamListComponent,
     
     
     

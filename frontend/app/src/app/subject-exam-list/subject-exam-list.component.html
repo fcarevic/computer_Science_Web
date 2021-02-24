@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="offset-sm-2 col-sm-8 text-center">
+        <h2>Rokovi</h2>
+        <br><br><br>
+        <table class="table table-striped">
+            <tr *ngFor='let question of questions'>
+                <td>
+                    <a href="{{URL}}/{{question.filename}}">{{question.filename}}</a>
+                </td>
+                <td>
+                    {{question.fileSize}}B
+                 </td>
+                 <td>
+                     {{getProfessorName(question.professor)}}
+                 </td>
+                <td>
+                    <button *ngIf='user==question.professor' class="btn btn-dark" (click)='deleteMaterial(question, "questions")'>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </table>
+        <br><br><br>
+
+        <h2>Rešenja</h2>
+        <br><br>
+        <table class="table table-striped">
+
+            <tr *ngFor='let solution of solutions'>
+                <td>
+                    <a href="{{URL}}/{{solution.filename}}">{{solution.filename}}</a>
+                </td>
+                <td>
+                   {{solution.fileSize}}B
+                </td>
+                <td>
+                    {{getProfessorName(solution.professor)}}
+                </td>
+                <td>
+                    <button class="btn btn-dark"
+                    *ngIf='user==solution.professor'
+                    (click)='deleteMaterial(solution, "solutions")'>
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </table>
+
+    </div>
+</div>

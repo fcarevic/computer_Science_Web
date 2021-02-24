@@ -16,6 +16,7 @@ export class ChangePasswordComponent implements OnInit {
  
   ngOnInit(): void {
     this.typee = localStorage.getItem('tip');
+    
     let username= localStorage.getItem('user');
     if(this.typee=='Student'){
       this.getStudent(username)
@@ -70,6 +71,7 @@ export class ChangePasswordComponent implements OnInit {
    }
    updateStudent(){
     this.studentService.updateStudent(this.user).subscribe(res=>{
+     
       this.router.navigate(['/home'])
        
     })

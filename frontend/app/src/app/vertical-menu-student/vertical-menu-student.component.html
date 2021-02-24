@@ -182,6 +182,31 @@
 
                             </li>
 
+                            <li>
+
+                                <div class="accordion" id='Rokovi'>
+                                    <div id="RokoviU">
+                                        <h2 class="mb-0">
+                                            <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                                data-target="#RokoviUc" aria-expanded="false"
+                                                aria-controls="RokoviUc">
+                                                Rokovi
+                                            </button>
+                                        </h2>
+                                    </div>
+                                    <div id="RokoviUc" class="collapse" aria-labelledby="RokoviU"
+                                        data-parent="#Rokovi">
+                                        <ul>
+                                            <li *ngFor='let subject of subjects'>
+                                                <a routerLink='/exams/{{subject.code}}'>
+                                                    {{subject.code}}</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </li>
+
                         </ul>
                     </div>
                 </div>

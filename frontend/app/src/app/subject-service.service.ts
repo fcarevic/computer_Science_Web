@@ -110,4 +110,14 @@ export class SubjectServiceService {
   getAllApplicants(code:string){
     return this.http.get(`${this.uri}/subject/applicant/` + code);
   }
+
+  /*************EXAMS AND SOLUTIONS */
+
+  getAllQuestions(code:string){
+    return this.http.get(`${this.uri}/subject/questions/`+code);
+  }
+  
+  getAllSolutions(code:string){
+    return this.http.get(`${this.uri}/subject/solutions/`+code);
+  }
 }

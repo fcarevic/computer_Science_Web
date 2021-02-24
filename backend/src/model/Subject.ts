@@ -47,10 +47,26 @@ exerciseMaterials: [{
         default: new Date()
     }
 }],
-exams:[{
-    question : String,
-    solution: String 
-}],
+exams:{
+    questions : [{
+        filename:String,
+        professor: String,
+        fileSize: Number,
+        date: {
+            type:Date,
+            default: new Date()
+        }
+    }],
+    solutions: [{
+        filename:String,
+        professor: String,
+        fileSize: Number,
+        date: {
+            type:Date,
+            default: new Date()
+        }
+    }] 
+},
 lab: {
     info: String,
     numberOfExercises: Number,
