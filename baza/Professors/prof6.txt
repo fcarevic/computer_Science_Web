@@ -1,0 +1,18 @@
+{
+    "_id" : ObjectId("6036d10a2c52df25e4394a38"),
+    "predmeti" : [],
+    "firstLogin" : false,
+    "username" : "fiki",
+    "password" : "fiki123",
+    "ime" : "Fiki",
+    "prezime" : "Fikic",
+    "adresa" : "asdres",
+    "mobilni" : "123123",
+    "zvanje" : "Redovni profesor",
+    "kabinet" : "12",
+    "status" : "Aktivan",
+    "slika" : "fiki-download.jpg",
+    "__v" : 0,
+    "podaci" : null,
+    "website" : "website"
+}

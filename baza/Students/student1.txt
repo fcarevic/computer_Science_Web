@@ -1,0 +1,12 @@
+{
+    "_id" : ObjectId("6029a8cf32485b1fb8666b63"),
+    "status" : "Aktivan",
+    "username" : "cf201765d",
+    "password" : "aa",
+    "indeks" : "2017/0065",
+    "tip" : "d",
+    "ime" : "Filip",
+    "prezime" : "Carevic",
+    "firstLogin" : false,
+    "__v" : 0
+}

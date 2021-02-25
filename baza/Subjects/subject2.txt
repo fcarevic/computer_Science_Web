@@ -1,0 +1,60 @@
+{
+    "_id" : ObjectId("60371072b1a3272f204567fa"),
+    "info" : {
+        "departments" : [ 
+            "si", 
+            "rti"
+        ],
+        "years" : [ 
+            3
+        ],
+        "professors" : [ 
+            "mika", 
+            "luka"
+        ],
+        "examsForbidden" : false,
+        "labForbidden" : false,
+        "projectForbidden" : false,
+        "code" : "pp",
+        "name" : "Prevodioci",
+        "typee" : "Obavezni",
+        "fond" : 4,
+        "epsb" : 6,
+        "goal" : "cilj",
+        "outcome" : "ishod",
+        "lectureTerm" : "07:00",
+        "exerciseTerm" : "03:50"
+    },
+    "exams" : {
+        "questions" : [],
+        "solutions" : []
+    },
+    "lab" : {
+        "materials" : []
+    },
+    "project" : {
+        "materials" : []
+    },
+    "applicants" : [ 
+        "cf201765d"
+    ],
+    "notifications" : [],
+    "lectureMaterials" : [],
+    "exerciseMaterials" : [],
+    "syllabus" : [],
+    "plan" : [ 
+        {
+            "_id" : ObjectId("603711e4b1a3272f204567fe"),
+            "professor" : "mika",
+            "typee" : "Predavanja",
+            "number" : 1
+        }, 
+        {
+            "_id" : ObjectId("603711e4b1a3272f204567fd"),
+            "professor" : "luka",
+            "typee" : "Vezbe",
+            "number" : 2
+        }
+    ],
+    "__v" : 0
+}

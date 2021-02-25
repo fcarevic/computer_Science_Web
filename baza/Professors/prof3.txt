@@ -1,0 +1,15 @@
+{
+    "_id" : ObjectId("6021461335b35e0fc0ebb5c9"),
+    "predmeti" : [],
+    "username" : "luka",
+    "password" : "luka123",
+    "ime" : "Luka",
+    "prezime" : "Lukic",
+    "adresa" : "ul 6 bg",
+    "mobilni" : "1231234",
+    "zvanje" : "Asistent",
+    "kabinet" : "54",
+    "status" : "Aktivan",
+    "slika" : "ana-download.jpg",
+    "__v" : 0
+}

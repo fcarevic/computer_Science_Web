@@ -1,0 +1,14 @@
+{
+    "_id" : ObjectId("6020935701f160226019ec8f"),
+    "predmeti" : [],
+    "username" : "aki",
+    "password" : "aki123",
+    "ime" : "Aki",
+    "prezime" : "Akic",
+    "adresa" : "Ul 5 BG",
+    "mobilni" : "12312312312",
+    "zvanje" : "Asistent",
+    "kabinet" : "444",
+    "status" : "Aktivan",
+    "__v" : 0
+}

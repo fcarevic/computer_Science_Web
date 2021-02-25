@@ -1,0 +1,7 @@
+{
+    "_id" : ObjectId("601f34cde9102c79b38c4bc5"),
+    "title" : "Konferencija na Zlatiboru",
+    "description" : "Ovog leta odrzace se medjunarodna konferencija na Zlatiboru",
+    "date" : "2021-02-07",
+    "type" : "konferencija"
+}

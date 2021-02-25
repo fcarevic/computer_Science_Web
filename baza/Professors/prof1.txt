@@ -1,0 +1,16 @@
+{
+    "_id" : ObjectId("601f0e66e9102c79b38c4408"),
+    "username" : "mika",
+    "password" : "mika123",
+    "ime" : "Mika",
+    "prezime" : "Mikic",
+    "adresa" : "Ul.4 Beograd",
+    "mobilni" : "0651254123",
+    "website" : "www.mika.com",
+    "podaci" : "Asistent na ETF-u profesor 5 godina",
+    "zvanje" : "Redovni profesor",
+    "kabinet" : "34",
+    "status" : "Aktivan",
+    "slika" : "mika-download1.jpg",
+    "predmeti" : null
+}

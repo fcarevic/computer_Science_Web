@@ -1,0 +1,8 @@
+{
+    "_id" : ObjectId("603711ccb1a3272f204567fc"),
+    "date" : ISODate("2021-02-25T02:56:12.072Z"),
+    "title" : "Hakaton",
+    "description" : "Novi vikend hakaton",
+    "type" : "takmicenje",
+    "__v" : 0
+}

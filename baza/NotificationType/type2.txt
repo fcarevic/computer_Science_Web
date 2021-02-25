@@ -1,0 +1,4 @@
+{
+    "_id" : ObjectId("601f3499e9102c79b38c4bb5"),
+    "name" : "konferencija"
+}

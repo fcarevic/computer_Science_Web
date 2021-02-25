@@ -1,0 +1,16 @@
+{
+    "_id" : ObjectId("60370d6fb1a3272f204567f8"),
+    "predmeti" : [],
+    "firstLogin" : true,
+    "username" : "novi",
+    "password" : "novi123",
+    "ime" : "Novi",
+    "prezime" : "Novi",
+    "adresa" : "adrea",
+    "mobilni" : "123123",
+    "zvanje" : "Redovni profesor",
+    "kabinet" : "32",
+    "status" : "Aktivan",
+    "slika" : "novi-download1.jpg",
+    "__v" : 0
+}

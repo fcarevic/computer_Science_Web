@@ -1,0 +1,7 @@
+{
+    "_id" : ObjectId("601f34c0e9102c79b38c4bc0"),
+    "title" : "Praksa HTEC",
+    "description" : "Otvorena pozicija za praksu u HTEC-u. Detaljnije na sajtu firme",
+    "date" : "2021-02-07",
+    "type" : "praksa"
+}

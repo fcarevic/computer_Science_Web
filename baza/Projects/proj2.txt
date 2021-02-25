@@ -1,0 +1,11 @@
+{
+    "_id" : ObjectId("603571fe9f7f4d0460e12fa4"),
+    "professors" : [ 
+        "mika"
+    ],
+    "title" : "Diplomski rad 1",
+    "description" : "Radili student",
+    "typee" : "Diplomski rad",
+    "id" : 2,
+    "__v" : 0
+}

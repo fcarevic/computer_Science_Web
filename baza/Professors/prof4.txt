@@ -1,0 +1,18 @@
+{
+    "_id" : ObjectId("6021468435b35e0fc0ebb5ca"),
+    "predmeti" : [],
+    "username" : "ana",
+    "password" : "ana123",
+    "ime" : "Ana",
+    "prezime" : "Anic",
+    "adresa" : "ul 6 bg",
+    "mobilni" : "1231234",
+    "zvanje" : "Redovni profesor",
+    "kabinet" : "88",
+    "status" : "Aktivan",
+    "slika" : "ana-download.jpg",
+    "__v" : 0,
+    "podaci" : null,
+    "website" : null,
+    "firstLogin" : false
+}

@@ -1,0 +1,11 @@
+{
+    "_id" : ObjectId("6035720c9f7f4d0460e12fa5"),
+    "professors" : [ 
+        "mika"
+    ],
+    "title" : "Master rad 1",
+    "description" : "Radili student",
+    "typee" : "Master rad",
+    "id" : 3,
+    "__v" : 0
+}

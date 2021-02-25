@@ -1,0 +1,12 @@
+{
+    "_id" : ObjectId("603571e69f7f4d0460e12fa3"),
+    "professors" : [ 
+        "aki", 
+        "ana"
+    ],
+    "title" : "Univerzitetski projekat 1",
+    "description" : "Radili profesori projekat",
+    "typee" : "Univerzitetski",
+    "id" : 1,
+    "__v" : 0
+}

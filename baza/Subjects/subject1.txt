@@ -1,0 +1,118 @@
+{
+    "_id" : ObjectId("60231471dc11fe16541c8fe8"),
+    "info" : {
+        "departments" : [ 
+            "si", 
+            "rti", 
+            "master"
+        ],
+        "years" : [ 
+            4
+        ],
+        "professors" : [ 
+            "ana", 
+            "aki"
+        ],
+        "examsForbidden" : false,
+        "labForbidden" : true,
+        "projectForbidden" : false,
+        "code" : "pia",
+        "typee" : "Obavezni",
+        "fond" : 5,
+        "epsb" : 6,
+        "goal" : "cij4",
+        "outcome" : "ishod",
+        "additional" : "ostalo",
+        "lectureTerm" : "00:03",
+        "exerciseTerm" : "00:04",
+        "name" : "Programiranje internet aplikacija"
+    },
+    "lab" : {
+        "materials" : [],
+        "info" : "Izvode se lab u paru",
+        "numberOfExercises" : 8
+    },
+    "project" : {
+        "materials" : [],
+        "info" : "Projekat se radi samostalno"
+    },
+    "lectureMaterials" : [ 
+        {
+            "date" : ISODate("2021-02-19T22:19:16.735Z"),
+            "_id" : ObjectId("603039665933be0890441c3a"),
+            "filename" : "pia-lectures-Motivation letter revidirano.docx",
+            "fileSize" : 15731,
+            "professor" : "ana"
+        }
+    ],
+    "exerciseMaterials" : [],
+    "notifications" : [ 
+        {
+            "date" : ISODate("2021-02-25T12:28:02.876Z"),
+            "_id" : ObjectId("60379ba77da2b30544ac20d9"),
+            "title" : "Obavestenje 1",
+            "description" : "Opis obavestenja 1"
+        }
+    ],
+    "exams" : {
+        "questions" : [ 
+            {
+                "date" : ISODate("2021-02-24T01:27:33.224Z"),
+                "_id" : ObjectId("6035adda4464271584b01279"),
+                "filename" : "pia-questions-Motivation letter revidirano.docx",
+                "fileSize" : 15731,
+                "professor" : "ana"
+            }
+        ],
+        "solutions" : [ 
+            {
+                "date" : ISODate("2021-02-24T01:38:18.608Z"),
+                "_id" : ObjectId("6035ae0b4464271584b0127c"),
+                "filename" : "pia-solutions-Motivation letter revidirano.docx",
+                "fileSize" : 15731,
+                "professor" : "ana"
+            }
+        ]
+    },
+    "__v" : 0,
+    "syllabus" : [ 
+        {
+            "active" : false,
+            "students" : [],
+            "_id" : ObjectId("602fddd0ee9ee21ba0120c3f"),
+            "name" : "Spisak4",
+            "expireDate" : ISODate("2021-02-19T16:48:00.000Z"),
+            "date" : ISODate("2021-02-19T20:48:00.000Z"),
+            "place" : "56",
+            "limit" : 43
+        }, 
+        {
+            "active" : false,
+            "students" : [],
+            "_id" : ObjectId("60379e067da2b30544ac20db"),
+            "name" : "Kolokvijum2",
+            "expireDate" : ISODate("2021-02-27T12:54:00.000Z"),
+            "date" : ISODate("2021-02-28T12:54:00.000Z"),
+            "place" : "35",
+            "limit" : 56
+        }
+    ],
+    "applicants" : [ 
+        "cf201765d", 
+        "js201754d"
+    ],
+    "plan" : [ 
+        {
+            "_id" : ObjectId("6036c46c6fecaa2e74db3412"),
+            "professor" : "ana",
+            "typee" : "Predavanja",
+            "number" : 1
+        }, 
+        {
+            "_id" : ObjectId("6036c46c6fecaa2e74db3411"),
+            "professor" : "aki",
+            "typee" : "Vezbe",
+            "number" : 2
+        }
+    ]
+}

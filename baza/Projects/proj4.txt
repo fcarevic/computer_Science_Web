@@ -1,0 +1,12 @@
+{
+    "_id" : ObjectId("60370dbab1a3272f204567f9"),
+    "professors" : [ 
+        "aki", 
+        "ana"
+    ],
+    "title" : "Projekat Fibulus",
+    "description" : "Asistenti ETF-a radili na projektu",
+    "typee" : "Univerzitetski",
+    "id" : 4,
+    "__v" : 0
+}

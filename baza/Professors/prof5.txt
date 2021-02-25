@@ -1,0 +1,15 @@
+{
+    "_id" : ObjectId("60215239cf899e124061a583"),
+    "predmeti" : [],
+    "username" : "kia",
+    "password" : "kia123",
+    "ime" : "Kia",
+    "prezime" : "Kiic",
+    "adresa" : "ul5 bg",
+    "mobilni" : "123123",
+    "zvanje" : "Redovni profesor",
+    "kabinet" : "9",
+    "status" : "Aktivan",
+    "slika" : "kia-download.jpg",
+    "__v" : 0
+}
