@@ -52,6 +52,7 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { StudentGuard } from './middleware/StudentGuard';
 import { ProfessorGuard } from './middleware/ProfessorGuard';
 import { AdminGuard } from './middleware/AdminGuard';
+import { ZaposleniCsvInsertComponent } from './zaposleni-csv-insert/zaposleni-csv-insert.component';
 
 @NgModule({
   declarations: [
@@ -99,6 +100,7 @@ import { AdminGuard } from './middleware/AdminGuard';
     SubjectExamListComponent,
     SubjectGroupsCreateComponent,
     ForbiddenComponent,
+    ZaposleniCsvInsertComponent,
     
     
     

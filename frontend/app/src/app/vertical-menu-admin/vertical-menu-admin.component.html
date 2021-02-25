@@ -16,6 +16,9 @@
              <li>
                 <a routerLink='/employee/insert'>Dodaj</a>
              </li>
+             <li>
+              <a routerLink='/employee/csv/insert'>CSV</a>
+           </li>
          </ul>
        </div>
     </div>
@@ -56,6 +59,30 @@
               <li>
                 <a routerLink='/subject/info/insert'>Dodaj</a>
 
+              </li>
+
+              <li>
+
+                <div class="accordion" id='PredmetiAccordion'>
+                  <div id="PredmetiUpdate">
+                      <h2 class="mb-0">
+                          <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                              data-target="#PredmetiUpdatec" aria-expanded="false"
+                              aria-controls="PredmetiUpdatec">
+                              Izmeni
+                          </button>
+                      </h2>
+                  </div>
+                  <div id="PredmetiUpdatec" class="collapse" aria-labelledby="PredmetiUpdate"
+                      data-parent="#PredmetiAccordion">
+                      <ul>
+                          <li *ngFor='let subject of subjects'>
+                              <a routerLink='/subject/info/update/{{subject.code}}'>
+                                  {{subject.code}}</a>
+                          </li>
+                      </ul>
+                  </div>
+              </div>
               </li>
           </ul>
           </div>

@@ -36,6 +36,7 @@ import { SyllabusUpdateComponent } from './syllabus-update/syllabus-update.compo
 import { UniversityProjectInsertComponent } from './university-project-insert/university-project-insert.component';
 import { UniversityProjectListComponent } from './university-project-list/university-project-list.component';
 import { UniversityProjectUpdateComponent } from './university-project-update/university-project-update.component';
+import { ZaposleniCsvInsertComponent } from './zaposleni-csv-insert/zaposleni-csv-insert.component';
 import { ZaposleniDetailsComponent } from './zaposleni-details/zaposleni-details.component';
 import { ZaposleniInsertComponent } from './zaposleni-insert/zaposleni-insert.component';
 import { ZaposleniListComponent } from './zaposleni-list/zaposleni-list.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path: 'employees', component: ZaposleniListComponent},
   {path: 'employees/:id', component: ZaposleniDetailsComponent},
   {path: 'employee/insert', component: ZaposleniInsertComponent, canActivate: [AdminGuard]},
+  {path: 'employee/csv/insert', component: ZaposleniCsvInsertComponent, canActivate: [AdminGuard]},
   {path: 'employee/update/:id', component: ZaposleniUpdateComponent,canActivate: [ProfessorGuard] },
   {path: 'notifications', component: NotificationsListComponent},
   {path:'notifications/update', component: NotificationUpdateComponent, canActivate: [AdminGuard]},

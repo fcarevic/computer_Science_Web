@@ -1,0 +1,51 @@
+<div class="row">
+    <div class="col-sm-12 text-center">
+        <input type="file" (change)='change($event)'>
+        <table class="table">
+            <tr>
+                <th>
+                    <h5>Korisnicko ime</h5>
+                </th>
+                <th>
+                    <h5> Ime</h5>
+                </th>
+                <th>
+                    <h5> Prezime</h5>
+                </th>
+                <th>
+                    <h5> Adresa</h5>
+                </th>
+                <th>
+                    <h5> Zvanje</h5>
+                </th>
+                <th>
+                    <h5> Kabinet</h5>
+                </th>
+            </tr>
+            <tr *ngFor='let radnik of radnici'>
+                <td>
+                    {{radnik.username}}
+                </td>
+                <td>
+                    {{radnik.ime}}
+                </td>
+                <td>
+                    {{radnik.prezime}}
+                </td>
+               
+                <td>
+                    {{radnik.adresa}}
+                </td>
+                <td>
+                    {{radnik.zvanje}}
+                </td>
+                <td>
+                    {{radnik.kabinet}}
+                </td>
+            </tr>
+
+        </table>
+
+        <button class="btn btn-dark" (click)='addAll()'> Dodaj</button>
+    </div>
+</div>
