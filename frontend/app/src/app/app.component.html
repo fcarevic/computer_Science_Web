@@ -2,11 +2,17 @@
   <br/>
   <navbar-main></navbar-main>
   <br/>
-  <div class="row">
+  <div class="row" *ngIf="typee">
     <div class="col-sm-3">
       <vertical-menu></vertical-menu>
     </div>
     <div class="col-sm-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="row" *ngIf="!typee">
+    
+    <div class="offset-sm-2 col-sm-8">
       <router-outlet></router-outlet>
     </div>
   </div>

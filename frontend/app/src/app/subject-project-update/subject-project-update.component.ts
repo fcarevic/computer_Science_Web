@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Radnik } from '../entities/radnik';
-import { SubjectProject } from '../entities/Subject';
+import { SubjectInfo, SubjectProject } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
 import { ZaposleniService } from '../zaposleni.service';
 
@@ -22,6 +22,7 @@ export class SubjectProjectUpdateComponent implements OnInit {
     this.activatedRoute.url.subscribe(val=>{
        this.subject= val[3].path;
        this.getProjectInfo(this.subject);
+       this.getSubjectInfo(this.subject);
     })
     this.getAllProfessors();
     this.user=localStorage.getItem('user');
@@ -60,5 +61,19 @@ export class SubjectProjectUpdateComponent implements OnInit {
       this.professors=res;
     })
   }
+
+  change(){
+    this.subjectService.updateInfo(this.subjectInfo.code, this.subjectInfo).subscribe(res=>{
+      location.reload();
+    });
+  }
+
+  subjectInfo: SubjectInfo;
+  getSubjectInfo(code: string) {
+    this.subjectService.getInfo(code).subscribe((res: SubjectInfo) => {
+      this.subjectInfo=res;
+    })
+  }
+
 
 }

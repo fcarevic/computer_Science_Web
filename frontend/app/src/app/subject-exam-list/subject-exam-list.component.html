@@ -1,4 +1,11 @@
-<div class="row">
+<div class="row" *ngIf='typee!="Student"'>
+    <div class="offset-sm-2 col-sm-8">
+        <input type="checkbox" [(ngModel)]='subjectInfo.examsForbidden'
+        [checked]='subjectInfo.examsForbidden' (change)='change($event.target.value)'> Zabrani
+      
+    </div>
+</div>
+<div class="row" *ngIf='!subjectInfo.examsForbidden'>
     <div class="offset-sm-2 col-sm-8 text-center">
         <h2>Rokovi</h2>
         <br><br><br>
@@ -48,3 +55,4 @@
 
     </div>
 </div>
+<app-forbidden *ngIf='subjectInfo.examsForbidden'></app-forbidden>

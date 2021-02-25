@@ -8,6 +8,10 @@ export class SubjectInfo{
     fond: number;
     epsb: number;
     goal: string;
+    examsForbidden:boolean;
+    labForbidden:boolean;
+    projectForbidden:boolean;
+    
    
     outcome: string;
     lectureTerm: string;

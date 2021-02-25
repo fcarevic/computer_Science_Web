@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Radnik } from '../entities/radnik';
-import { SubjectProject } from '../entities/Subject';
+import { SubjectInfo, SubjectProject } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
 import { ZaposleniService } from '../zaposleni.service';
 
@@ -18,6 +18,7 @@ export class SubjectProjectDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.url.subscribe(val=>{
       this.getProjectInfo(val[3].path)
+      this.getSubjectInfo(val[3].path)
     })
     this.getAllProfessors();
   }
@@ -28,6 +29,13 @@ export class SubjectProjectDetailsComponent implements OnInit {
         this.project = res.project;
       else this.project = new SubjectProject();
 
+    })
+  }
+
+  subjectInfo: SubjectInfo;
+  getSubjectInfo(code: string) {
+    this.subjectService.getInfo(code).subscribe((res: SubjectInfo) => {
+      this.subjectInfo=res;
     })
   }
 

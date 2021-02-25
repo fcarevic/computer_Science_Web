@@ -27,7 +27,19 @@ let Subjects = new Schema({
         lectureTerm: String,
         exerciseTerm: String,
         additional: String,
-        professors: [String]
+        professors: [String],
+        examsForbidden: {
+            type: Boolean,
+            default: false
+        },
+        labForbidden: {
+            type: Boolean,
+            default: false
+        },
+        projectForbidden: {
+            type: Boolean,
+            default: false
+        },
     },
     lectureMaterials: [{
             filename: String,

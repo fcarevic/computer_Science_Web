@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Radnik } from '../entities/radnik';
-import { File } from '../entities/Subject';
+import { File, SubjectInfo } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
 import { ZaposleniService } from '../zaposleni.service';
 
@@ -28,6 +28,7 @@ export class SubjectExamListComponent implements OnInit {
       this.subject=val[1].path;
       this.getAllQuestions(this.subject);
       this.getAllSolutions(this.subject);
+      this.getSubjectInfo(this.subject)
 
     })
   }
@@ -55,6 +56,19 @@ export class SubjectExamListComponent implements OnInit {
   deleteMaterial(file:File, type: string){
     this.subjectService.deleteMaterial(this.subject, type, file).subscribe(res=>{
       location.reload();
+    })
+  }
+
+  change(){
+    this.subjectService.updateInfo(this.subjectInfo.code, this.subjectInfo).subscribe(res=>{
+      location.reload();
+    });
+  }
+
+  subjectInfo: SubjectInfo;
+  getSubjectInfo(code: string) {
+    this.subjectService.getInfo(code).subscribe((res: SubjectInfo) => {
+      this.subjectInfo=res;
     })
   }
 }

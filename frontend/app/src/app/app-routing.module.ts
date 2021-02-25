@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChangePasswordComponent } from './change-password/change-password.component';
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
+import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { NotificationInsertComponent } from './notification-insert/notification-insert.component';
 import { NotificationUpdateComponent } from './notification-update/notification-update.component';
@@ -76,6 +77,7 @@ const routes: Routes = [
   {path: 'password/change', component: ChangePasswordComponent},
   {path: 'exams/:code', component: SubjectExamListComponent},
   {path: 'subject/plan/insert', component: SubjectGroupsCreateComponent},
+  {path: 'forbidden', component: ForbiddenComponent}
   
     
 

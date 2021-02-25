@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Radnik } from '../entities/radnik';
-import { SubjectLab } from '../entities/Subject';
+import { SubjectInfo, SubjectLab } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
 import { ZaposleniService } from '../zaposleni.service';
 
@@ -17,6 +17,7 @@ export class SubjectLabDetailsComponent implements OnInit {
     ) {
     this.activatedRoute.url.subscribe(val=>{
         this.getLabInfo(val[3].path)
+        this.getSubjectInfo(val[3].path)
     })
    }
 
@@ -41,6 +42,12 @@ export class SubjectLabDetailsComponent implements OnInit {
     })
   }
 
+  subjectInfo: SubjectInfo;
+  getSubjectInfo(code: string) {
+    this.subjectService.getInfo(code).subscribe((res: SubjectInfo) => {
+      this.subjectInfo=res;
+    })
+  }
 
 
 }
