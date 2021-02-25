@@ -15,7 +15,7 @@ export class SyllabusListComponent implements OnInit {
   constructor(private activatedRouteL: ActivatedRoute, private router:Router, private subjectService: SubjectServiceService) { }
 
   ngOnInit(): void {
-    this.typee= localStorage.getItem('tip');
+    this.typee= localStorage.getItem('tip'); 
     this.activatedRouteL.url.subscribe(val=>{
       this.subject =val[3].path;
       this.getAllSyllabus(this.subject);

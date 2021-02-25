@@ -66,7 +66,7 @@ export class SubjectLabUpdateComponent implements OnInit {
     })
   }
   
-  change(){
+  change(val:any){
     this.subjectService.updateInfo(this.subjectInfo.code, this.subjectInfo).subscribe(res=>{
       location.reload();
     });

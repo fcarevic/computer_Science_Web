@@ -58,8 +58,8 @@ export class SubjectExamListComponent implements OnInit {
       location.reload();
     })
   }
-
-  change(){
+ 
+  change(val:any){
     this.subjectService.updateInfo(this.subjectInfo.code, this.subjectInfo).subscribe(res=>{
       location.reload();
     });

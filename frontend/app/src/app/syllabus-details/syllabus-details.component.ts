@@ -64,6 +64,8 @@ export class SyllabusDetailsComponent implements OnInit {
       if (res.nModified && res.nModified == 1) {
         this.message=this.MESSAGE_OK;
         this.list.students = this.list.students.filter(el=> el!= this.username);
+        localStorage.setItem('syllabus', JSON.stringify({subject: this.subject, list : this.list}));
+       
    
       
       } else this.message = this.MESSAGE_DANGER;
@@ -78,6 +80,11 @@ export class SyllabusDetailsComponent implements OnInit {
   registerStudent() {
    
     if(this.userType!='Student') {
+      this.message= this.MESSAGE_DANGER_NOT_STUDENT;
+      return;
+
+    }
+    if(this.list.expireDate< new Date() || !this.list.active){
       this.message= this.MESSAGE_DANGER_NOT_STUDENT;
       return;
 
