@@ -4,6 +4,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { ContactDetailsComponent } from './contact-details/contact-details.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { AdminGuard } from './middleware/AdminGuard';
+import { ProfessorGuard } from './middleware/ProfessorGuard';
+import { StudentGuard } from './middleware/StudentGuard';
 import { NotificationInsertComponent } from './notification-insert/notification-insert.component';
 import { NotificationUpdateComponent } from './notification-update/notification-update.component';
 import { NotificationsListComponent } from './notifications-list/notifications-list.component';
@@ -44,39 +47,39 @@ const routes: Routes = [
   {path: 'registerstudent', component: StudentInsertComponent},
   {path: 'employees', component: ZaposleniListComponent},
   {path: 'employees/:id', component: ZaposleniDetailsComponent},
-  {path: 'employee/insert', component: ZaposleniInsertComponent},
-  {path: 'employee/update/:id', component: ZaposleniUpdateComponent},
+  {path: 'employee/insert', component: ZaposleniInsertComponent, canActivate: [AdminGuard]},
+  {path: 'employee/update/:id', component: ZaposleniUpdateComponent,canActivate: [ProfessorGuard] },
   {path: 'notifications', component: NotificationsListComponent},
-  {path:'notifications/update', component: NotificationUpdateComponent},
-  {path:'notifications/insert', component: NotificationInsertComponent},
+  {path:'notifications/update', component: NotificationUpdateComponent, canActivate: [AdminGuard]},
+  {path:'notifications/insert', component: NotificationInsertComponent, canActivate: [AdminGuard]},
   {path: 'contact', component: ContactDetailsComponent},
-  {path:'subject/notification/insert/:code', component: SubjectNotificationInsertComponent},
-  {path:'subject/notification/update/:code', component: SubjectNotificationUpdateComponent},
+  {path:'subject/notification/insert/:code', component: SubjectNotificationInsertComponent, canActivate: [ProfessorGuard]},
+  {path:'subject/notification/update/:code', component: SubjectNotificationUpdateComponent, canActivate: [ProfessorGuard]},
   {path: 'subject/notifications/:code', component: SubjectNotificationsComponent},
-  {path: 'subject/info/insert', component: SubjectInfoInsertComponent},
-  {path: 'subject/infos/:id', component: SubjectInfoDetailsComponent},
-  {path: 'subject/info/update/:id', component:SubjectInfoUpdateComponent},
-  {path: 'subject/material/insert', component: SubjectMaterialInsertComponent},
-  {path: 'subject/materials/:code', component: SubjectMaterialListComponent},
-  {path: 'subject/lab/update/:code', component: SubjectLabUpdateComponent},
-  {path: 'subject/lab/info/:code', component:SubjectLabDetailsComponent},
-  {path: 'subject/project/info/:code', component:SubjectProjectDetailsComponent},
-  {path: 'subject/project/update/:code', component:SubjectProjectUpdateComponent},
+  {path: 'subject/info/insert', component: SubjectInfoInsertComponent, canActivate: [AdminGuard]},
+  {path: 'subject/infos/:id', component: SubjectInfoDetailsComponent, canActivate: [StudentGuard]},
+  {path: 'subject/info/update/:id', component:SubjectInfoUpdateComponent, canActivate: [ProfessorGuard]},
+  {path: 'subject/material/insert', component: SubjectMaterialInsertComponent,  canActivate: [ProfessorGuard]},
+  {path: 'subject/materials/:code', component: SubjectMaterialListComponent,  canActivate: [StudentGuard]},
+  {path: 'subject/lab/update/:code', component: SubjectLabUpdateComponent,  canActivate: [ProfessorGuard]},
+  {path: 'subject/lab/info/:code', component:SubjectLabDetailsComponent,  canActivate: [StudentGuard]},
+  {path: 'subject/project/info/:code', component:SubjectProjectDetailsComponent,  canActivate: [StudentGuard]},
+  {path: 'subject/project/update/:code', component:SubjectProjectUpdateComponent,  canActivate: [ProfessorGuard]},
   {path: 'student/insert', component: StudentInsertComponent},
-  {path: 'student/info/update/:username', component: StudentUpdateComponent},
-  {path: 'subject/syllabus/insert/:code', component: SyllabusInsertComponent },
-  {path: 'subject/syllabus/update', component: SyllabusUpdateComponent },
-  {path: 'subject/syllabus/list/:code', component: SyllabusListComponent},
-  {path: 'subject/syllabus/details', component: SyllabusDetailsComponent},
+  {path: 'student/info/update/:username', component: StudentUpdateComponent,  canActivate: [StudentGuard]},
+  {path: 'subject/syllabus/insert/:code', component: SyllabusInsertComponent,  canActivate: [ProfessorGuard] },
+  {path: 'subject/syllabus/update', component: SyllabusUpdateComponent ,canActivate: [ProfessorGuard] },
+  {path: 'subject/syllabus/list/:code', component: SyllabusListComponent , canActivate: [StudentGuard] },
+  {path: 'subject/syllabus/details', component: SyllabusDetailsComponent, canActivate: [StudentGuard] },
   {path: 'subject/department/:code', component: SubjectListComponent},
-  {path: 'projects/insert', component: UniversityProjectInsertComponent },
+  {path: 'projects/insert', component: UniversityProjectInsertComponent, canActivate: [AdminGuard]  },
   {path: 'projects', component: UniversityProjectListComponent },
-  {path: 'projects/update/:id', component: UniversityProjectUpdateComponent },
+  {path: 'projects/update/:id', component: UniversityProjectUpdateComponent , canActivate: [AdminGuard] },
   {path: 'science/researches', component: ScienceRComponent},
   {path: 'science/projects', component: UniversityProjectListComponent},
   {path: 'password/change', component: ChangePasswordComponent},
-  {path: 'exams/:code', component: SubjectExamListComponent},
-  {path: 'subject/plan/insert', component: SubjectGroupsCreateComponent},
+  {path: 'exams/:code', component: SubjectExamListComponent, canActivate: [StudentGuard] },
+  {path: 'subject/plan/insert', component: SubjectGroupsCreateComponent, canActivate: [AdminGuard] },
   {path: 'forbidden', component: ForbiddenComponent}
   
     

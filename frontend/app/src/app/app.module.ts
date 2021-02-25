@@ -49,6 +49,9 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { SubjectExamListComponent } from './subject-exam-list/subject-exam-list.component';
 import { SubjectGroupsCreateComponent } from './subject-groups-create/subject-groups-create.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
+import { StudentGuard } from './middleware/StudentGuard';
+import { ProfessorGuard } from './middleware/ProfessorGuard';
+import { AdminGuard } from './middleware/AdminGuard';
 
 @NgModule({
   declarations: [
@@ -110,7 +113,11 @@ import { ForbiddenComponent } from './forbidden/forbidden.component';
   exports:[
   
   ],
-  providers: [],
+  providers: [
+    StudentGuard,
+    ProfessorGuard,
+    AdminGuard
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
