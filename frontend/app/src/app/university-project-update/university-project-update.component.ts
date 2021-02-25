@@ -33,7 +33,7 @@ export class UniversityProjectUpdateComponent implements OnInit {
   }
   getProject(id){
     this.adminService.getUniversityProjectsById(id).subscribe((res:UniversityProject)=>{
-      alert(JSON.stringify(res))
+       
       this.project=res;
     })
   }

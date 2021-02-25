@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Notification } from '../entities/notification';
 import { NotificationType } from '../entities/notification-type';
 import { NotificationServiceService } from '../notification-service.service';
@@ -10,7 +11,7 @@ import { NotificationServiceService } from '../notification-service.service';
 })
 export class NotificationInsertComponent implements OnInit {
 
-  constructor(private notificationService:NotificationServiceService) { }
+  constructor(private notificationService:NotificationServiceService, private router:Router) { }
 
   ngOnInit(): void {
       this.notificationService.getAllNotificationTypes().subscribe((types:NotificationType[])=>{
@@ -21,7 +22,8 @@ export class NotificationInsertComponent implements OnInit {
   notificationTypes: NotificationType[]
   insertNotification(){
     this.notificationService.insertNotification(this.notification).subscribe((res)=>{
-      alert(JSON.stringify(res));
+      this.router.navigate(['/notifications'])
+      
     })
   }
   
