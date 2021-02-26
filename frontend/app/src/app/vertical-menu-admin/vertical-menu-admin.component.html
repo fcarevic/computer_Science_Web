@@ -19,6 +19,30 @@
              <li>
               <a routerLink='/employee/csv/insert'>CSV</a>
            </li>
+
+           <li>
+
+            <div class="accordion" id='EmployeeAccordion'>
+              <div id="EmployeeUpdate">
+                  <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                          data-target="#EmployeeUpdatec" aria-expanded="false"
+                          aria-controls="EmployeeUpdatec">
+                          Izmeni
+                      </button>
+                  </h2>
+              </div>
+              <div id="EmployeeUpdatec" class="collapse" aria-labelledby="EmployeeUpdate"
+                  data-parent="#EmployeeAccordion">
+                  <ul>
+                      <li *ngFor='let prof of professors'>
+                          <a routerLink='/employee/update/{{prof.username}}'>
+                              {{prof.username}}</a>
+                      </li>
+                  </ul>
+              </div>
+          </div>
+          </li>
          </ul>
        </div>
     </div>
@@ -119,6 +143,9 @@
       <ul>
           <li>
               <a routerLink='/student/insert'> Dodaj</a>
+          </li>
+          <li>
+            Izmeni <input type="text" placeholder="username" [(ngModel)]='student'> <button class="btn btn-dark" (click)='getStudent()'>Izmeni</button>
           </li>
       </ul>
     </div>

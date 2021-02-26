@@ -76,7 +76,7 @@ var uploadSyllabus = multer({
 }).single('file');
 
 /***************** UPLOAD ROUTES */
-
+/*****ruta za upload fotografija */
 router.route('/uploadphotos').post((request, response) => {
     try {
         uploadPhoto(request, response, err => {
@@ -94,6 +94,8 @@ router.route('/uploadphotos').post((request, response) => {
         response.status(500).json(NOT_OK_STATUS);
     }
 });
+
+/*********ruta za upload materiajala */
 
 router.route('/materials/upload').post((request, response) => {
     try {
@@ -113,6 +115,8 @@ router.route('/materials/upload').post((request, response) => {
     }
 })
 
+/**********ruta za uload materijala sa spiskova */
+
 router.route('/syllabus/upload').post((request,response)=>{
     try {
         uploadSyllabus(request, response, err => {
@@ -131,6 +135,7 @@ router.route('/syllabus/upload').post((request,response)=>{
     } 
 })
 /*****************  DOWNLOAD ROUTES */
+
 
 router.route('/downloadphotos/:filename').get((request, response) => {
     var filename = request.params.filename;
@@ -312,6 +317,7 @@ router.route('/student/insert').post((request, response) => {
         }
     })
 })
+//dohvata studente po username
 
 router.route('/student/info/:username').get((request, response) => {
     let username = request.params.username;
@@ -322,6 +328,7 @@ router.route('/student/info/:username').get((request, response) => {
     })
 })
 
+// update studenta
 router.route('/student/info/update').post((request, response) => {
     let student = request.body.student;
     Student.updateOne({ 'username': student.username }, {
@@ -348,7 +355,7 @@ router.route('/student/info/delete').post((requset, response) => {
 /**************************SUBJECT ROUTES */
 
 /***************SUBJECT NOTIFICATION ROUTES */
-
+//dohvata obavesttenja za predmete
 router.route('/subject/notifications/:code').get((request, response) => {
     let code = request.params.code;
     Subject.findOne({ 'info.code': code }, { notifications: 1 }, (err, res) => {
@@ -417,6 +424,8 @@ router.route('/subject/notifications/delete').post((request, response) => {
 
 
 /*****************SUBJECT INFO ROUTES */
+
+//dohvata informacije o predmetu
 router.route('/subject/info').get((request, response) => {
    
     Subject.find({},
@@ -434,7 +443,7 @@ router.route('/subject/info').get((request, response) => {
         })
 });
 
-
+//dohvata predemte za odredjenog profesora
 router.route('/subject/professor/info/:username').get((request, response) => {
     let username = request.params.username;
     
@@ -453,7 +462,7 @@ router.route('/subject/professor/info/:username').get((request, response) => {
         })
 });
 
-
+//dohvata predmete za studenta
 router.route('/subject/applicant/info/:username').get((request, response) => {
     let username = request.params.username;
     
@@ -472,6 +481,7 @@ router.route('/subject/applicant/info/:username').get((request, response) => {
         })
 });
 
+//dohvata predmet po id-u
 router.route('/subject/info/:code').get((request, response) => {
     let code = request.params.code;
     Subject.findOne({ 'info.code': code },
@@ -521,7 +531,7 @@ router.route('/subject/materials/:code').get((request, response) => {
     })
 })
 
-
+//dodaje materijal za predavanja
 router.route('/subject/lectures/materials/insert').post((request, response) => {
     let file = request.body.file;
     let code = request.body.code;
@@ -531,6 +541,8 @@ router.route('/subject/lectures/materials/insert').post((request, response) => {
         }
     }).then(res => { response.json(res); })
 })
+
+//dodaje materijale za vezbe
 router.route('/subject/exercises/materials/insert').post((request, response) => {
     let file = request.body.file;
     let code = request.body.code;
@@ -540,7 +552,7 @@ router.route('/subject/exercises/materials/insert').post((request, response) => 
         }
     }).then(res => { response.json(res); })
 });
-
+//dodaje materiajale za lab
 router.route('/subject/lab/materials/insert').post((request, response) => {
     let code = request.body.code;
     let file = request.body.file;
@@ -551,6 +563,8 @@ router.route('/subject/lab/materials/insert').post((request, response) => {
 
     }).then(res => { response.json(res) });
 })
+
+
 
 router.route('/subject/lectures/materials/delete').post((request, response) => {
     let code = request.body.code;
@@ -669,7 +683,7 @@ router.route('/subject/syllabus/update').post((request, response) => {
 });
 
 
-
+//brisanje studenta sa spiska
 router.route('/subject/syllabus/removestudent').post((request, response) => {
     let list = request.body.list
     let code = request.body.code;
@@ -688,7 +702,7 @@ router.route('/subject/syllabus/removestudent').post((request, response) => {
 
     }).then(res => response.json(res));
 })
-
+//dodaje studenta na spisak
 router.route('/subject/syllabus/addstudent').post((request, response) => {
     let list = request.body.list
     let code = request.body.code;

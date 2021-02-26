@@ -12,20 +12,27 @@
             <tr>
                 <td> <h5>Sifra</h5></td>
                 <td>
-                    <input type="text" value='{{student.password}}' [(ngModel)]= 'student.password'>
+                    <input type="password" value='{{student.password}}' [(ngModel)]= 'student.password'>
                 </td>
             </tr>
             <tr>
                 <td><h5>Indeks</h5></td>
-                <td>    <input type="text" value='{{student.indeks}}' [(ngModel)]= 'student.indeks'>
+                <td *ngIf='typee!="Student"'>    <input type="text" value='{{student.indeks}}' [(ngModel)]= 'student.indeks'>
+                </td>
+
+                <td *ngIf='typee=="Student"'>
+                    {{student.indeks}}
                 </td>
             </tr>
             <tr>
                 <td> <h5>Tip studija</h5></td>
-                <td>
+                <td *ngIf='typee!="Student"'>
                     <select [(ngModel)]= 'student.tip'>
                         <option value="{{tip}}"  *ngFor=' let tip of types ' [selected]= 'tip == student.tip'> {{tip}}</option>
                     </select>
+                </td>
+                <td *ngIf='typee=="Student"'>
+                    {{student.tip}}
                 </td>
             </tr>
             <tr>
@@ -54,10 +61,14 @@
                         Status
                     </h5>
                 </td>
-                <td>
+                <td *ngIf='typee!="Student"'>
                     <select [(ngModel)]= 'student.status'>
                         <option value="{{status}}"  *ngFor=' let status of statuses ' [selected]= 'status == student.status'> {{status}}</option>
                     </select>
+                </td>
+                <td *ngIf='typee=="Student"'>
+                    {{student.status}}
+
                 </td>
             </tr>
 

@@ -82,7 +82,8 @@ const routes: Routes = [
   {path: 'password/change', component: ChangePasswordComponent},
   {path: 'exams/:code', component: SubjectExamListComponent, canActivate: [StudentGuard] },
   {path: 'subject/plan/insert', component: SubjectGroupsCreateComponent, canActivate: [AdminGuard] },
-  {path: 'forbidden', component: ForbiddenComponent}
+  {path: 'forbidden', component: ForbiddenComponent},
+  {path: 'notfound', component: ForbiddenComponent}
   
     
 

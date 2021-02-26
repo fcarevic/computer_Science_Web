@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { runInThisContext } from 'vm';
+
 import { Radnik } from '../entities/radnik';
 import { ZaposleniService } from '../zaposleni.service';
 
@@ -24,7 +24,7 @@ export class ZaposleniCsvInsertComponent implements OnInit {
       let data = reader.result;
       this.parseData(<string>data);
     }
-  }
+  } 
 
   parseData(res:string){
     let lines = res.split('\n')

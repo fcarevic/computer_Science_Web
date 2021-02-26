@@ -12,7 +12,7 @@ export class StudentUpdateComponent implements OnInit {
   MESSAGE_OK = { style: "success", msg: "Uspesno azurirano" };
   MESSAGE_DANGER_EXIST_USER = { style: "danger", msg: "Korisnicko ime zauzeto" };
   MESSAGE_DANGER = { style: "danger", msg: "Neuspeh" };
-
+    typee='';
    student = new Student();
   types= ['d', 'm', 'p'];
   statuses = ['Aktivan', 'Neaktivan'];
@@ -24,6 +24,7 @@ export class StudentUpdateComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    this.typee=localStorage.getItem('tip');
 
   }
   
