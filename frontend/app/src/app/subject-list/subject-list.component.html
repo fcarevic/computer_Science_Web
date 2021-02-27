@@ -7,6 +7,9 @@
                     <td>
                         <a routerLink='/subject/infos/{{subject.code}}'>  {{subject.name}}</a>
                     </td>
+                    <td *ngIf='typee=="Admin"' class='text-right'>
+                        <button class="btn btn-dark" (click)='delete(subject.code)'> Delete</button>
+                    </td>
                 </tr>
             </table>
             <br>

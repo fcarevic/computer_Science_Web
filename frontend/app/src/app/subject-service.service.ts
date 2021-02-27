@@ -34,7 +34,9 @@ export class SubjectServiceService {
   insertInfo(info: SubjectInfo) {
     return this.http.post(`${this.uri}/subject/info/insert`, { info });
   }
-
+  delete(code: string) {
+    return this.http.post(`${this.uri}/subject/info/delete` , {code});
+  }
   getInfo(code: string) {
     return this.http.get(`${this.uri}/subject/info/` + code);
   }

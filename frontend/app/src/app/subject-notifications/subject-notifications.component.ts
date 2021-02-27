@@ -35,6 +35,11 @@ export class SubjectNotificationsComponent implements OnInit {
               this.notifications.forEach(el=>{
                 el.date = new Date(el.date)
               })
+              this.notifications.sort((el1,el2)=>{
+                if (el1.date> el2.date) return -1;
+                else  if (el1.date< el2.date) return 1;
+                else return 0;
+              })
       })
 
   }

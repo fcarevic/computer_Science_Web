@@ -443,6 +443,14 @@ router.route('/subject/info').get((request, response) => {
         })
 });
 
+router.route('/subject/info/delete').post((request, response)=>{
+    let code = request.body.code;
+    Subject.deleteOne({'info.code': code}, (err)=>{
+        console.log(err)
+    }).then(res=>  response.json(res))
+})
+
+
 //dohvata predemte za odredjenog profesora
 router.route('/subject/professor/info/:username').get((request, response) => {
     let username = request.params.username;

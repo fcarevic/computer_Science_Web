@@ -1,6 +1,7 @@
 import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Student } from '../entities/Student';
 import { SubjectSyllabus } from '../entities/Subject';
 import { SubjectServiceService } from '../subject-service.service';
 
@@ -32,7 +33,8 @@ export class SyllabusListComponent implements OnInit {
   getAllSyllabus(code:string){
     this.subjectService.getAllSyllabus(this.subject).subscribe((res:any)=>{
      this.lists=res.syllabus;
-     
+     if(this.typee=="Student" )
+     this.lists=this.lists.filter(el=> el.active && ! (new Date(el.expireDate)< new Date()))
     })
   }
 

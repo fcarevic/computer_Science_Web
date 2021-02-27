@@ -13,6 +13,7 @@ export class SubjectListComponent implements OnInit {
   constructor(private subjectService:SubjectServiceService, private acitvatedRoue: ActivatedRoute) { }
   years=[1,2,3,4]
   ngOnInit(): void {
+    this.typee=localStorage.getItem('tip');
     this.acitvatedRoue.url.subscribe(val=>{
       this.getAllSubjects(val[2].path)
       this.department = val[2].path;
@@ -20,6 +21,7 @@ export class SubjectListComponent implements OnInit {
       else this.years=[1,2,3,4]
     })
   }
+  typee='';
   department = '';
   subjects:SubjectInfo[] = [];
   getAllSubjects(department:string){
@@ -35,6 +37,10 @@ export class SubjectListComponent implements OnInit {
     }
     return this.subjects.filter(el=> el.years.includes(year))
 
+  }
+
+  delete(code:string){
+    this.subjectService.delete(code).subscribe(res=> location.reload())
   }
 
 }
